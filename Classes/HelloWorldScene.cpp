@@ -13,7 +13,7 @@ bool HelloWorld::init() {
     if ( !Layer::init() ) {
         return false;
     }
-//    this->scheduleUpdate();
+    this->scheduleUpdate();
     return true;
 }
 
