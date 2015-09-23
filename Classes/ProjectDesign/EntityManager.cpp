@@ -181,6 +181,19 @@
 //            return store.keys
 //        end
 //    end
+    vector<Entity *> GetAllEntitiesByComponentType(string type) {
+        vector<Entity *> returning_vector;
+        
+        for (auto i = 0 ; i != entities.size(); ++i) {
+            for (auto j = 0; j != entities[i]->components.size(); ++j) {
+                if (entities[i]->components[j]->type == type) {
+                    returning_vector.push_back(entities[i]);
+                }
+            }
+        }
+        
+        return returning_vector;
+    }
 //
 //    # priority: 1!
 //    def get_all_entities_with_components_of_type(component_classes)
