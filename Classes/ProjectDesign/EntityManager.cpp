@@ -192,6 +192,8 @@
             }
         }
         
+        cout << "GetAllEntitiesByComponentType entities count : " << returning_vector.size() << endl;
+        
         return returning_vector;
     }
 //
@@ -205,6 +207,30 @@
 //        end
 //        return entities
 //    end
+
+    vector<Entity *> GetAllEntitiesByComponentTypes(vector<Entity *> entities, vector<string> types) {
+        vector<Entity *> returning_vector;
+        int fullness = types.size();
+        
+        for (auto i = 0 ; i != entities.size(); ++i) {
+            int count = 0;
+            for (auto j = 0; j != entities[i]->components.size(); ++j) {
+                for (auto k = 0; k != types.size(); ++k) {
+                    if (entities[i]->components[j]->type == types[k]) {
+                        count+=1;
+                    }
+                }
+            }
+            if (fullness == count) {
+                returning_vector.push_back(entities[i]);
+            }
+            count = 0;
+        }
+        
+        cout << "GetAllEntitiesByComponentTypes entities count : " << returning_vector.size() << endl;
+        
+        return returning_vector;
+    }
 //
 //    def dump_details
 //        output = to_s
