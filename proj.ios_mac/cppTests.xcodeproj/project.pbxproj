@@ -422,7 +422,7 @@
 				A4EBA67B1BB1F64C001F8DC8 /* RenderingManager.cpp */,
 				A4EBA67D1BB1F677001F8DC8 /* RenderingManager.h */,
 			);
-			name = ProjectDesign;
+			path = ProjectDesign;
 			sourceTree = "<group>";
 		};
 		A4EBA67F1BB1F946001F8DC8 /* Storages */ = {
@@ -433,7 +433,7 @@
 				A4EBA6831BB1FB4F001F8DC8 /* SoundStorage.cpp */,
 				A4EBA6851BB1FB7B001F8DC8 /* SoundStorage.h */,
 			);
-			name = Storages;
+			path = Storages;
 			sourceTree = "<group>";
 		};
 		A4EBA6861BB1FBD4001F8DC8 /* States */ = {
@@ -444,7 +444,7 @@
 				A4EBA68A1BB1FC0E001F8DC8 /* PlayingState.cpp */,
 				A4EBA68C1BB1FC1D001F8DC8 /* PlayingState.h */,
 			);
-			name = States;
+			path = States;
 			sourceTree = "<group>";
 		};
 		A4EBA68D1BB1FC3B001F8DC8 /* Components */ = {
@@ -459,7 +459,7 @@
 				A4EBA69C1BB1FEE4001F8DC8 /* EngineComponent.cpp */,
 				A4EBA69E1BB1FF59001F8DC8 /* EngineComponent.h */,
 			);
-			name = Components;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A4EBA68E1BB1FC56001F8DC8 /* Controllers */ = {
@@ -472,7 +472,7 @@
 				A4EBA6A91BB201BC001F8DC8 /* EngineController.cpp */,
 				A4EBA6AB1BB201CB001F8DC8 /* EngineController.h */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A4EBA68F1BB1FCD3001F8DC8 /* Entities */ = {
@@ -483,7 +483,7 @@
 				A4EBA6921BB1FD1E001F8DC8 /* Player.h */,
 				A4EBA6A11BB1FF9C001F8DC8 /* Entity.h */,
 			);
-			name = Entities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
