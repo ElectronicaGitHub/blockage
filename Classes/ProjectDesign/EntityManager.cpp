@@ -169,7 +169,19 @@
 //        end
 //        components
 //    end
-//
+    vector<Component *> GetComponentsByEntityId(string id) {
+        vector<Component *> returning_vector;
+        
+        for (auto i = 0 ; i != entities.size(); ++i) {
+            if (entities[i]->id == id) {
+                returning_vector = entities[i]->components;
+                cout << "GetComponentsByEntityId components count : " << returning_vector.size() << endl;
+                return returning_vector;
+            }
+            
+        }
+        return returning_vector;
+    }
 //    # priority: 1!!!
 //    def get_all_entities_with_component_of_type(component_class)
 //        raise ArgumentError, "Component class must be specified" if component_class.nil?
@@ -196,7 +208,6 @@
         
         return returning_vector;
     }
-//
 //    # priority: 1!
 //    def get_all_entities_with_components_of_type(component_classes)
 //        raise ArgumentError, "Component classes must be specified" if component_classes.nil?
@@ -207,8 +218,7 @@
 //        end
 //        return entities
 //    end
-
-    vector<Entity *> GetAllEntitiesByComponentTypes(vector<Entity *> entities, vector<string> types) {
+    vector<Entity *> GetAllEntitiesByComponentTypes(vector<string> types) {
         vector<Entity *> returning_vector;
         int fullness = types.size();
         
