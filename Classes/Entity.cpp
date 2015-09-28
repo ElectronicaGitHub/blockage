@@ -2,7 +2,7 @@
 //  Entity.cpp
 //  cppTests
 //
-//  Created by Philip Antonov on 25.09.15.
+//  Created by Philip Antonov on 26.09.15.
 //
 //
 
@@ -15,4 +15,4 @@ Entity::Entity(string _id, vector<MainComponent *> _comp) {
     id = _id;
     components = _comp;
 };
-~Entity() {};
+Entity::~Entity() {};

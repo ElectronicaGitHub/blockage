@@ -16,8 +16,11 @@ class MainComponent
 {
 public:
     string type;
-    MainComponent(string _type);
-    MainComponent();
+    MainComponent() {};
+    MainComponent(string _type) {
+        type = _type;
+    };
+    ~MainComponent() {};
 };
 
 #endif /* defined(__cppTests__Component__) */

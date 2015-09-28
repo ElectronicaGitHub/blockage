@@ -11,4 +11,3 @@
 MainComponent::MainComponent(string _type) {
     type = _type;
 };
-MainComponent::MainComponent() {};

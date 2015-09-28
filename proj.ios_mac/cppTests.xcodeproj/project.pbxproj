@@ -84,9 +84,15 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D45909341BB4C72F00D43BD5 /* EntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909321BB4C72F00D43BD5 /* EntityManager.cpp */; };
-		D45909381BB4C84800D43BD5 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909361BB4C84800D43BD5 /* Entity.cpp */; };
 		D459093C1BB4C8F400D43BD5 /* MainComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D459093A1BB4C8F400D43BD5 /* MainComponent.cpp */; };
 		D459093F1BB4CE5300D43BD5 /* MovementComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D459093D1BB4CE5300D43BD5 /* MovementComponent.cpp */; };
+		D459094C1BB6AEC500D43BD5 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D459094A1BB6AEC500D43BD5 /* Entity.cpp */; };
+		D459094F1BB6C69E00D43BD5 /* ImageStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D459094D1BB6C69E00D43BD5 /* ImageStorage.cpp */; };
+		D45909531BB6C8FF00D43BD5 /* MovementController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909511BB6C8FF00D43BD5 /* MovementController.cpp */; };
+		D45909561BB77A3C00D43BD5 /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909541BB77A3C00D43BD5 /* RenderComponent.cpp */; };
+		D45909591BB7817700D43BD5 /* RenderController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909571BB7817700D43BD5 /* RenderController.cpp */; };
+		D45909621BB8623800D43BD5 /* UserActionsController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909601BB8623800D43BD5 /* UserActionsController.cpp */; };
+		D45909651BB864A500D43BD5 /* ControlsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909631BB864A500D43BD5 /* ControlsComponent.cpp */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -217,12 +223,24 @@
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D45909321BB4C72F00D43BD5 /* EntityManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntityManager.cpp; sourceTree = "<group>"; };
 		D45909331BB4C72F00D43BD5 /* EntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityManager.h; sourceTree = "<group>"; };
-		D45909361BB4C84800D43BD5 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
-		D45909371BB4C84800D43BD5 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		D459093A1BB4C8F400D43BD5 /* MainComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainComponent.cpp; sourceTree = "<group>"; };
 		D459093B1BB4C8F400D43BD5 /* MainComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainComponent.h; sourceTree = "<group>"; };
 		D459093D1BB4CE5300D43BD5 /* MovementComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovementComponent.cpp; sourceTree = "<group>"; };
 		D459093E1BB4CE5300D43BD5 /* MovementComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementComponent.h; sourceTree = "<group>"; };
+		D459094A1BB6AEC500D43BD5 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		D459094B1BB6AEC500D43BD5 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		D459094D1BB6C69E00D43BD5 /* ImageStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageStorage.cpp; sourceTree = "<group>"; };
+		D459094E1BB6C69E00D43BD5 /* ImageStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStorage.h; sourceTree = "<group>"; };
+		D45909511BB6C8FF00D43BD5 /* MovementController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovementController.cpp; sourceTree = "<group>"; };
+		D45909521BB6C8FF00D43BD5 /* MovementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementController.h; sourceTree = "<group>"; };
+		D45909541BB77A3C00D43BD5 /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
+		D45909551BB77A3C00D43BD5 /* RenderComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderComponent.h; sourceTree = "<group>"; };
+		D45909571BB7817700D43BD5 /* RenderController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderController.cpp; sourceTree = "<group>"; };
+		D45909581BB7817700D43BD5 /* RenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderController.h; sourceTree = "<group>"; };
+		D45909601BB8623800D43BD5 /* UserActionsController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserActionsController.cpp; sourceTree = "<group>"; };
+		D45909611BB8623800D43BD5 /* UserActionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserActionsController.h; sourceTree = "<group>"; };
+		D45909631BB864A500D43BD5 /* ControlsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlsComponent.cpp; sourceTree = "<group>"; };
+		D45909641BB864A500D43BD5 /* ControlsComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsComponent.h; sourceTree = "<group>"; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -364,6 +382,8 @@
 				D45909311BB4C6EF00D43BD5 /* Managers */,
 				D45909351BB4C81100D43BD5 /* Entities */,
 				D45909391BB4C8D300D43BD5 /* Components */,
+				D45909401BB62D3900D43BD5 /* Storages */,
+				D45909501BB6C8E300D43BD5 /* Controllers */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -513,8 +533,8 @@
 		D45909351BB4C81100D43BD5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				D45909361BB4C84800D43BD5 /* Entity.cpp */,
-				D45909371BB4C84800D43BD5 /* Entity.h */,
+				D459094A1BB6AEC500D43BD5 /* Entity.cpp */,
+				D459094B1BB6AEC500D43BD5 /* Entity.h */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -522,12 +542,38 @@
 		D45909391BB4C8D300D43BD5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D45909541BB77A3C00D43BD5 /* RenderComponent.cpp */,
+				D45909551BB77A3C00D43BD5 /* RenderComponent.h */,
 				D459093D1BB4CE5300D43BD5 /* MovementComponent.cpp */,
 				D459093E1BB4CE5300D43BD5 /* MovementComponent.h */,
+				D45909631BB864A500D43BD5 /* ControlsComponent.cpp */,
+				D45909641BB864A500D43BD5 /* ControlsComponent.h */,
 				D459093A1BB4C8F400D43BD5 /* MainComponent.cpp */,
 				D459093B1BB4C8F400D43BD5 /* MainComponent.h */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		D45909401BB62D3900D43BD5 /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				D459094D1BB6C69E00D43BD5 /* ImageStorage.cpp */,
+				D459094E1BB6C69E00D43BD5 /* ImageStorage.h */,
+			);
+			name = Storages;
+			sourceTree = "<group>";
+		};
+		D45909501BB6C8E300D43BD5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D45909511BB6C8FF00D43BD5 /* MovementController.cpp */,
+				D45909521BB6C8FF00D43BD5 /* MovementController.h */,
+				D45909601BB8623800D43BD5 /* UserActionsController.cpp */,
+				D45909611BB8623800D43BD5 /* UserActionsController.h */,
+				D45909571BB7817700D43BD5 /* RenderController.cpp */,
+				D45909581BB7817700D43BD5 /* RenderController.h */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,16 +717,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45909621BB8623800D43BD5 /* UserActionsController.cpp in Sources */,
 				D459093F1BB4CE5300D43BD5 /* MovementComponent.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				A4EBA6971BB1FE17001F8DC8 /* Component.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				D459093C1BB4C8F400D43BD5 /* MainComponent.cpp in Sources */,
+				D45909531BB6C8FF00D43BD5 /* MovementController.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				D459094C1BB6AEC500D43BD5 /* Entity.cpp in Sources */,
 				A4EBA6881BB1FBF5001F8DC8 /* IntroState.cpp in Sources */,
 				D45909341BB4C72F00D43BD5 /* EntityManager.cpp in Sources */,
 				A4EBA69A1BB1FE53001F8DC8 /* MotionComponent.cpp in Sources */,
+				D45909651BB864A500D43BD5 /* ControlsComponent.cpp in Sources */,
 				A4EBA6A31BB1FFBF001F8DC8 /* Controller.cpp in Sources */,
 				A4EBA6741BB1EE1E001F8DC8 /* EntityManager.cpp in Sources */,
 				A4EBA6AA1BB201BC001F8DC8 /* EngineController.cpp in Sources */,
@@ -688,11 +738,13 @@
 				A4EBA69D1BB1FEE4001F8DC8 /* EngineComponent.cpp in Sources */,
 				A4EBA67C1BB1F64C001F8DC8 /* RenderingManager.cpp in Sources */,
 				A4EBA6A01BB1FF8E001F8DC8 /* Entity.cpp in Sources */,
+				D459094F1BB6C69E00D43BD5 /* ImageStorage.cpp in Sources */,
 				A4EBA6911BB1FD0D001F8DC8 /* Player.cpp in Sources */,
-				D45909381BB4C84800D43BD5 /* Entity.cpp in Sources */,
 				A4EBA68B1BB1FC0E001F8DC8 /* PlayingState.cpp in Sources */,
 				A4EBA6941BB1FD72001F8DC8 /* SpatialComponent.cpp in Sources */,
+				D45909591BB7817700D43BD5 /* RenderController.cpp in Sources */,
 				A4EBA6A61BB2005E001F8DC8 /* MotionController.cpp in Sources */,
+				D45909561BB77A3C00D43BD5 /* RenderComponent.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				A4EBA6771BB1F3B6001F8DC8 /* StateManager.cpp in Sources */,
 				A4EBA67A1BB1F524001F8DC8 /* GameEngine.cpp in Sources */,
@@ -863,6 +915,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
@@ -885,7 +938,7 @@
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -894,6 +947,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -914,6 +968,7 @@
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

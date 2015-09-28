@@ -8,8 +8,16 @@
 
 #include "EntityManager.h"
 
-EntityManager::EntityManager() {};
-EntityManager::~EntityManager() {};
+using namespace std;
+
+EntityManager() {};
+~EntityManager() {};
+
+void EntityManager::AddEntity(Entity* _ent) override {
+    EntityManager.entities.push_back(_ent);
+    
+    cout << "Entity Added" << endl;
+}
 
 Entity* EntityManager::GetEntityById(string id) {
     Entity* returning_entity;
@@ -22,6 +30,9 @@ Entity* EntityManager::GetEntityById(string id) {
 }
 
 vector<Entity *> EntityManager::GetAllEntitiesByComponentType(string type) {
+    
+    cout << "GetAllEntitiesByComponentType entities count : " << entities.size() << endl;
+    
     vector<Entity *> returning_vector;
     
     for (auto i = 0 ; i != entities.size(); ++i) {
@@ -86,7 +97,7 @@ vector<MainComponent *> EntityManager::GetComponentsByType(string type) {
     return returning_vector;
 }
 
-vector<Entity *> EntityManager::GetAllEntities(vector<Entity *> entities) {
+vector<Entity *> EntityManager::GetAllEntities() {
     vector<Entity *> returning_vector = entities;
     
     cout << "GetAllEntities entities count : " << returning_vector.size() << endl;
@@ -144,11 +155,11 @@ void EntityManager::AddComponentToEntityById(string id, MainComponent* component
 
 void EntityManager::AddComponentToEntity(Entity* entity, MainComponent* component) {
     
-    // cout << "AddComponentToEntity components count : " << entity->components.size();
+     cout << "AddComponentToEntity components count : " << entity->components.size();
     
     entity->components.push_back(component);
     
-    // cout << ", after : " << entity->components.size() << endl;
+     cout << ", after : " << entity->components.size() << endl;
 }
 
 void EntityManager::AddComponentsToEntityById(string id, vector<MainComponent*> components) {
@@ -163,16 +174,16 @@ void EntityManager::AddComponentsToEntityById(string id, vector<MainComponent*> 
     
     cout << ", after : " << entity->components.size() << endl;
 }
-void EntityManager::AddComponentsToEntity(Entity* entity, vector<MainComponent*> components) {
+void EntityManager::AddComponentsToEntity(Entity* entity, vector<MainComponent*> components) override {
     
-    cout << "AddComponentsToEntity components count : " << entity->components.size();
+    printf("AddComponentsToEntity components count : " + entity->components.size());
     
     for (auto it = components.begin(); it != components.end(); ++it) {
         // for (auto i = 0; i != components.size(); ++i) {
         AddComponentToEntity(entities, entity, (*it));
     }
     
-    cout << ", after : " << entity->components.size() << endl;
+    printf(", after : " + entity->components.size());
 }
 
 bool EntityManager::EntityByIdHasComponent(string id, string type) {

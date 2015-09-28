@@ -2,8 +2,6 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "EntityManager.h"
-#include "Component.h"
 
 class HelloWorld : public cocos2d::Layer {
 public:

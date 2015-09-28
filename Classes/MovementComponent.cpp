@@ -8,7 +8,7 @@
 
 #include "MovementComponent.h"
 
-MovementComponent::MovementComponent(pair<int,int> _c) : MainComponent("MovementComponent") {
-    coords = _c;
-};
-MovementComponent::~MovementComponent() {};
+//MovementComponent::MovementComponent(pair<int,int> _c) : MainComponent("MovementComponent") {
+//    coords = _c;
+//};
+//MovementComponent::~MovementComponent() {};

@@ -10,15 +10,17 @@
 #define __cppTests__MovementComponent__
 
 #include <stdio.h>
-#include "Component.h"
+#include "MainComponent.h"
+#include "map"
 
 class MovementComponent : public MainComponent
 {
 public:
+    // Тут хранятся настройки движения и прочего
     string type = "MovementComponent";
-    pair<int, int> coords;
-    MovementComponent(pair<int,int> _c);
-    ~MovementComponent();
+    MovementComponent() : MainComponent("MovementComponent") {
+    };
+    ~MovementComponent() {};
 };
 
 #endif /* defined(__cppTests__MovementComponent__) */
