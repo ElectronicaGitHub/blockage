@@ -93,6 +93,7 @@
 		D45909591BB7817700D43BD5 /* RenderController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909571BB7817700D43BD5 /* RenderController.cpp */; };
 		D45909621BB8623800D43BD5 /* UserActionsController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909601BB8623800D43BD5 /* UserActionsController.cpp */; };
 		D45909651BB864A500D43BD5 /* ControlsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D45909631BB864A500D43BD5 /* ControlsComponent.cpp */; };
+		D476D1001BBF52D300762A8A /* MapStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D476D0FE1BBF52D300762A8A /* MapStorage.cpp */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
@@ -241,6 +242,8 @@
 		D45909611BB8623800D43BD5 /* UserActionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserActionsController.h; sourceTree = "<group>"; };
 		D45909631BB864A500D43BD5 /* ControlsComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControlsComponent.cpp; sourceTree = "<group>"; };
 		D45909641BB864A500D43BD5 /* ControlsComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsComponent.h; sourceTree = "<group>"; };
+		D476D0FE1BBF52D300762A8A /* MapStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapStorage.cpp; sourceTree = "<group>"; };
+		D476D0FF1BBF52D300762A8A /* MapStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStorage.h; sourceTree = "<group>"; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -559,6 +562,8 @@
 			children = (
 				D459094D1BB6C69E00D43BD5 /* ImageStorage.cpp */,
 				D459094E1BB6C69E00D43BD5 /* ImageStorage.h */,
+				D476D0FE1BBF52D300762A8A /* MapStorage.cpp */,
+				D476D0FF1BBF52D300762A8A /* MapStorage.h */,
 			);
 			name = Storages;
 			sourceTree = "<group>";
@@ -741,6 +746,7 @@
 				D459094F1BB6C69E00D43BD5 /* ImageStorage.cpp in Sources */,
 				A4EBA6911BB1FD0D001F8DC8 /* Player.cpp in Sources */,
 				A4EBA68B1BB1FC0E001F8DC8 /* PlayingState.cpp in Sources */,
+				D476D1001BBF52D300762A8A /* MapStorage.cpp in Sources */,
 				A4EBA6941BB1FD72001F8DC8 /* SpatialComponent.cpp in Sources */,
 				D45909591BB7817700D43BD5 /* RenderController.cpp in Sources */,
 				A4EBA6A61BB2005E001F8DC8 /* MotionController.cpp in Sources */,

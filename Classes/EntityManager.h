@@ -89,7 +89,7 @@ public:
             count = 0;
         }
         
-        cout << "GetAllEntitiesByComponentTypes entities count : " << returning_vector.size() << endl;
+//        cout << "GetAllEntitiesByComponentTypes entities count : " << returning_vector.size() << endl;
         
         return returning_vector;
     }

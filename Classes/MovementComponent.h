@@ -17,6 +17,9 @@ class MovementComponent : public MainComponent
 {
 public:
     // Тут хранятся настройки движения и прочего
+    float velocityDx = 10;
+    float velocityMax = 200;
+    float velocityDensity = 5; // затухание ускорения
     string type = "MovementComponent";
     MovementComponent() : MainComponent("MovementComponent") {
     };

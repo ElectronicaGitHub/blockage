@@ -24,10 +24,8 @@ public:
         vector<MainComponent *> rightComponents = entityManager.GetComponentsByType("RenderComponent");
         
         for (int i = 0; i < rightComponents.size(); ++i) {
-//            RenderComponent* local_c = (RenderComponent *)rightComponents[i];
             RenderComponent* local_c = static_cast<RenderComponent *>(rightComponents[i]);
             local_c->sprite->setPosition(local_c->coords.first, local_c->coords.second);
-//            cout << "I'm render sprite on: (" << local_c->coords.first << "," << local_c->coords.second << ")" << endl;
         }
     }
 };

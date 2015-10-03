@@ -32,28 +32,6 @@ public:
         
         eventListener->onKeyPressed = [component](EventKeyboard::KeyCode keyCode, Event* event){
             component->keys[keyCode] = true;
-//            switch(keyCode){
-//                case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-//                case EventKeyboard::KeyCode::KEY_A:
-//                    component->keys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] = true;
-//                    component->keys[EventKeyboard::KeyCode::KEY_A] = true;
-//                    break;
-//                case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-//                case EventKeyboard::KeyCode::KEY_D:
-//                    component->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] = true;
-//                    component->keys[EventKeyboard::KeyCode::KEY_D] = true;
-//                    break;
-//                case EventKeyboard::KeyCode::KEY_UP_ARROW:
-//                case EventKeyboard::KeyCode::KEY_W:
-//                    component->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] = true;
-//                    component->keys[EventKeyboard::KeyCode::KEY_W] = true;
-//                    break;
-//                case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-//                case EventKeyboard::KeyCode::KEY_S:
-//                    component->keys[EventKeyboard::KeyCode::KEY_DOWN_ARROW] = true;
-//                    component->keys[EventKeyboard::KeyCode::KEY_S] = true;
-//                    break;
-//            }
         };
         eventListener->onKeyReleased = [component](EventKeyboard::KeyCode keyCode, Event* event) {
             component->keys[keyCode] = false;

@@ -13,6 +13,7 @@
 #include "EntityManager.h"
 #include "RenderComponent.h"
 #include "ControlsComponent.h"
+#include "MovementComponent.h"
 
 using namespace std;
 
@@ -29,17 +30,46 @@ public:
             
             ControlsComponent* control = static_cast<ControlsComponent* >(entityManager.GetComponentByTypeFromEntity(entities[i], "ControlsComponent"));
             RenderComponent* render = static_cast<RenderComponent* >(entityManager.GetComponentByTypeFromEntity(entities[i], "RenderComponent"));
-            if (control->keys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_A]) {
-                render->coords.first--;
+            MovementComponent* movement = static_cast<MovementComponent* >(entityManager.GetComponentByTypeFromEntity(entities[i], "MovementComponent"));
+            
+            Vect velocity = render->spriteBody->getVelocity();
+            
+            bool moveLeft = control->keys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_A];
+            bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
+            bool moveUp = control->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_W];
+            
+            if (moveLeft) {
+                Vect summary = velocity - Vect(movement->velocityDx, 0);
+                if (abs(summary.x) < movement->velocityMax) {
+                    render->spriteBody->setVelocity(summary);
+                }
             }
-            if (control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D]) {
-                render->coords.first++;
+            if (moveRight) {
+                Vect summary = velocity + Vect(movement->velocityDx, 0);
+                if (abs(summary.x) < movement->velocityMax) {
+                    render->spriteBody->setVelocity(summary);
+                }
             }
-            if (control->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_W]) {
-                render->coords.second++;
+            if (moveUp) {
+                if (!render->states["jump"]) {
+                                    cout << "moveUp" << endl;
+                    velocity.y += 100;
+                    render->spriteBody->setVelocity(velocity);
+                    render->states["jump"] = true;
+                }
             }
-            if (control->keys[EventKeyboard::KeyCode::KEY_DOWN_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_S]) {
-                render->coords.second--;
+//            if (control->keys[EventKeyboard::KeyCode::KEY_DOWN_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_S]) {
+//            }
+            
+            // затухание
+            int minus = velocity.x < 0 ? 1 : -1;
+            Vect summary = velocity + ((Vect(movement->velocityDensity, 0)) * minus);
+            
+            if (!moveRight && !moveLeft) {
+                if (abs(summary.x) <= movement->velocityDensity) {
+                    summary.x = 0;
+                }
+                render->spriteBody->setVelocity(summary);
             }
         }
     }
