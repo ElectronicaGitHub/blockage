@@ -54,17 +54,26 @@ bool HelloWorld::init() {
     });
     
     MapStorage mapStorage;
+    
+    int mapSizeX = mapStorage.map[0].size();
+    int mapSizeY = mapStorage.map.size();
+    
+    float fullsizeWidth = visibleSize.width;
+    float fullsizeHeight = visibleSize.height;
+    
+    cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
+    cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
 
-    for (int i = mapStorage.map.size(); i > 0; i--) {
-        for (int j = mapStorage.map[i].size(); j > 0; j--) {
+    for (int i = 0; i < mapStorage.map.size(); i++) {
+        for (int j = 0; j < mapStorage.map[i].size(); j++) {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
-            if (mapStorage.map[mapStorage.map.size() - i][mapStorage.map[i].size() - j]) {
+            if (mapStorage.map[i][j]) {
                 Entity* ent = new Entity(id, vector<MainComponent *> {
                     new RenderComponent(
                                         this,
                                         "Brick400x400.png",
-                                        pair<float, float>(visibleSize.width/20 * (int)(j+1)- visibleSize.width/20/3, visibleSize.height/15 * (int)(i) - visibleSize.height/15/2),
-                                        pair<float, float>(visibleSize.width/20, visibleSize.height/15),
+                                        pair<float, float>(fullsizeWidth/mapSizeX * j + fullsizeWidth/mapSizeX/2 + origin.x, fullsizeHeight/mapSizeY * i + fullsizeWidth/mapSizeX/2),
+                                        pair<float, float>(fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY),
                                         "node"),
                 });
                 entityManagerStatic.AddEntity(ent);
