@@ -71,12 +71,12 @@ bool HelloWorld::init() {
                                         pair<float, float>(fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY),
                                         "node"),
                 });
-                entityManagerStatic.AddEntity(ent);
+                entityManagerStatic.addEntity(ent);
             }
         }
     }
     
-    entityManager->AddEntity(entity1);
+    entityManager->addEntity(entity1);
 
     UserActionsController(_eventDispatcher, this, entityManager);
     

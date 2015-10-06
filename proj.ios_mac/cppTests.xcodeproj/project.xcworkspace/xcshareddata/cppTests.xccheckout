@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>ED2575D3-B392-4C0F-920D-9D9C9161BB0B</string>
+	<string>A95E6CE0-0257-42C4-BE14-11BB46F23B60</string>
 	<key>IDESourceControlProjectName</key>
-	<string>cppTests</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9FED9C7420A18E65DB7A6A00E30E9DE0D1F2470A</key>
-		<string>https://github.com/ElectronicaGitHub/blockage.git</string>
+		<string>github.com:ElectronicaGitHub/blockage.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>proj.ios_mac/cppTests.xcodeproj</string>
+	<string>proj.ios_mac/cppTests.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9FED9C7420A18E65DB7A6A00E30E9DE0D1F2470A</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ElectronicaGitHub/blockage.git</string>
+	<string>github.com:ElectronicaGitHub/blockage.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>9FED9C7420A18E65DB7A6A00E30E9DE0D1F2470A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>cppTests</string>
+			<string>blockage</string>
 		</dict>
 	</array>
 </dict>

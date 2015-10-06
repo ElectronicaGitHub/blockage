@@ -55,9 +55,8 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
     
         position->x += motion->dx * delta;
         position->orientation = (motion->dx >= 0) ? 1 : -1;
-        if (position->y + motion->dy * delta > 100) {
-            position->y += motion->dy * delta;
-        }
+        
+        position->y = max(position->y + motion->dy * delta, 100.0f);
 
     }
 }
