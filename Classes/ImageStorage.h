@@ -23,7 +23,9 @@ public:
 private:
     map<string, string> imageResources = {
         {"wall", "res/wall.png"},
-        {"dwarf", "res/dwarf.png"}
+        {"dwarf", "res/dwarf.png"},
+        {"stone", "res/stone.png"},
+        {"background", "res/background.png"}
     };
     
 public:

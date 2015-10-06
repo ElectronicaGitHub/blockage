@@ -11,14 +11,17 @@
 void MotionController::tick(EntityManager* entityManager, float delta) {
     vector<Entity*> entities = entityManager->getAllEntitiesByComponentTypes({"PositionComponent", "MotionComponent"});
     for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[0];
+        Entity* entity = entities[i];
         PositionComponent* position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "PositionComponent"));
         MotionComponent* motion = static_cast<MotionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "MotionComponent"));
         
         if (entityManager->entityHasComponent(entity, "GravityComponent")) {
             GravityComponent* gravity = static_cast<GravityComponent* >(entityManager->getComponentByTypeFromEntity(entity, "GravityComponent"));
             
-            motion->dy -= gravity->g * delta;
+            motion->dy -= gravity->gravity * delta;
+            if (position->y <= 100) {
+                motion->dx = motion->dx / gravity->friction;
+            }
         }
         
         if (entityManager->entityHasComponent(entity, "ControlsComponent")) {
@@ -28,11 +31,11 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
             
             if (moveLeft) {
-                motion->dx -= motion->density;
+                motion->dx -= motion->controlVelosity;
 //                position->orientation = -1;
             }
             if (moveRight) {
-                motion->dx += motion->density;
+                motion->dx += motion->controlVelosity;
 //                position->orientation = 1;
             }
             
@@ -45,13 +48,11 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
                     jumping->isJump = true;
                 }
                 
-                if (position->y < 110) {
+                if (position->y <= 100) {
                     jumping->isJump = false;
                 }
             }
         }
-    
-        motion->dx = motion->dx / 1.4;
     
         position->x += motion->dx * delta;
         position->orientation = (motion->dx >= 0) ? 1 : -1;

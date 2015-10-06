@@ -15,14 +15,19 @@
 class MotionComponent : public MainComponent
 {
 public:
-    float dx;
-    float dy;
-    float density;
+    float dx, dy, density, controlVelosity;
+    
     string type = "MotionComponent";
-    MotionComponent() : MainComponent("MotionComponent") {
-        density = 100;
-        dx = 0;
-        dy = 0;
+    MotionComponent(float _dx, float _dy, float _density, float _controlVelosity) : MainComponent("MotionComponent") {
+        density = _density;
+        dx = _dx;
+        dy = _dy;
+        controlVelosity = _controlVelosity;
+    };
+    MotionComponent(float _dx, float _dy, float _density) : MainComponent("MotionComponent") {
+        density = _density;
+        dx = _dx;
+        dy = _dy;
     };
     ~MotionComponent() {};
 };
