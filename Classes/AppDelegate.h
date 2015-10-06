@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+#include "HelloWorldScene.h"
+
 /**
 @brief    The cocos2d Application.
 

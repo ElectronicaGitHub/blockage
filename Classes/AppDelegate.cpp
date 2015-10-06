@@ -1,9 +1,4 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "Entity.h"
-#include "Component.h"
-#include "EntityManager.h"
-
 
 USING_NS_CC;
 

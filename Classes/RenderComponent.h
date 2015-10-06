@@ -18,7 +18,7 @@ using namespace cocos2d;
 class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
-    cocos2d::PhysicsBody* spriteBody;
+//    cocos2d::PhysicsBody* spriteBody;
     map<string, bool> states;
     string type = "RenderComponent";
     pair<int, int> coords;
@@ -38,17 +38,6 @@ public:
         Size contentSize = sprite->getContentSize();
         float scale = size.first / contentSize.width;
         sprite->setScale(scale);
-        
-        // физическая модель
-        
-        spriteBody = PhysicsBody::createBox(sprite->getContentSize() * scale, cocos2d::PhysicsMaterial(0, 0.5, 0));
-        sprite->setPhysicsBody(spriteBody);
-        
-        spriteBody->setVelocityLimit(300);
-    
-        if (entity_type != "sprite") {
-            spriteBody->setDynamic(false);
-        }
         
         _this->addChild(sprite, 0);
     };

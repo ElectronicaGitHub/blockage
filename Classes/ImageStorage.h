@@ -11,12 +11,23 @@
 
 #include <stdio.h>
 
+using namespace std;
+
 class ImageStorage {
     
     
 public:
     ImageStorage() {};
     ~ImageStorage() {};
+
+private:
+    map<string, string> imageResources = {
+        {"wall", "res/wall.png"},
+        {"dwarf", "res/dwarf.png"}
+    };
+    
+public:
+    string getImage(string key);
 };
 
 #endif /* defined(__cppTests__ImageStorage__) */

@@ -6,7 +6,7 @@
 //
 //
 
-#include "MovementComponent.h"
+//#include "MovementComponent.h"
 
 //MovementComponent::MovementComponent(pair<int,int> _c) : MainComponent("MovementComponent") {
 //    coords = _c;

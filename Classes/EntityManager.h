@@ -16,12 +16,10 @@
 
 using namespace std;
 
-vector<Entity *> entities;
-
 class EntityManager
 {
 public:
-//    vector<Entity *> entities;
+    vector<Entity *> entities;
     EntityManager() {};
     ~EntityManager() {};
     
@@ -41,7 +39,7 @@ public:
         return returning_entity;
     }
     
-    MainComponent* GetComponentByTypeFromEntity(Entity* entity, string type) {
+    MainComponent* getComponentByTypeFromEntity(Entity* entity, string type) {
         MainComponent* returning_component;
         
         for (auto i = 0; i < entity->components.size(); ++i) {
@@ -53,7 +51,7 @@ public:
         return returning_component;
     };
     
-    vector<Entity *> GetAllEntitiesByComponentType(string type) {
+    vector<Entity *> getAllEntitiesByComponentType(string type) {
         
         vector<Entity *> returning_vector;
         
@@ -70,7 +68,7 @@ public:
         return returning_vector;
     }
     
-    vector<Entity *> GetAllEntitiesByComponentTypes(vector<string> types) {
+    vector<Entity *> getAllEntitiesByComponentTypes(vector<string> types) {
         vector<Entity *> returning_vector;
         int fullness = types.size();
         
@@ -94,7 +92,7 @@ public:
         return returning_vector;
     }
     
-    vector<MainComponent *> GetComponentsByEntityId(string id) {
+    vector<MainComponent *> getComponentsByEntityId(string id) {
         vector<MainComponent *> returning_vector;
         
         Entity* entity = GetEntityById(id);
@@ -104,7 +102,7 @@ public:
         return returning_vector;
     }
     
-    vector<MainComponent *> GetComponentsByType(string type) {
+    vector<MainComponent *> getComponentsByType(string type) {
         vector<MainComponent *> returning_vector;
         
         for (auto entity = entities.begin(); entity != entities.end(); ++entity) {
@@ -119,7 +117,7 @@ public:
         return returning_vector;
     }
     
-    vector<Entity *> GetAllEntities() {
+    vector<Entity *> getAllEntities() {
         vector<Entity *> returning_vector = entities;
         
         cout << "GetAllEntities entities count : " << returning_vector.size() << endl;
@@ -127,7 +125,7 @@ public:
         return returning_vector;
     }
     
-    void RemoveEntityById(string id) {
+    void removeEntityById(string id) {
         cout << "RemoveEntityById entities count before remove : " << entities.size();
         for (auto i = 0 ; i != entities.size(); ++i) {
             if (entities[i]->id == id) {
@@ -139,7 +137,7 @@ public:
         cout << ", after remove : " << entities.size() << endl;
     }
     
-    void RemoveComponentFromEntityById(string id, string type) {
+    void removeComponentFromEntityById(string id, string type) {
         Entity* entity = GetEntityById(id);
         
         cout << "RemoveComponentFromEntityById entities count before remove : " << entity->components.size();
@@ -153,7 +151,7 @@ public:
         cout << ", after remove : " << entity->components.size() << endl;
     }
     
-    void RemoveComponentFromEntity(Entity* entity, string type) {
+    void removeComponentFromEntity(Entity* entity, string type) {
         cout << "RemoveComponentFromEntity entities count before remove : " << entity->components.size();
         for (auto i = 0 ; i != entity->components.size(); ++i) {
             if (entity->components[i]->type == type) {
@@ -165,7 +163,7 @@ public:
         cout << ", after remove : " << entity->components.size() << endl;
     }
     
-    void AddComponentToEntityById(string id, MainComponent* component) {
+    void addComponentToEntityById(string id, MainComponent* component) {
         Entity* entity = GetEntityById(id);
         
         cout << "AddComponentToEntityById components count : " << entity->components.size();
@@ -175,7 +173,7 @@ public:
         cout << ", after : " << entity->components.size() << endl;
     }
     
-    void AddComponentToEntity(Entity* entity, MainComponent* component) {
+    void addComponentToEntity(Entity* entity, MainComponent* component) {
         
         cout << "AddComponentToEntity components count : " << entity->components.size();
         
@@ -186,31 +184,31 @@ public:
         delete component;
     }
     
-    void AddComponentsToEntityById(string id, vector<MainComponent*> components) {
+    void addComponentsToEntityById(string id, vector<MainComponent*> components) {
         Entity* entity = GetEntityById(id);
         
         cout << "AddComponentsToEntityById components count : " << entity->components.size();
         
         for (auto it = components.begin(); it != components.end(); ++it) {
             // for (auto i = 0; i != components.size(); ++i) {
-            AddComponentToEntity(entity, (*it));
+            addComponentToEntity(entity, (*it));
         }
         
         cout << ", after : " << entity->components.size() << endl;
     }
-    void AddComponentsToEntity(Entity* entity, vector<MainComponent*> components) {
+    void addComponentsToEntity(Entity* entity, vector<MainComponent*> components) {
         
         cout << "AddComponentsToEntity components count : " << entity->components.size();
         
         for (auto it = components.begin(); it != components.end(); ++it) {
             // for (auto i = 0; i != components.size(); ++i) {
-            AddComponentToEntity(entity, (*it));
+            addComponentToEntity(entity, (*it));
         }
         
         cout << ", after : " << entity->components.size() << endl;
     }
     
-    bool EntityByIdHasComponent(string id, string type) {
+    bool entityByIdHasComponent(string id, string type) {
         bool value = false;
         
         Entity* entity = GetEntityById(id);
@@ -225,7 +223,7 @@ public:
         return value;
     }
     
-    bool EntityHasComponent(Entity* entity, string type) {
+    bool entityHasComponent(Entity* entity, string type) {
         bool value = false;
         
         for (auto it = entity->components.begin(); it != entity->components.end(); ++it) {
@@ -233,7 +231,7 @@ public:
                 value = true;
             }
         }
-        cout << "EntityHasComponent, entity component hasness : " << value << endl;
+//        cout << "EntityHasComponent, entity component hasness : " << value << endl;
         
         return value;
     }

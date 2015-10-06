@@ -12,22 +12,14 @@
 #include <stdio.h>
 #include "EntityManager.h"
 #include "RenderComponent.h"
+#include "PositionComponent.h"
 
 class RenderController {
 public:
     RenderController() {};
     ~RenderController() {};
     
-    void tick() {
-        EntityManager entityManager;
-//        vector<Entity *> rightEntities = entityManager.GetAllEntitiesByComponentType("RenderComponent");
-        vector<MainComponent *> rightComponents = entityManager.GetComponentsByType("RenderComponent");
-        
-        for (int i = 0; i < rightComponents.size(); ++i) {
-            RenderComponent* local_c = static_cast<RenderComponent *>(rightComponents[i]);
-            local_c->sprite->setPosition(local_c->coords.first, local_c->coords.second);
-        }
-    }
+    void tick(EntityManager* entityManager, float delta);
 };
 
 #endif /* defined(__cppTests__RenderController__) */

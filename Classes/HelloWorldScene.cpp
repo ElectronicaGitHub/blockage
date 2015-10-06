@@ -1,14 +1,4 @@
 #include "HelloWorldScene.h"
-#include "EntityManager.h"
-#include "MainComponent.h"
-#include "MovementComponent.h"
-#include "MovementController.h"
-#include "RenderComponent.h"
-#include "RenderController.h"
-#include "ControlsComponent.h"
-#include "UserActionsController.h"
-#include "Entity.h"
-#include "MapStorage.h"
 
 using namespace std;
 
@@ -16,7 +6,7 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene() {
     auto scene = Scene::createWithPhysics();
-//    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     scene->getPhysicsWorld()->setGravity(Vect(0, -200));
     
     auto layer = HelloWorld::create();
@@ -44,13 +34,18 @@ bool HelloWorld::init() {
     this->addChild(edgeNode);
     // screen boundary ended
 
-    EntityManager entityManager;
     EntityManager entityManagerStatic;
+    entityManager = new EntityManager();
     
-    Entity* entity1 = new Entity("aaaa", vector<MainComponent *> {
-        new MovementComponent(),
-        new RenderComponent(this, "CloseSelected.png", pair<float, float>(200, 200), pair<float, float>(20, 20), "sprite"),
-        new ControlsComponent()
+    imageStorage = new ImageStorage();
+    
+    Entity* entity1 = new Entity("dwarf", vector<MainComponent *> {
+        new MotionComponent(),
+        new RenderComponent(this, imageStorage->getImage("dwarf"), pair<float, float>(200, 200), pair<float, float>(20, 20), "sprite"),
+        new PositionComponent(200, 200, 1),
+        new GravityComponent(),
+        new ControlsComponent(),
+        new JumpingComponent()
     });
     
     MapStorage mapStorage;
@@ -71,7 +66,7 @@ bool HelloWorld::init() {
                 Entity* ent = new Entity(id, vector<MainComponent *> {
                     new RenderComponent(
                                         this,
-                                        "Brick400x400.png",
+                                        imageStorage->getImage("wall"),
                                         pair<float, float>(fullsizeWidth/mapSizeX * j + fullsizeWidth/mapSizeX/2 + origin.x, fullsizeHeight/mapSizeY * i + fullsizeWidth/mapSizeX/2),
                                         pair<float, float>(fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY),
                                         "node"),
@@ -81,24 +76,18 @@ bool HelloWorld::init() {
         }
     }
     
-    entityManager.AddEntity(entity1);
-    
-    UserActionsController(_eventDispatcher, this);
+    entityManager->AddEntity(entity1);
+
+    UserActionsController(_eventDispatcher, this, entityManager);
     
     this->scheduleUpdate();
-    
-    RenderController rc;
-//    MovementController mc;
-    rc.tick();
-//    mc.tick();
-    
     return true;
 }
 
 void HelloWorld::update(float delta) {
-    MovementController mc;
-//    RenderController rc;
-//    
-//    rc.tick();
-    mc.tick();
+    MotionController motionController;
+    RenderController renderController;
+    
+    motionController.tick(entityManager, delta);
+    renderController.tick(entityManager, delta);
 }

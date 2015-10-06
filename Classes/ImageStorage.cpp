@@ -7,3 +7,7 @@
 //
 
 #include "ImageStorage.h"
+
+string ImageStorage::getImage(string key) {
+    return imageResources.find(key)->second;
+}

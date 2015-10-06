@@ -20,13 +20,11 @@ using namespace std;
 class UserActionsController {
 public:
     // разруливает нажатие клавиш и кладет в контролс компонент
-    UserActionsController(EventDispatcher* evd, Layer* _this) {
+    UserActionsController(EventDispatcher* evd, Layer* _this, EntityManager* entityManager) {
         cout << "UserActionsController Initialized" << endl;
-        
-        EntityManager entityManager;
     
-        vector<MainComponent*> rightComponents = entityManager.GetComponentsByType("ControlsComponent");
-        ControlsComponent *component = (ControlsComponent*)rightComponents[0];
+        vector<MainComponent*> rightComponents = entityManager->getComponentsByType("ControlsComponent");
+        ControlsComponent* component = (ControlsComponent*)rightComponents[0];
         
         auto eventListener = EventListenerKeyboard::create();
         
