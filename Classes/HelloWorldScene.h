@@ -8,10 +8,12 @@
 #include "RenderComponent.h"
 #include "ControlsComponent.h"
 #include "GravityComponent.h"
+#include "RangedAttackComponent.h"
 
 #include "RenderController.h"
 #include "UserActionsController.h"
 #include "MotionController.h"
+#include "RangedAttackController.h"
 
 #include "Entity.h"
 #include "MapStorage.h"

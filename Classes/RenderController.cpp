@@ -11,7 +11,7 @@
 void RenderController::tick(EntityManager* entityManager, float delta) {
     vector<Entity*> entities = entityManager->getAllEntitiesByComponentTypes({"RenderComponent", "PositionComponent"});
     for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[0];
+        Entity* entity = entities[i];
         RenderComponent* render = static_cast<RenderComponent* >(entityManager->getComponentByTypeFromEntity(entity, "RenderComponent"));
         PositionComponent* position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "PositionComponent"));
         

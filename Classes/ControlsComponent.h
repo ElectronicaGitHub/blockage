@@ -28,13 +28,12 @@ public:
         {EventKeyboard::KeyCode::KEY_UP_ARROW, false },
         {EventKeyboard::KeyCode::KEY_W, false },
         {EventKeyboard::KeyCode::KEY_DOWN_ARROW, false },
-        {EventKeyboard::KeyCode::KEY_S, false }
+        {EventKeyboard::KeyCode::KEY_S, false },
+        {EventKeyboard::KeyCode::KEY_SPACE, false }
     };
     
     string type = "ControlsComponent";
-    ControlsComponent() : MainComponent("ControlsComponent") {
-        
-    };
+    ControlsComponent() : MainComponent("ControlsComponent") {};
     ~ControlsComponent() {};
 };
 

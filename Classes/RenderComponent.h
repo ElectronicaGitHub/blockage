@@ -18,7 +18,6 @@ using namespace cocos2d;
 class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
-//    cocos2d::PhysicsBody* spriteBody;
     map<string, bool> states;
     string type = "RenderComponent";
     pair<int, int> coords;
