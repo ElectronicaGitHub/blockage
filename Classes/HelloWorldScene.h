@@ -8,10 +8,13 @@
 #include "RenderComponent.h"
 #include "ControlsComponent.h"
 #include "GravityComponent.h"
+#include "ActiveCollisionComponent.h"
+#include "PassiveCollisionComponent.h"
 
 #include "RenderController.h"
 #include "UserActionsController.h"
 #include "MotionController.h"
+#include "CollisionController.h"
 
 #include "Entity.h"
 #include "MapStorage.h"

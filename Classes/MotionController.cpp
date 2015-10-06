@@ -14,11 +14,17 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
         Entity* entity = entities[0];
         PositionComponent* position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "PositionComponent"));
         MotionComponent* motion = static_cast<MotionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "MotionComponent"));
+        ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "ActiveCollisionComponent"));
+        
         
         if (entityManager->entityHasComponent(entity, "GravityComponent")) {
             GravityComponent* gravity = static_cast<GravityComponent* >(entityManager->getComponentByTypeFromEntity(entity, "GravityComponent"));
             
-            motion->dy -= gravity->g * delta;
+            if (collision->collision["bottom"]) {
+                motion->dy = 0;
+            } else {
+                motion->dy -= gravity->g * delta;
+            }
         }
         
         if (entityManager->entityHasComponent(entity, "ControlsComponent")) {
@@ -27,11 +33,11 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             bool moveLeft = control->keys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_A];
             bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
             
-            if (moveLeft) {
+            if (moveLeft && !collision->collision["left"]) {
                 motion->dx -= motion->density;
 //                position->orientation = -1;
             }
-            if (moveRight) {
+            if (moveRight && !collision->collision["right"]) {
                 motion->dx += motion->density;
 //                position->orientation = 1;
             }
@@ -45,9 +51,16 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
                     jumping->isJump = true;
                 }
                 
-                if (position->y < 110) {
+                if (collision->collision["bottom"]) {
                     jumping->isJump = false;
                 }
+//                if (collision->collision["top"]) {
+//                    motion->dy = 0;
+//                }
+                
+//                if (position->y < 110) {
+//                    jumping->isJump = false;
+//                }
             }
         }
     
@@ -56,7 +69,6 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
         position->x += motion->dx * delta;
         position->orientation = (motion->dx >= 0) ? 1 : -1;
         
-        position->y = max(position->y + motion->dy * delta, 100.0f);
-
+        position->y = position->y + motion->dy * delta;
     }
 }

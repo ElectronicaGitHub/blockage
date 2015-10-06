@@ -13,7 +13,7 @@ using namespace std;
 void EntityManager::addEntity(Entity* _ent) {
     entities.push_back(_ent);
     
-    cout << "Entity Added" << endl;
+//    cout << "Entity Added" << endl;
 }
 
 Entity* EntityManager::getEntityById(string id) {
@@ -50,7 +50,7 @@ vector<Entity *> EntityManager::getAllEntitiesByComponentType(string type) {
         }
     }
     
-    cout << "GetAllEntitiesByComponentType entities count : " << returning_vector.size() << endl;
+//    cout << "GetAllEntitiesByComponentType entities count : " << returning_vector.size() << endl;
     
     return returning_vector;
 }

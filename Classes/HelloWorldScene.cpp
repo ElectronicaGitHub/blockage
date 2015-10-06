@@ -34,7 +34,6 @@ bool HelloWorld::init() {
     this->addChild(edgeNode);
     // screen boundary ended
 
-    EntityManager entityManagerStatic;
     entityManager = new EntityManager();
     
     imageStorage = new ImageStorage();
@@ -45,7 +44,8 @@ bool HelloWorld::init() {
         new PositionComponent(200, 200, 1),
         new GravityComponent(),
         new ControlsComponent(),
-        new JumpingComponent()
+        new JumpingComponent(),
+        new ActiveCollisionComponent("player", {"player", "block"})
     });
     
     MapStorage mapStorage;
@@ -70,8 +70,9 @@ bool HelloWorld::init() {
                                         pair<float, float>(fullsizeWidth/mapSizeX * j + fullsizeWidth/mapSizeX/2 + origin.x, fullsizeHeight/mapSizeY * i + fullsizeWidth/mapSizeX/2),
                                         pair<float, float>(fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY),
                                         "node"),
+                   new PassiveCollisionComponent()
                 });
-                entityManagerStatic.addEntity(ent);
+                entityManager->addEntity(ent);
             }
         }
     }
@@ -87,7 +88,9 @@ bool HelloWorld::init() {
 void HelloWorld::update(float delta) {
     MotionController motionController;
     RenderController renderController;
+    CollisionController collisionController;
     
     motionController.tick(entityManager, delta);
     renderController.tick(entityManager, delta);
+    collisionController.tick(entityManager);
 }

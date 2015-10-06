@@ -16,6 +16,7 @@
 #include "GravityComponent.h"
 #include "ControlsComponent.h"
 #include "JumpingComponent.h"
+#include "ActiveCollisionComponent.h"
 
 using namespace std;
 
