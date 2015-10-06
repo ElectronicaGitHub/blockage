@@ -55,6 +55,10 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		A4EBA6B61BC44F34001F8DC8 /* RangedAttackComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B41BC44F34001F8DC8 /* RangedAttackComponent.cpp */; };
+		A4EBA6B71BC44F34001F8DC8 /* RangedAttackComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B41BC44F34001F8DC8 /* RangedAttackComponent.cpp */; };
+		A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
+		A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -201,6 +205,10 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A4EBA6B41BC44F34001F8DC8 /* RangedAttackComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackComponent.cpp; sourceTree = "<group>"; };
+		A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackComponent.h; sourceTree = "<group>"; };
+		A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackController.cpp; sourceTree = "<group>"; };
+		A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackController.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -479,6 +487,8 @@
 				FD1B17711BC3D3C70015E684 /* GravityComponent.h */,
 				FD1B1C6D1BC40AEB0015E684 /* JumpingComponent.cpp */,
 				FD1B1C6E1BC40AEB0015E684 /* JumpingComponent.h */,
+				A4EBA6B41BC44F34001F8DC8 /* RangedAttackComponent.cpp */,
+				A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -506,6 +516,8 @@
 				D45909581BB7817700D43BD5 /* RenderController.h */,
 				FD1B17731BC3D7910015E684 /* MotionController.cpp */,
 				FD1B17741BC3D7910015E684 /* MotionController.h */,
+				A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */,
+				A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -651,6 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4EBA6B61BC44F34001F8DC8 /* RangedAttackComponent.cpp in Sources */,
 				FD1B17761BC3E3930015E684 /* EntityManager.cpp in Sources */,
 				FD1B17771BC3E3930015E684 /* EntityManager.h in Sources */,
 				FD1B17781BC3E3930015E684 /* Entity.cpp in Sources */,
@@ -681,6 +694,7 @@
 				FD1B17901BC3E3930015E684 /* RenderController.cpp in Sources */,
 				FD1B17911BC3E3930015E684 /* RenderController.h in Sources */,
 				FD1B17921BC3E3930015E684 /* MotionController.cpp in Sources */,
+				A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				FD1B17931BC3E3930015E684 /* MotionController.h in Sources */,
 				FD1B17941BC3E3930015E684 /* AppDelegate.cpp in Sources */,
 				FD1B17951BC3E3930015E684 /* AppDelegate.h in Sources */,
@@ -701,6 +715,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FD1B1C621BC3F6C70015E684 /* MapStorage.cpp in Sources */,
 				FD1B1C681BC3F6D90015E684 /* ControlsComponent.cpp in Sources */,
+				A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				FD1B1C6A1BC3F6DE0015E684 /* RenderComponent.cpp in Sources */,
 				D47BEB741BC4523B00474F2F /* ActiveCollisionComponent.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
@@ -708,6 +723,7 @@
 				FD1B1C6C1BC3F6E20015E684 /* EntityManager.cpp in Sources */,
 				FD1B1C651BC3F6D20015E684 /* MotionComponent.cpp in Sources */,
 				D47BEB781BC4529B00474F2F /* PassiveCollisionComponent.cpp in Sources */,
+				A4EBA6B71BC44F34001F8DC8 /* RangedAttackComponent.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				FD1B1C5F1BC3F6BB0015E684 /* RenderController.cpp in Sources */,
 				FD1B1C5E1BC3F6B70015E684 /* MotionController.cpp in Sources */,

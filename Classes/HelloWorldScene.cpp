@@ -23,32 +23,36 @@ bool HelloWorld::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+//    EntityManager entityManagerStatic;
+    entityManager = new EntityManager(this);
+    MapStorage mapStorage;
+    imageStorage = new ImageStorage();
+    
     // create screen boundary
     
     auto edgeNode = Node::create();
-    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+//    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
     
-    edgeNode->setPhysicsBody(edgeBody);
+//    edgeNode->setPhysicsBody(edgeBody);
     edgeNode->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     this->addChild(edgeNode);
     // screen boundary ended
-
-    entityManager = new EntityManager();
-    
-    imageStorage = new ImageStorage();
     
     Entity* entity1 = new Entity("dwarf", vector<MainComponent *> {
-        new MotionComponent(),
-        new RenderComponent(this, imageStorage->getImage("dwarf"), pair<float, float>(200, 200), pair<float, float>(20, 20), "sprite"),
+        new MotionComponent(0, 0, 1.4, 10),
+        new RenderComponent(this,
+                            imageStorage->getImage("dwarf"),
+                            pair<float, float>(200, 200),
+                            pair<float, float>(20, 20),
+                            "sprite"),
         new PositionComponent(200, 200, 1),
         new GravityComponent(),
         new ControlsComponent(),
         new JumpingComponent(),
-        new ActiveCollisionComponent("player", {"player", "block"})
+        new ActiveCollisionComponent("player", {"player", "block"}),
+        new RangedAttackComponent(30.0f, 10)
     });
-    
-    MapStorage mapStorage;
     
     int mapSizeX = mapStorage.map[0].size();
     int mapSizeY = mapStorage.map.size();
@@ -87,10 +91,12 @@ bool HelloWorld::init() {
 
 void HelloWorld::update(float delta) {
     MotionController motionController;
+    RangedAttackController rangedAttackController;
     RenderController renderController;
     CollisionController collisionController;
     
     motionController.tick(entityManager, delta);
+    rangedAttackController.tick(entityManager, imageStorage, delta);
     renderController.tick(entityManager, delta);
     collisionController.tick(entityManager);
 }

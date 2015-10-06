@@ -11,7 +11,7 @@
 void MotionController::tick(EntityManager* entityManager, float delta) {
     vector<Entity*> entities = entityManager->getAllEntitiesByComponentTypes({"PositionComponent", "MotionComponent"});
     for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[0];
+        Entity* entity = entities[i];
         PositionComponent* position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "PositionComponent"));
         MotionComponent* motion = static_cast<MotionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "MotionComponent"));
         ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(entityManager->getComponentByTypeFromEntity(entity, "ActiveCollisionComponent"));
@@ -23,7 +23,7 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             if (collision->collision["bottom"]) {
                 motion->dy = 0;
             } else {
-                motion->dy -= gravity->g * delta;
+                motion->dy -= gravity->gravity * delta;
             }
         }
         
@@ -34,12 +34,10 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
             
             if (moveLeft && !collision->collision["left"]) {
-                motion->dx -= motion->density;
-//                position->orientation = -1;
+                motion->dx -= motion->controlVelosity;
             }
             if (moveRight && !collision->collision["right"]) {
-                motion->dx += motion->density;
-//                position->orientation = 1;
+                motion->dx += motion->controlVelosity;
             }
             
             if (entityManager->entityHasComponent(entity, "JumpingComponent")) {
@@ -63,8 +61,6 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
 //                }
             }
         }
-    
-        motion->dx = motion->dx / 1.4;
     
         position->x += motion->dx * delta;
         position->orientation = (motion->dx >= 0) ? 1 : -1;

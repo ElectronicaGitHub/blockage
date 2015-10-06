@@ -21,7 +21,11 @@ class EntityManager
 public:
     vector<Entity *> entities;
     
-    EntityManager() {};
+    cocos2d::Layer* currentScene;
+    
+    EntityManager(cocos2d::Layer* scene) {
+        currentScene = scene;
+    };
     ~EntityManager() {};
     
     void addEntity(Entity* _ent);
