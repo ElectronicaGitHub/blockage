@@ -31,11 +31,11 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
             
             if (moveLeft) {
-                motion->dx -= motion->controlVelosity;
+                motion->dx = -motion->controlVelosity;
 //                position->orientation = -1;
             }
             if (moveRight) {
-                motion->dx += motion->controlVelosity;
+                motion->dx = motion->controlVelosity;
 //                position->orientation = 1;
             }
             
