@@ -60,6 +60,11 @@ bool HelloWorld::init() {
     float fullsizeWidth = visibleSize.width;
     float fullsizeHeight = visibleSize.height;
     
+    map<string,int> tileSize = {
+        {"x", round(fullsizeWidth/mapSizeX) },
+        {"y", round(fullsizeHeight/mapSizeY) }
+    };
+    
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
 
@@ -71,8 +76,8 @@ bool HelloWorld::init() {
                     new RenderComponent(
                                         this,
                                         imageStorage->getImage("wall"),
-                                        pair<float, float>(fullsizeWidth/mapSizeX * j + fullsizeWidth/mapSizeX/2 + origin.x, fullsizeHeight/mapSizeY * i + fullsizeWidth/mapSizeX/2),
-                                        pair<float, float>(fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY),
+                                        pair<float, float>(tileSize["x"] * j + tileSize["x"]/2 + origin.x, tileSize["y"] * i + tileSize["x"]/2 + origin.y),
+                                        pair<float, float>(tileSize["x"], tileSize["y"]),
                                         "node"),
                    new PassiveCollisionComponent()
                 });

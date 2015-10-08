@@ -27,7 +27,8 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             else {
                 motion->dy -= gravity->gravity * delta;
             }
-            motion->dx -= gravity->friction * delta;
+//            motion->dx -= gravity->friction * delta;
+            motion->dx = motion->dx / gravity->friction;
         }
         
         if (entityManager->entityHasComponent(entity, "ControlsComponent")) {
