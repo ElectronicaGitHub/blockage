@@ -17,11 +17,12 @@ class GravityComponent : public MainComponent
 public:
     float gravity, friction;
     string type = "GravityComponent";
-    GravityComponent() : MainComponent("GravityComponent") {
-        gravity = 800;
-        friction = 1.4f;
-    };
-    ~GravityComponent() {};
+    GravityComponent()
+        : MainComponent("GravityComponent")
+        , gravity(800)
+        , friction(1.4f)
+    {}
+    ~GravityComponent() {}
 };
 
 #endif /* GravityComponent_hpp */

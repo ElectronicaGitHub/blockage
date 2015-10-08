@@ -18,16 +18,18 @@ public:
     float dx, dy, density, controlVelosity;
     
     string type = "MotionComponent";
-    MotionComponent(float _dx, float _dy, float _controlVelosity) : MainComponent("MotionComponent") {
-        dx = _dx;
-        dy = _dy;
-        controlVelosity = _controlVelosity;
-    };
-    MotionComponent(float _dx, float _dy) : MainComponent("MotionComponent") {
-        dx = _dx;
-        dy = _dy;
-    };
-    ~MotionComponent() {};
+    MotionComponent(float _dx, float _dy, float _controlVelosity)
+        : MainComponent("MotionComponent")
+        , dx(_dx)
+        , dy(_dy)
+        , controlVelosity(_controlVelosity)
+        {}
+    MotionComponent(float _dx, float _dy)
+        : MainComponent("MotionComponent")
+        , dx(_dx)
+        , dy(_dy)
+        {}
+    ~MotionComponent() {}
 };
 
 #endif /* MotionComponent_hpp */

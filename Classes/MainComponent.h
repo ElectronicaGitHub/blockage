@@ -17,7 +17,9 @@ class MainComponent
 public:
     string type;
     MainComponent() {};
-    MainComponent(string _type);
+    MainComponent(string _type)
+        : type(_type)
+        {}
     ~MainComponent() {};
 };
 
