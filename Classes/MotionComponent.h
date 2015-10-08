@@ -18,14 +18,12 @@ public:
     float dx, dy, density, controlVelosity;
     
     string type = "MotionComponent";
-    MotionComponent(float _dx, float _dy, float _density, float _controlVelosity) : MainComponent("MotionComponent") {
-        density = _density;
+    MotionComponent(float _dx, float _dy, float _controlVelosity) : MainComponent("MotionComponent") {
         dx = _dx;
         dy = _dy;
         controlVelosity = _controlVelosity;
     };
-    MotionComponent(float _dx, float _dy, float _density) : MainComponent("MotionComponent") {
-        density = _density;
+    MotionComponent(float _dx, float _dy) : MainComponent("MotionComponent") {
         dx = _dx;
         dy = _dy;
     };

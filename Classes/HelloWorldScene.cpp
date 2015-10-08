@@ -40,7 +40,7 @@ bool HelloWorld::init() {
     // screen boundary ended
     
     Entity* entity1 = new Entity("dwarf", vector<MainComponent *> {
-        new MotionComponent(0, 0, 1.4, 10),
+        new MotionComponent(0, 0, 150),
         new RenderComponent(this,
                             imageStorage->getImage("dwarf"),
                             pair<float, float>(200, 200),

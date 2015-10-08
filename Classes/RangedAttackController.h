@@ -18,6 +18,7 @@
 #include "MotionComponent.h"
 #include "RenderComponent.h"
 #include "GravityComponent.h"
+#include "ActiveCollisionComponent.h"
 
 using namespace std;
 

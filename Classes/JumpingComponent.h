@@ -15,11 +15,11 @@
 class JumpingComponent : public MainComponent
 {
 public:
-    float jumpA;
+    float velocity;
     bool isJump;
     string type = "JumpingComponent";
     JumpingComponent() : MainComponent("JumpingComponent") {
-        jumpA = 250;
+        velocity = 250;
         isJump = false;
     };
     ~JumpingComponent() {};

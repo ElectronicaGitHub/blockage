@@ -20,11 +20,14 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
         if (entityManager->entityHasComponent(entity, "GravityComponent")) {
             GravityComponent* gravity = static_cast<GravityComponent* >(entityManager->getComponentByTypeFromEntity(entity, "GravityComponent"));
             
+            // выпилить этот костыль в стейт
             if (collision->collision["bottom"]) {
                 motion->dy = 0;
-            } else {
+            }
+            else {
                 motion->dy -= gravity->gravity * delta;
             }
+            motion->dx -= gravity->friction * delta;
         }
         
         if (entityManager->entityHasComponent(entity, "ControlsComponent")) {
@@ -34,10 +37,10 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
             bool moveRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
             
             if (moveLeft && !collision->collision["left"]) {
-                motion->dx -= motion->controlVelosity;
+                motion->dx = -motion->controlVelosity;
             }
             if (moveRight && !collision->collision["right"]) {
-                motion->dx += motion->controlVelosity;
+                motion->dx = motion->controlVelosity;
             }
             
             if (entityManager->entityHasComponent(entity, "JumpingComponent")) {
@@ -45,20 +48,14 @@ void MotionController::tick(EntityManager* entityManager, float delta) {
                 bool moveUp = control->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_W];
                 
                 if (moveUp && !jumping->isJump) {
-                    motion->dy = jumping->jumpA;
+                    motion->dy = jumping->velocity;
                     jumping->isJump = true;
                 }
                 
+                // перенести в стейт
                 if (collision->collision["bottom"]) {
                     jumping->isJump = false;
                 }
-//                if (collision->collision["top"]) {
-//                    motion->dy = 0;
-//                }
-                
-//                if (position->y < 110) {
-//                    jumping->isJump = false;
-//                }
             }
         }
     
