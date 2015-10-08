@@ -46,22 +46,22 @@ void CollisionController::tick(EntityManager* entityManager) {
             
             if (r1bottomLine.intersectsRect(rect2)) {
                 position->y = rect2MaxY + rect1.size.height/2;
-                cout<<"bottom"<<endl;
+//                cout<<"bottom"<<endl;
                 comp->collision["bottom"] = true;
             }
             if (r1leftLine.intersectsRect(rect2)) {
                 position->x = rect2MaxX + rect1.size.height/2;
-                cout<<"left"<<endl;
+//                cout<<"left"<<endl;
                 comp->collision["left"] = true;
             }
             if (r1rightLine.intersectsRect(rect2)) {
                 position->x = rect2MinX - rect1.size.height/2;
-                cout<<"right"<<endl;
+//                cout<<"right"<<endl;
                 comp->collision["right"] = true;
             }
             if (r1topLine.intersectsRect(rect2)) {
                 position->y = rect2MinY - rect1.size.height/2;
-                cout<<"top"<<endl;
+//                cout<<"top"<<endl;
                 comp->collision["top"] = true;
             }
         }

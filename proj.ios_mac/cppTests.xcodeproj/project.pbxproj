@@ -60,6 +60,11 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D440573C1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */; };
+		D440573D1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */; };
+		D44057401BC6F7A400BE9B96 /* DragAndCarryController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573E1BC6F7A400BE9B96 /* DragAndCarryController.cpp */; };
+		D44057411BC6F7A400BE9B96 /* DragAndCarryController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573E1BC6F7A400BE9B96 /* DragAndCarryController.cpp */; };
+		D44057421BC6FA6300BE9B96 /* DragAndCarryController.h in Sources */ = {isa = PBXBuildFile; fileRef = D440573F1BC6F7A400BE9B96 /* DragAndCarryController.h */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -191,6 +196,11 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D44057371BC6F1A500BE9B96 /* DraggableComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableComponent.h; sourceTree = "<group>"; };
+		D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragAndCarryComponent.cpp; sourceTree = "<group>"; };
+		D440573B1BC6F64A00BE9B96 /* DragAndCarryComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragAndCarryComponent.h; sourceTree = "<group>"; };
+		D440573E1BC6F7A400BE9B96 /* DragAndCarryController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragAndCarryController.cpp; sourceTree = "<group>"; };
+		D440573F1BC6F7A400BE9B96 /* DragAndCarryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragAndCarryController.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -446,6 +456,9 @@
 				D47BEB761BC4529B00474F2F /* PassiveCollisionComponent.h */,
 				FD1B176B1BC3D3850015E684 /* PositionComponent.h */,
 				FD1B176E1BC3D3AA0015E684 /* MotionComponent.h */,
+				D44057371BC6F1A500BE9B96 /* DraggableComponent.h */,
+				D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */,
+				D440573B1BC6F64A00BE9B96 /* DragAndCarryComponent.h */,
 				FD1B17711BC3D3C70015E684 /* GravityComponent.h */,
 				FD1B1C6E1BC40AEB0015E684 /* JumpingComponent.h */,
 				A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */,
@@ -474,6 +487,8 @@
 				D47BEB7A1BC452C500474F2F /* CollisionController.h */,
 				D45909571BB7817700D43BD5 /* RenderController.cpp */,
 				D45909581BB7817700D43BD5 /* RenderController.h */,
+				D440573E1BC6F7A400BE9B96 /* DragAndCarryController.cpp */,
+				D440573F1BC6F7A400BE9B96 /* DragAndCarryController.h */,
 				FD1B17731BC3D7910015E684 /* MotionController.cpp */,
 				FD1B17741BC3D7910015E684 /* MotionController.h */,
 				A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */,
@@ -623,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44057421BC6FA6300BE9B96 /* DragAndCarryController.h in Sources */,
 				FD1B17761BC3E3930015E684 /* EntityManager.cpp in Sources */,
 				FD1B17771BC3E3930015E684 /* EntityManager.h in Sources */,
 				FD1B17781BC3E3930015E684 /* Entity.cpp in Sources */,
@@ -642,6 +658,7 @@
 				D47BEB7B1BC452C500474F2F /* CollisionController.cpp in Sources */,
 				FD1B178F1BC3E3930015E684 /* UserActionsController.h in Sources */,
 				FD1B17901BC3E3930015E684 /* RenderController.cpp in Sources */,
+				D44057401BC6F7A400BE9B96 /* DragAndCarryController.cpp in Sources */,
 				FD1B17911BC3E3930015E684 /* RenderController.h in Sources */,
 				FD1B17921BC3E3930015E684 /* MotionController.cpp in Sources */,
 				A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
@@ -650,6 +667,7 @@
 				FD1B17951BC3E3930015E684 /* AppDelegate.h in Sources */,
 				FD1B17961BC3E3930015E684 /* HelloWorldScene.cpp in Sources */,
 				FD1B17971BC3E3930015E684 /* HelloWorldScene.h in Sources */,
+				D440573C1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +686,9 @@
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				FD1B1C5F1BC3F6BB0015E684 /* RenderController.cpp in Sources */,
 				FD1B1C5E1BC3F6B70015E684 /* MotionController.cpp in Sources */,
+				D44057411BC6F7A400BE9B96 /* DragAndCarryController.cpp in Sources */,
 				FD1B1C6B1BC3F6E00015E684 /* Entity.cpp in Sources */,
+				D440573D1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

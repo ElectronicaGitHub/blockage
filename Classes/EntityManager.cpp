@@ -16,6 +16,12 @@ void EntityManager::addEntity(Entity* _ent) {
 //    cout << "Entity Added" << endl;
 }
 
+void EntityManager::addEntities(vector<Entity*> ents) {
+    for (auto i = 0; i < ents.size(); ++i) {
+        entities.push_back(ents[i]);
+    }
+}
+
 Entity* EntityManager::getEntityById(string id) {
     Entity* returning_entity;
     for (auto i = 0 ; i != entities.size(); ++i) {
@@ -139,7 +145,7 @@ void EntityManager::removeComponentFromEntityById(string id, string type) {
 }
 
 void EntityManager::removeComponentFromEntity(Entity* entity, string type) {
-    cout << "RemoveComponentFromEntity entities count before remove : " << entity->components.size();
+    cout << "RemoveComponentFromEntity count before remove : " << entity->components.size();
     for (auto i = 0 ; i != entity->components.size(); ++i) {
         if (entity->components[i]->type == type) {
             delete entity->components[i];

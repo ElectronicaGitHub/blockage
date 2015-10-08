@@ -29,6 +29,7 @@ public:
     ~EntityManager() {};
     
     void addEntity(Entity* _ent);
+    void addEntities(vector<Entity*> ents);
     Entity* getEntityById(string id);
     MainComponent* getComponentByTypeFromEntity(Entity* entity, string type);
     vector<Entity *> getAllEntitiesByComponentType(string type);
