@@ -27,6 +27,7 @@ public:
         components = _comp;
     };
     ~Entity() {};
+    
 };
 
 #endif /* defined(__cppTests__Entity__) */
