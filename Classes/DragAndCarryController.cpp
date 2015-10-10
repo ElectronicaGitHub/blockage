@@ -44,7 +44,6 @@ void DragAndCarryController::tick(EntityManager* entityManager) {
                         entityManager->removeComponentFromEntity(player_dragger->draggingEntity, "PassiveCollisionComponent");
                         entityManager->removeComponentFromEntity(player_dragger->draggingEntity, "MotionComponent");
                         entityManager->removeComponentFromEntity(player_dragger->draggingEntity, "GravityComponent");
-//                        draggable_render->sprite->runAction(MoveTo::create(0.1, Vec2(player_position->x, player_position->y + 15)));
                     }
                 }
             }
@@ -52,7 +51,7 @@ void DragAndCarryController::tick(EntityManager* entityManager) {
         else if (player_controls->keys[EventKeyboard::KeyCode::KEY_X] && player_dragger->state == "dragging") {
 //            entityManager->addComponentToEntity(player_dragger->draggingEntity, new MotionComponent(200 * player_position->orientation, 100));
             entityManager->addComponentToEntity(player_dragger->draggingEntity, new GravityComponent());
-//            entityManager->addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
+            entityManager->addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
             
 //            player_dragger->draggingEntity = NULL;
             player_dragger->state = "empty";

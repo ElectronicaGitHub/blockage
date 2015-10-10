@@ -173,8 +173,6 @@ void EntityManager::addComponentToEntity(Entity* entity, MainComponent* componen
     entity->components.push_back(component);
     
     cout << ", after : " << entity->components.size() << endl;
-    
-    delete component;
 }
 
 void EntityManager::addComponentsToEntityById(string id, vector<MainComponent*> components) {
