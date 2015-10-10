@@ -23,7 +23,6 @@ bool HelloWorld::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-//    EntityManager entityManagerStatic;
     entityManager = new EntityManager(this);
     MapStorage mapStorage;
     imageStorage = new ImageStorage();
@@ -39,7 +38,7 @@ bool HelloWorld::init() {
     this->addChild(edgeNode);
     // screen boundary ended
     
-    Entity* entity1 = new Entity("dwarf", vector<MainComponent *> {
+    Entity* dwarf = new Entity("dwarf", vector<MainComponent *> {
         new MotionComponent(0, 0, 150),
         new RenderComponent(this,
                             imageStorage->getImage("dwarf"),
@@ -51,7 +50,8 @@ bool HelloWorld::init() {
         new ControlsComponent(),
         new JumpingComponent(),
         new ActiveCollisionComponent("player", {"player", "block"}),
-        new RangedAttackComponent(30.0f, 10)
+        new RangedAttackComponent(30.0f, 10),
+        new DragAndCarryComponent()
     });
     
     int mapSizeX = mapStorage.map[0].size();
@@ -67,6 +67,18 @@ bool HelloWorld::init() {
     
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
+    
+    Entity* dragBlock = new Entity("dragBlock", vector<MainComponent *> {
+        new RenderComponent(this,
+                            imageStorage->getImage("wall"),
+                            pair<float, float>(100, 100),
+                            pair<float, float>(tileSize["x"], tileSize["y"]),
+                            "sprite"),
+        new PositionComponent(100, 100, 1),
+        new GravityComponent(),
+        new PassiveCollisionComponent(),
+        new DraggableComponent()
+    });
 
     for (int i = 0; i < mapStorage.map.size(); i++) {
         for (int j = 0; j < mapStorage.map[i].size(); j++) {
@@ -79,15 +91,15 @@ bool HelloWorld::init() {
                                         pair<float, float>(tileSize["x"] * j + tileSize["x"]/2 + origin.x, tileSize["y"] * i + tileSize["x"]/2 + origin.y),
                                         pair<float, float>(tileSize["x"], tileSize["y"]),
                                         "node"),
-                   new PassiveCollisionComponent()
+                    new PassiveCollisionComponent()
                 });
                 entityManager->addEntity(ent);
             }
         }
     }
     
-    entityManager->addEntity(entity1);
-
+    entityManager->addEntities({dwarf, dragBlock});
+    
     UserActionsController(_eventDispatcher, this, entityManager);
     
     this->scheduleUpdate();
@@ -99,9 +111,11 @@ void HelloWorld::update(float delta) {
     RangedAttackController rangedAttackController;
     RenderController renderController;
     CollisionController collisionController;
+    DragAndCarryController dragAndCarryController;
     
     motionController.tick(entityManager, delta);
     rangedAttackController.tick(entityManager, imageStorage, delta);
+    dragAndCarryController.tick(entityManager);
     renderController.tick(entityManager, delta);
     collisionController.tick(entityManager);
 }

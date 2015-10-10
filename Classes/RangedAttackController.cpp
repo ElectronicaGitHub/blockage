@@ -22,16 +22,17 @@ void RangedAttackController::tick(EntityManager* entityManager, ImageStorage* im
             
             if (fire && attack->cooldownCounter == attack->cooldown) {
                 Entity* stone = new Entity("stone", vector<MainComponent *> {
-                    new MotionComponent(250 * position->orientation, 250),
                     new RenderComponent(entityManager->currentScene,
                                         imageStorage->getImage("stone"),
                                         pair<float, float>(position->x, position->y),
                                         pair<float, float>(7, 7),
                                         "sprite"),
+//                    new MotionComponent(250 * position->orientation, 250),
                     new PositionComponent(position->x, position->y, 1),
                     new GravityComponent(),
                     new ActiveCollisionComponent("player", {"player", "block"})
                 });
+                entityManager->addComponentToEntity(stone, new MotionComponent(250 * position->orientation, 250));
                 entityManager->addEntity(stone);
                 
                 attack->cooldownCounter = 0;

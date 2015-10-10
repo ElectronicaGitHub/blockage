@@ -21,7 +21,13 @@ public:
     map<string, bool> states;
     string type = "RenderComponent";
     pair<int, int> coords;
-    RenderComponent(cocos2d::Layer* _this, string sprite_name, pair<float, float> _coords, pair<float, float> size, string entity_type) : MainComponent("RenderComponent") {
+    RenderComponent(
+        cocos2d::Layer* _this,
+        string sprite_name,
+        pair<float, float> _coords,
+        pair<float, float> size,
+        string entity_type)
+        : MainComponent("RenderComponent") {
         
         coords = _coords;
         
