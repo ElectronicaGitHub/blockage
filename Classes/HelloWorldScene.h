@@ -13,6 +13,7 @@
 #include "RangedAttackComponent.h"
 #include "DragAndCarryComponent.h"
 #include "DraggableComponent.h"
+#include "DropComponent.h"
 
 #include "RenderController.h"
 #include "UserActionsController.h"

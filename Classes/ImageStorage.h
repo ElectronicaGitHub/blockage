@@ -25,7 +25,9 @@ private:
         {"wall", "res/wall.png"},
         {"dwarf", "res/dwarf.png"},
         {"stone", "res/stone.png"},
-        {"background", "res/background.png"}
+        {"background", "res/background.png"},
+        {"wall_transparent", "res/wall_transparent.png"},
+        {"wall_draggable", "res/wall_draggable.png"}
     };
     
 public:

@@ -20,6 +20,7 @@
 #include "GravityComponent.h"
 #include "ActiveCollisionComponent.h"
 #include "PassiveCollisionComponent.h"
+#include "DropComponent.h"
 
 class DragAndCarryController {
 public:

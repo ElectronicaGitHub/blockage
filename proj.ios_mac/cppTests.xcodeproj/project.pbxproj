@@ -60,6 +60,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D43EC5BA1BCC7CC30083A084 /* DropComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5B81BCC7CC30083A084 /* DropComponent.cpp */; };
+		D43EC5BB1BCC7CC30083A084 /* DropComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5B81BCC7CC30083A084 /* DropComponent.cpp */; };
 		D440573C1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */; };
 		D440573D1BC6F64B00BE9B96 /* DragAndCarryComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */; };
 		D44057401BC6F7A400BE9B96 /* DragAndCarryController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D440573E1BC6F7A400BE9B96 /* DragAndCarryController.cpp */; };
@@ -196,6 +198,8 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D43EC5B81BCC7CC30083A084 /* DropComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DropComponent.cpp; sourceTree = "<group>"; };
+		D43EC5B91BCC7CC30083A084 /* DropComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropComponent.h; sourceTree = "<group>"; };
 		D44057371BC6F1A500BE9B96 /* DraggableComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableComponent.h; sourceTree = "<group>"; };
 		D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragAndCarryComponent.cpp; sourceTree = "<group>"; };
 		D440573B1BC6F64A00BE9B96 /* DragAndCarryComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragAndCarryComponent.h; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 				D47BEB721BC4523B00474F2F /* ActiveCollisionComponent.h */,
 				D47BEB761BC4529B00474F2F /* PassiveCollisionComponent.h */,
 				FD1B176B1BC3D3850015E684 /* PositionComponent.h */,
+				D43EC5B81BCC7CC30083A084 /* DropComponent.cpp */,
+				D43EC5B91BCC7CC30083A084 /* DropComponent.h */,
 				FD1B176E1BC3D3AA0015E684 /* MotionComponent.h */,
 				D44057371BC6F1A500BE9B96 /* DraggableComponent.h */,
 				D440573A1BC6F64A00BE9B96 /* DragAndCarryComponent.cpp */,
@@ -663,6 +669,7 @@
 				FD1B17921BC3E3930015E684 /* MotionController.cpp in Sources */,
 				A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				FD1B17931BC3E3930015E684 /* MotionController.h in Sources */,
+				D43EC5BA1BCC7CC30083A084 /* DropComponent.cpp in Sources */,
 				FD1B17941BC3E3930015E684 /* AppDelegate.cpp in Sources */,
 				FD1B17951BC3E3930015E684 /* AppDelegate.h in Sources */,
 				FD1B17961BC3E3930015E684 /* HelloWorldScene.cpp in Sources */,
@@ -676,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D47BEB7C1BC452C500474F2F /* CollisionController.cpp in Sources */,
+				D43EC5BB1BCC7CC30083A084 /* DropComponent.cpp in Sources */,
 				FD1B1C631BC3F6CA0015E684 /* ImageStorage.cpp in Sources */,
 				FD1B1C601BC3F6C00015E684 /* UserActionsController.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,

@@ -68,22 +68,26 @@ bool HelloWorld::init() {
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
     
-    Entity* dragBlock = new Entity("dragBlock", vector<MainComponent *> {
-        new RenderComponent(this,
-                            imageStorage->getImage("wall"),
-                            pair<float, float>(100, 100),
-                            pair<float, float>(tileSize["x"], tileSize["y"]),
-                            "sprite"),
-        new PositionComponent(100, 100, 1),
-        new GravityComponent(),
-        new PassiveCollisionComponent(),
-        new DraggableComponent()
-    });
+    for (auto i = 0; i < 6; ++i) {
+        string id = "droppable::" + to_string(i);
+        Entity* dragBlock = new Entity(id, vector<MainComponent *> {
+            new RenderComponent(this,
+                                imageStorage->getImage("wall_draggable"),
+                                pair<float, float>(100 * i, 100),
+                                pair<float, float>(tileSize["x"], tileSize["y"]),
+                                "sprite"),
+            new PositionComponent(100 * i, 100, 1),
+            new GravityComponent(),
+            new PassiveCollisionComponent(),
+            new DraggableComponent()
+        });
+        entityManager->addEntity(dragBlock);
+    }
 
     for (int i = 0; i < mapStorage.map.size(); i++) {
         for (int j = 0; j < mapStorage.map[i].size(); j++) {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
-            if (mapStorage.map[i][j]) {
+            if (mapStorage.map[i][j] == 1) {
                 Entity* ent = new Entity(id, vector<MainComponent *> {
                     new RenderComponent(
                                         this,
@@ -94,11 +98,24 @@ bool HelloWorld::init() {
                     new PassiveCollisionComponent()
                 });
                 entityManager->addEntity(ent);
+                
+            } else if (mapStorage.map[i][j] == 2) {
+                Entity* ent = new Entity(id, vector<MainComponent *> {
+                    new RenderComponent(
+                                        this,
+                                        imageStorage->getImage("wall_transparent"),
+                                        pair<float, float>(tileSize["x"] * j + tileSize["x"]/2 + origin.x, tileSize["y"] * i + tileSize["x"]/2 + origin.y),
+                                        pair<float, float>(tileSize["x"], tileSize["y"]),
+                                        "node"),
+                    new DropComponent(),
+                    new PositionComponent(tileSize["x"] * j + tileSize["x"]/2 + origin.x, tileSize["y"] * i + tileSize["x"]/2 + origin.y, 1)
+                });
+                entityManager->addEntity(ent);
             }
         }
     }
     
-    entityManager->addEntities({dwarf, dragBlock});
+    entityManager->addEntity(dwarf);
     
     UserActionsController(_eventDispatcher, this, entityManager);
     

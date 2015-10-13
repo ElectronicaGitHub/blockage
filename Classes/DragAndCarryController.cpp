@@ -26,6 +26,7 @@ void DragAndCarryController::tick(EntityManager* entityManager) {
             draggable_position->y = player_position->y + 15;
         }
     
+        // DRAG
         if (player_controls->keys[EventKeyboard::KeyCode::KEY_Z]) {
             
             if (player_dragger->state == "empty") {
@@ -35,9 +36,8 @@ void DragAndCarryController::tick(EntityManager* entityManager) {
                     Entity* draggable = draggables[j];
                     
                     PositionComponent* draggable_position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(draggable, "PositionComponent"));
-//                    RenderComponent* draggable_render = static_cast<RenderComponent* >(entityManager->getComponentByTypeFromEntity(draggable, "RenderComponent"));
                     
-                    if (abs(player_position->x - draggable_position->x) <= 100) {
+                    if (abs(player_position->x - draggable_position->x) <= 100 && abs(player_position->y - draggable_position->y) < 20) {
                         player_dragger->draggingEntity = draggable;
                         player_dragger->state = "dragging";
                         
@@ -48,14 +48,58 @@ void DragAndCarryController::tick(EntityManager* entityManager) {
                 }
             }
         }
+        
+        // DROP
         else if (player_controls->keys[EventKeyboard::KeyCode::KEY_X] && player_dragger->state == "dragging") {
-//            entityManager->addComponentToEntity(player_dragger->draggingEntity, new MotionComponent(200 * player_position->orientation, 100));
-            entityManager->addComponentToEntity(player_dragger->draggingEntity, new GravityComponent());
-            entityManager->addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
             
-//            player_dragger->draggingEntity = NULL;
-            player_dragger->state = "empty";
+            vector<Entity* > droppables = entityManager->getAllEntitiesByComponentTypes({"DropComponent", "RenderComponent", "PositionComponent"});
+            
+            cout << droppables.size() << endl;
+            
+            for (auto i = 0 ; i < droppables.size(); ++i) {
+                Entity* droppable = droppables[i];
+                
+                PositionComponent* drag_position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(player_dragger->draggingEntity, "PositionComponent"));
+                
+                PositionComponent* drop_position = static_cast<PositionComponent* >(entityManager->getComponentByTypeFromEntity(droppable, "PositionComponent"));
+                DropComponent* drop_component = static_cast<DropComponent* >(entityManager->getComponentByTypeFromEntity(droppable, "DropComponent"));
+                
+                if (abs(drag_position->x - drop_position->x) <= 100 &&
+                    abs(drag_position->y - drop_position->y) < 20) {
+                    
+                    drop_component->filled = true;
+                    
+                    entityManager->addComponentToEntity(player_dragger->draggingEntity, new GravityComponent());
+                    entityManager->addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
+                    
+                    drop_component->fillEmenent = player_dragger->draggingEntity;
+                    
+                    player_dragger->draggingEntity = NULL;
+                    
+                    drag_position->x = drop_position->x;
+                    drag_position->y = drop_position->y;
+                    
+                    player_dragger->state = "empty";
+                    
+                    break;
+                    
+                }
+            }
+            
+//
 
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
