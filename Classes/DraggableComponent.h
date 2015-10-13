@@ -10,12 +10,15 @@
 #define __cppTests__DraggableComponent__
 
 #include <stdio.h>
+#include "DropComponent.h"
 
 class DraggableComponent : public MainComponent {
 public:
     string type = "DraggableComponent";
     bool dragged = false;
     Entity* draggedBy;
+    Entity* droppedTo;
+    DropComponent * droppedToComponent;
     DraggableComponent()
     : MainComponent("DraggableComponent")
     {}
