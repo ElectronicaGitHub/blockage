@@ -16,9 +16,9 @@ class GravityComponent : public MainComponent
 {
 public:
     float gravity, friction;
-    string type = "GravityComponent";
+    ComponentType type = GRAVITY_COMPONENT;
     GravityComponent()
-        : MainComponent("GravityComponent")
+        : MainComponent(GRAVITY_COMPONENT)
         , gravity(800)
         , friction(1.4f)
     {}

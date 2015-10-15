@@ -12,6 +12,9 @@
 #include <stdio.h>
 #include "iostream"
 #include "ControlsComponent.h"
+#include "MotionComponent.h"
+#include "JumpingComponent.h"
+#include "ActiveCollisionComponent.h"
 #include "EntityManager.h"
 
 using namespace cocos2d;
@@ -19,8 +22,10 @@ using namespace std;
 
 class UserActionsController {
 public:
-    UserActionsController(EventDispatcher* evd, Layer* _this, EntityManager* entityManager);
+    UserActionsController(EventDispatcher* evd, Layer* _this);
     ~UserActionsController() {};
+    
+    void tick(float delta);
 };
 
 #endif /* defined(__cppTests__UserActionsController__) */

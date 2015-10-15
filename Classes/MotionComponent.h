@@ -17,15 +17,15 @@ class MotionComponent : public MainComponent
 public:
     float dx, dy, density, controlVelosity;
     
-    string type = "MotionComponent";
+    ComponentType type = MOTION_COMPONENT;
     MotionComponent(float _dx, float _dy, float _controlVelosity)
-        : MainComponent("MotionComponent")
+        : MainComponent(MOTION_COMPONENT)
         , dx(_dx)
         , dy(_dy)
         , controlVelosity(_controlVelosity)
         {}
     MotionComponent(float _dx, float _dy)
-        : MainComponent("MotionComponent")
+        : MainComponent(MOTION_COMPONENT)
         , dx(_dx)
         , dy(_dy)
         {}

@@ -32,8 +32,8 @@ public:
         {EventKeyboard::KeyCode::KEY_SPACE, false }
     };
     
-    string type = "ControlsComponent";
-    ControlsComponent() : MainComponent("ControlsComponent") {};
+    ComponentType type = CONTROLS_COMPONENT;
+    ControlsComponent() : MainComponent(CONTROLS_COMPONENT) {};
     ~ControlsComponent() {};
 };
 

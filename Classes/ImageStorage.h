@@ -13,23 +13,20 @@
 
 using namespace std;
 
+enum ImageName {
+    IMAGE_WALL,
+    IMAGE_DWARF,
+    IMAGE_STONE,
+    IMAGE_BACKGROUND
+};
+
 class ImageStorage {
     
-    
-public:
-    ImageStorage() {};
-    ~ImageStorage() {};
-
 private:
-    map<string, string> imageResources = {
-        {"wall", "res/wall.png"},
-        {"dwarf", "res/dwarf.png"},
-        {"stone", "res/stone.png"},
-        {"background", "res/background.png"}
-    };
+    static map<ImageName, string> imageResources;
     
 public:
-    string getImage(string key);
+    static string getImage(ImageName key);
 };
 
 #endif /* defined(__cppTests__ImageStorage__) */

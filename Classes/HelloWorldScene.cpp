@@ -6,9 +6,6 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene() {
     auto scene = Scene::createWithPhysics();
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-    scene->getPhysicsWorld()->setGravity(Vect(0, -200));
-    
     auto layer = HelloWorld::create();
     
     scene->addChild(layer);
@@ -23,36 +20,7 @@ bool HelloWorld::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-//    EntityManager entityManagerStatic;
-    entityManager = new EntityManager(this);
     MapStorage mapStorage;
-    imageStorage = new ImageStorage();
-    
-    // create screen boundary
-    
-    auto edgeNode = Node::create();
-//    auto edgeBody = PhysicsBody::createEdgeBox(visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
-    
-//    edgeNode->setPhysicsBody(edgeBody);
-    edgeNode->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    this->addChild(edgeNode);
-    // screen boundary ended
-    
-    Entity* entity1 = new Entity("dwarf", vector<MainComponent *> {
-        new MotionComponent(0, 0, 150),
-        new RenderComponent(this,
-                            imageStorage->getImage("dwarf"),
-                            pair<float, float>(200, 200),
-                            pair<float, float>(20, 20),
-                            "sprite"),
-        new PositionComponent(200, 200, 1),
-        new GravityComponent(),
-        new ControlsComponent(),
-        new JumpingComponent(),
-        new ActiveCollisionComponent("player", {"player", "block"}),
-        new RangedAttackComponent(30.0f, 10)
-    });
     
     int mapSizeX = mapStorage.map[0].size();
     int mapSizeY = mapStorage.map.size();
@@ -60,10 +28,7 @@ bool HelloWorld::init() {
     float fullsizeWidth = visibleSize.width;
     float fullsizeHeight = visibleSize.height;
     
-    map<string,int> tileSize = {
-        {"x", round(fullsizeWidth/mapSizeX) },
-        {"y", round(fullsizeHeight/mapSizeY) }
-    };
+    pair<float, float> tileSize = { round(fullsizeWidth/mapSizeX), round(fullsizeHeight/mapSizeY) };
     
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
@@ -72,23 +37,24 @@ bool HelloWorld::init() {
         for (int j = 0; j < mapStorage.map[i].size(); j++) {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
             if (mapStorage.map[i][j]) {
-                Entity* ent = new Entity(id, vector<MainComponent *> {
-                    new RenderComponent(
-                                        this,
-                                        imageStorage->getImage("wall"),
-                                        pair<float, float>(tileSize["x"] * j + tileSize["x"]/2 + origin.x, tileSize["y"] * i + tileSize["x"]/2 + origin.y),
-                                        pair<float, float>(tileSize["x"], tileSize["y"]),
-                                        "node"),
-                   new PassiveCollisionComponent()
+                Entity* ent = new BrickEntity();
+                EntityManager::addEntity(ent);
+                EntityManager::addComponentsToEntity(ent, {
+                    new RenderComponent(this, IMAGE_WALL, tileSize),
+                    new PositionComponent(tileSize.first * j + tileSize.second/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1)
                 });
-                entityManager->addEntity(ent);
+            
             }
         }
     }
     
-    entityManager->addEntity(entity1);
-
-    UserActionsController(_eventDispatcher, this, entityManager);
+    Entity* player = new PlayerEntity();
+    EntityManager::addEntity(player);
+    EntityManager::addComponentsToEntity(player, {
+        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(20, 20)),
+    });
+    
+    userActionsController = new UserActionsController(_eventDispatcher, this);
     
     this->scheduleUpdate();
     return true;
@@ -100,8 +66,9 @@ void HelloWorld::update(float delta) {
     RenderController renderController;
     CollisionController collisionController;
     
-    motionController.tick(entityManager, delta);
-    rangedAttackController.tick(entityManager, imageStorage, delta);
-    renderController.tick(entityManager, delta);
-    collisionController.tick(entityManager);
+    userActionsController->tick(delta);
+    motionController.tick(delta);
+    rangedAttackController.tick(this, delta);
+    renderController.tick(delta);
+    collisionController.tick();
 }

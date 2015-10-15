@@ -14,18 +14,22 @@
 
 using namespace std;
 
+enum CollisionType {
+    COL_TOP, COL_BOTTOM, COL_LEFT, COL_RIGHT
+};
+
 class ActiveCollisionComponent : public MainComponent {
 public:
-    string type = "ActiveCollisionComponent";
+    ComponentType type = ACTIVE_COLLISION_COMPONENT;
     string entity_type;
     vector<string> collide_with;
-    map<string, bool> collision = {
-        { "top", false },
-        { "bottom", false },
-        { "left", false },
-        { "right", false }
+    map<CollisionType, bool> collision = {
+        { COL_TOP, false },
+        { COL_BOTTOM, false },
+        { COL_LEFT, false },
+        { COL_RIGHT, false }
     };
-    ActiveCollisionComponent(string _entity_type, vector<string> _collide_with) : MainComponent("ActiveCollisionComponent") {
+    ActiveCollisionComponent(string _entity_type, vector<string> _collide_with) : MainComponent(ACTIVE_COLLISION_COMPONENT) {
         entity_type = _entity_type;
         collide_with = _collide_with;
     };

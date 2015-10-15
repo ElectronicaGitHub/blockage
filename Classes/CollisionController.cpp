@@ -8,20 +8,21 @@
 
 #include "CollisionController.h"
 
-void CollisionController::tick(EntityManager* entityManager) {
+void CollisionController::tick() {
     
-    vector<Entity*> active_entities = entityManager->getAllEntitiesByComponentType("ActiveCollisionComponent");
-    vector<Entity*> passive_entities = entityManager->getAllEntitiesByComponentType("PassiveCollisionComponent");
+    vector<Entity*> active_entities = EntityManager::getAllEntitiesByComponentType(ACTIVE_COLLISION_COMPONENT);
+    vector<Entity*> passive_entities = EntityManager::getAllEntitiesByComponentType(PASSIVE_COLLISION_COMPONENT);
     
     for (int i = 0; i < active_entities.size(); i++) {
-        ActiveCollisionComponent* comp = static_cast<ActiveCollisionComponent*>(entityManager->getComponentByTypeFromEntity(active_entities[i], "ActiveCollisionComponent"));
-        comp->collision["bottom"] = false;
-        comp->collision["left"] = false;
-        comp->collision["right"] = false;
-        comp->collision["top"] = false;
+        Entity* entity = active_entities[i];
+        ActiveCollisionComponent* comp = static_cast<ActiveCollisionComponent*>(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
+        comp->collision[COL_BOTTOM] = false;
+        comp->collision[COL_LEFT] = false;
+        comp->collision[COL_RIGHT] = false;
+        comp->collision[COL_TOP] = false;
         
-        PositionComponent* position = static_cast<PositionComponent*>(entityManager->getComponentByTypeFromEntity(active_entities[i], "PositionComponent"));
-        RenderComponent* render_comp1 = static_cast<RenderComponent *>(entityManager->getComponentByTypeFromEntity(active_entities[i], "RenderComponent"));
+        PositionComponent* position = static_cast<PositionComponent*>(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
+        RenderComponent* render_comp1 = static_cast<RenderComponent *>(EntityManager::getComponentByTypeFromEntity(entity, RENDER_COMPONENT));
         
         Rect rect1 = render_comp1->sprite->getBoundingBox();
         float rect1MinX = rect1.getMinX();
@@ -36,7 +37,7 @@ void CollisionController::tick(EntityManager* entityManager) {
         Rect r1rightLine =  Rect(rect1MaxX,                    rect1MinY + controlPanelSize, controlPanelSize, rect1.size.height - 2 * controlPanelSize);
         
         for (int j = 0; j < passive_entities.size(); j++) {
-            RenderComponent* render_comp2 = static_cast<RenderComponent*>(entityManager->getComponentByTypeFromEntity(passive_entities[j], "RenderComponent"));
+            RenderComponent* render_comp2 = static_cast<RenderComponent*>(EntityManager::getComponentByTypeFromEntity(passive_entities[j], RENDER_COMPONENT));
             Rect rect2 = render_comp2->sprite->getBoundingBox();
             
             float rect2MinX = rect2.getMinX();
@@ -47,22 +48,27 @@ void CollisionController::tick(EntityManager* entityManager) {
             if (r1bottomLine.intersectsRect(rect2)) {
                 position->y = rect2MaxY + rect1.size.height/2;
                 cout<<"bottom"<<endl;
-                comp->collision["bottom"] = true;
+                comp->collision[COL_BOTTOM] = true;
+                
+                if (EntityManager::entityHasComponent(entity, JUMPING_COMPONENT)) {
+                    JumpingComponent* jumping = static_cast<JumpingComponent* >(EntityManager::getComponentByTypeFromEntity(entity, JUMPING_COMPONENT));
+                    jumping->getCurrentState()->handleEvent(entity, jumping, COLLISION_BOTTOM);
+                }
             }
             if (r1leftLine.intersectsRect(rect2)) {
                 position->x = rect2MaxX + rect1.size.height/2;
                 cout<<"left"<<endl;
-                comp->collision["left"] = true;
+                comp->collision[COL_LEFT] = true;
             }
             if (r1rightLine.intersectsRect(rect2)) {
                 position->x = rect2MinX - rect1.size.height/2;
                 cout<<"right"<<endl;
-                comp->collision["right"] = true;
+                comp->collision[COL_RIGHT] = true;
             }
             if (r1topLine.intersectsRect(rect2)) {
                 position->y = rect2MinY - rect1.size.height/2;
                 cout<<"top"<<endl;
-                comp->collision["top"] = true;
+                comp->collision[COL_TOP] = true;
             }
         }
     }

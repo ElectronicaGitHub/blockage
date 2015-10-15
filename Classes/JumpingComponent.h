@@ -11,18 +11,53 @@
 
 #include <stdio.h>
 #include "MainComponent.h"
+#include "MotionComponent.h"
+#include "State.h"
+#include "Entity.h"
+#include "EntityManager.h"
+
+using namespace std;
+
+enum JumpingStateType {
+    AIR_STATE, GROUND_STATE
+};
+
+class JumpingAirState : public State
+{
+public:
+    JumpingAirState(){}
+    ~JumpingAirState(){}
+    
+    void handleEvent(Entity* entity, MainComponent* component, EventType event) override;
+    void update(Entity* entity, MainComponent* component) override;
+    void onEnter(Entity* entity, MainComponent* component) override;
+    void onExit(Entity* entity, MainComponent* component) override;
+};
+
+
+class JumpingGroundState : public State
+{
+public:
+    JumpingGroundState(){}
+    ~JumpingGroundState(){}
+    
+    void handleEvent(Entity* entity, MainComponent* component, EventType event) override;
+    void update(Entity* entity, MainComponent* component) override;
+    void onEnter(Entity* entity, MainComponent* component) override;
+    void onExit(Entity* entity, MainComponent* component) override;
+};
+
 
 class JumpingComponent : public MainComponent
 {
 public:
-    float velocity;
-    bool isJump;
-    string type = "JumpingComponent";
-    JumpingComponent() : MainComponent("JumpingComponent") {
-        velocity = 250;
-        isJump = false;
-    };
-    ~JumpingComponent() {};
+    ComponentType type = JUMPING_COMPONENT;
+    
+    static float velocity;
+    static map<JumpingStateType, State*> states;
+    
+    JumpingComponent() : MainComponent(JUMPING_COMPONENT, states.find(AIR_STATE)->second) {}
+    ~JumpingComponent(){}
 };
 
 #endif /* JumpingComponent_hpp */

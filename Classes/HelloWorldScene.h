@@ -3,33 +3,28 @@
 
 #include "cocos2d.h"
 
-#include "MainComponent.h"
-#include "MotionComponent.h"
-#include "RenderComponent.h"
-#include "ControlsComponent.h"
-#include "GravityComponent.h"
-#include "ActiveCollisionComponent.h"
-#include "PassiveCollisionComponent.h"
-#include "RangedAttackComponent.h"
-
 #include "RenderController.h"
 #include "UserActionsController.h"
 #include "MotionController.h"
 #include "CollisionController.h"
 #include "RangedAttackController.h"
 
+#include "EntityManager.h"
 #include "Entity.h"
+#include "PlayerEntity.h"
+#include "BrickEntity.h"
+
 #include "MapStorage.h"
 #include "ImageStorage.h"
 
-#include "EntityManager.h"
+#include "RenderComponent.h"
+
 
 class HelloWorld : public cocos2d::Layer {
 public:
     static cocos2d::Scene* createScene();
-    EntityManager* entityManager;
-    
-    ImageStorage* imageStorage;
+
+    UserActionsController* userActionsController;
 
     virtual bool init() override;
 

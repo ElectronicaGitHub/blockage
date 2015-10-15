@@ -17,8 +17,8 @@ class RangedAttackComponent : public MainComponent
 public:
     float damage;
     int cooldown, cooldownCounter;
-    string type = "RangedAttackComponent";
-    RangedAttackComponent(float _damage, int _cooldown) : MainComponent("RangedAttackComponent") {
+    ComponentType type = RANGED_ATTACK_COMPONENT;
+    RangedAttackComponent(float _damage, int _cooldown) : MainComponent(RANGED_ATTACK_COMPONENT) {
         damage = _damage;
         cooldown = _cooldown;
         cooldownCounter = _cooldown;

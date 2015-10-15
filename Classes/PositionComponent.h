@@ -18,13 +18,14 @@ public:
     float x;
     float y;
     int orientation;
-    string type = "PositionComponent";
-    PositionComponent(float _x, float _y, int _orientation) : MainComponent("PositionComponent") {
-        x = _x;
-        y = _y;
-        orientation = _orientation;
-    };
-    ~PositionComponent() {};
+    ComponentType type = POSITION_COMPONENT;
+    PositionComponent(float _x, float _y, int _orientation)
+        : MainComponent(POSITION_COMPONENT)
+        , x(_x)
+        , y(_y)
+        , orientation(_orientation)
+        {}
+    ~PositionComponent() {}
 };
 
 #endif /* defined(__cppTests__PositionComponent__) */

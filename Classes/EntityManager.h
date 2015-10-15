@@ -19,32 +19,26 @@ using namespace std;
 class EntityManager
 {
 public:
-    vector<Entity *> entities;
+    static vector<Entity* > entities;
     
-    cocos2d::Layer* currentScene;
-    
-    EntityManager(cocos2d::Layer* scene) {
-        currentScene = scene;
-    };
-    ~EntityManager() {};
-    
-    void addEntity(Entity* _ent);
-    Entity* getEntityById(string id);
-    MainComponent* getComponentByTypeFromEntity(Entity* entity, string type);
-    vector<Entity *> getAllEntitiesByComponentType(string type);
-    vector<Entity *> getAllEntitiesByComponentTypes(vector<string> types);
-    vector<MainComponent *> getComponentsByEntityId(string id);
-    vector<MainComponent *> getComponentsByType(string type);
-    vector<Entity *> getAllEntities();
-    void removeEntityById(string id);
-    void removeComponentFromEntityById(string id, string type);
-    void removeComponentFromEntity(Entity* entity, string type);
-    void addComponentToEntityById(string id, MainComponent* component);
-    void addComponentToEntity(Entity* entity, MainComponent* component);
-    void addComponentsToEntityById(string id, vector<MainComponent*> components);
-    void addComponentsToEntity(Entity* entity, vector<MainComponent*> components);
-    bool entityByIdHasComponent(string id, string type);
-    bool entityHasComponent(Entity* entity, string type);
+    static void addEntity(Entity* _ent);
+    static Entity* getEntityById(string id);
+    static MainComponent* getComponentByTypeFromEntity(Entity* entity, ComponentType type);
+    static vector<Entity *> getAllEntitiesByComponentType(ComponentType type);
+    static vector<Entity *> getAllEntitiesByComponentTypes(vector<ComponentType> types);
+    static vector<MainComponent *> getComponentsByEntityId(string id);
+    static vector<MainComponent *> getComponentsByType(ComponentType type);
+    static vector<Entity *> getAllEntities();
+    static void removeEntityById(string id);
+    static void removeComponentFromEntityById(string id, ComponentType type);
+    static void removeComponentFromEntity(Entity* entity, ComponentType type);
+    static void addComponentToEntityById(string id, MainComponent* component);
+    static void addComponentToEntity(Entity* entity, MainComponent* component);
+    static void addStaticComponentToEntity(Entity* entity, MainComponent* component);
+    static void addComponentsToEntityById(string id, vector<MainComponent*> components);
+    static void addComponentsToEntity(Entity* entity, vector<MainComponent*> components);
+    static bool entityByIdHasComponent(string id, ComponentType type);
+    static bool entityHasComponent(Entity* entity, ComponentType type);
 
 };
 

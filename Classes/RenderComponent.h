@@ -12,33 +12,25 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "MainComponent.h"
+#include "ImageStorage.h"
 
 using namespace cocos2d;
 
 class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
-    map<string, bool> states;
-    string type = "RenderComponent";
-    pair<int, int> coords;
-    RenderComponent(cocos2d::Layer* _this, string sprite_name, pair<float, float> _coords, pair<float, float> size, string entity_type) : MainComponent("RenderComponent") {
-        
-        coords = _coords;
-        
-        // инициализация
-        
-        sprite = Sprite::create(sprite_name);
-        sprite = Sprite::create(sprite_name);
-        sprite->setPosition(coords.first, coords.second);
+    
+    ComponentType type = RENDER_COMPONENT;
+    RenderComponent(cocos2d::Layer* layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
+        sprite = Sprite::create(ImageStorage::getImage(image));
         sprite->setAnchorPoint(Vec2(0.5, 0.5));
         
         // подстройка под указанный размер
-        
         Size contentSize = sprite->getContentSize();
         float scale = size.first / contentSize.width;
         sprite->setScale(scale);
         
-        _this->addChild(sprite, 0);
+        layer->addChild(sprite);
     };
     ~RenderComponent() {};
 };

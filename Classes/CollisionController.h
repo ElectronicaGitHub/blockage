@@ -14,6 +14,7 @@
 #include "RenderComponent.h"
 #include "ActiveCollisionComponent.h"
 #include "PositionComponent.h"
+#include "JumpingComponent.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,7 @@ public:
     float controlPanelSize = 3;
     CollisionController() {};
     ~CollisionController() {};
-    void tick(EntityManager* entityManager);
+    void tick();
 };
 
 #endif /* defined(__cppTests__CollisionController__) */

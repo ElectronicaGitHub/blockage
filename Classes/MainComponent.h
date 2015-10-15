@@ -10,17 +10,37 @@
 #define __cppTests__Component__
 
 #include <stdio.h>
+#include "State.h"
+
 using namespace std;
+
+class EntityManager;
+class Entity;
+
+enum ComponentType {
+    RENDER_COMPONENT, CONTROLS_COMPONENT, ACTIVE_COLLISION_COMPONENT, PASSIVE_COLLISION_COMPONENT,
+    POSITION_COMPONENT, MOTION_COMPONENT, GRAVITY_COMPONENT, JUMPING_COMPONENT, RANGED_ATTACK_COMPONENT
+};
 
 class MainComponent
 {
 public:
-    string type;
+    ComponentType type;
     MainComponent() {};
-    MainComponent(string _type)
+    MainComponent(ComponentType _type)
         : type(_type)
         {}
+    MainComponent(ComponentType _type, State* state)
+        : type(_type)
+        , currentState(state)
+        {}
     ~MainComponent() {};
+    
+    State* getCurrentState();
+    void switchState(State* state, Entity* entity);
+
+private:    
+    State* currentState;
 };
 
 #endif /* defined(__cppTests__Component__) */

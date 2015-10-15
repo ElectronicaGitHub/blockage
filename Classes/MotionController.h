@@ -14,8 +14,6 @@
 #include "MotionComponent.h"
 #include "PositionComponent.h"
 #include "GravityComponent.h"
-#include "ControlsComponent.h"
-#include "JumpingComponent.h"
 #include "ActiveCollisionComponent.h"
 
 using namespace std;
@@ -25,7 +23,7 @@ public:
     MotionController() {};
     ~MotionController() {};
     
-    void tick(EntityManager* entityManager, float delta);
+    void tick(float delta);
 };
 
 #endif /* MotionController_hpp */

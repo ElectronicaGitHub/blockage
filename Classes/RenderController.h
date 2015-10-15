@@ -19,7 +19,7 @@ public:
     RenderController() {};
     ~RenderController() {};
     
-    void tick(EntityManager* entityManager, float delta);
+    void tick(float delta);
 };
 
 #endif /* defined(__cppTests__RenderController__) */

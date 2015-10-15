@@ -14,8 +14,8 @@
 
 class PassiveCollisionComponent : public MainComponent {
 public:
-    string type = "PassiveCollisionComponent";
-    PassiveCollisionComponent() : MainComponent("PassiveCollisionComponent") {};
+    ComponentType type = PASSIVE_COLLISION_COMPONENT;
+    PassiveCollisionComponent() : MainComponent(PASSIVE_COLLISION_COMPONENT) {};
     ~PassiveCollisionComponent() {};
 };
 
