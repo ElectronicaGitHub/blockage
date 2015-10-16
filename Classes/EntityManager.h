@@ -24,11 +24,11 @@ public:
     static void addEntity(Entity* _ent);
     static Entity* getEntityById(string id);
     static MainComponent* getComponentByTypeFromEntity(Entity* entity, ComponentType type);
-    static vector<Entity *> getAllEntitiesByComponentType(ComponentType type);
-    static vector<Entity *> getAllEntitiesByComponentTypes(vector<ComponentType> types);
-    static vector<MainComponent *> getComponentsByEntityId(string id);
-    static vector<MainComponent *> getComponentsByType(ComponentType type);
-    static vector<Entity *> getAllEntities();
+    static vector<Entity*> getAllEntitiesByComponentType(ComponentType type);
+    static vector<Entity*> getAllEntitiesByComponentTypes(vector<ComponentType> types);
+    static vector<MainComponent*> getComponentsByEntityId(string id);
+    static vector<MainComponent*> getComponentsByType(ComponentType type);
+    static vector<Entity*> getAllEntities();
     static void removeEntityById(string id);
     static void removeEntity(Entity* entity);
     static void removeComponentFromEntityById(string id, ComponentType type);
@@ -40,6 +40,8 @@ public:
     static void addComponentsToEntity(Entity* entity, vector<MainComponent*> components);
     static bool entityByIdHasComponent(string id, ComponentType type);
     static bool entityHasComponent(Entity* entity, ComponentType type);
+    static vector<Entity*> getNearestEntities(Entity* entity);
+    static vector<Entity*> getNearestEntitiesWithComponentType(Entity* entity, ComponentType type);
 
 };
 

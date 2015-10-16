@@ -9,7 +9,7 @@
 #include "ImageStorage.h"
 
 map<ImageName, string> ImageStorage::imageResources= {
-    {IMAGE_WALL, "res/wall.png"},
+    {IMAGE_WALL, "res/ground.png"},
     {IMAGE_DWARF, "res/dwarf.png"},
     {IMAGE_STONE, "res/stone.png"},
     {IMAGE_BACKGROUND, "res/background.png"}

@@ -24,7 +24,7 @@ public:
     RangedAttackController() {};
     ~RangedAttackController() {};
     
-    void tick(cocos2d::Layer* layer, float delta);
+    void tick(Entity* entity, cocos2d::Layer* layer, float delta);
 };
 
 #endif /* defined(__cppTests__RangedAttackController__) */

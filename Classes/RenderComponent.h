@@ -30,8 +30,8 @@ public:
         
         // подстройка под указанный размер
         Size contentSize = sprite->getContentSize();
-        float scale = size.first / contentSize.width;
-        sprite->setScale(scale);
+        sprite->setScaleX(size.first / contentSize.width);
+        sprite->setScaleY(size.second / contentSize.width);
         
         layer->addChild(sprite);
     };

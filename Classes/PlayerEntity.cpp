@@ -9,9 +9,9 @@
 #include "PlayerEntity.h"
 
 vector<MainComponent*> PlayerEntity::static_components = {
-    new MotionComponent(0, 0, 150),
+    new MotionComponent(0, 0, 200),
     new PositionComponent(200, 200, 1),
-    new GravityComponent(),
+    new GravityComponent(0),
     new ControlsComponent(),
     new JumpingComponent(),
     new ActiveCollisionComponent("player", {"player", "block"}),

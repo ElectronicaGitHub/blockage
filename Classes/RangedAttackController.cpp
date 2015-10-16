@@ -8,11 +8,8 @@
 
 #include "RangedAttackController.h"
 
-void RangedAttackController::tick(cocos2d::Layer* layer, float delta) {
-    vector<Entity*> entities = EntityManager::getAllEntitiesByComponentTypes({RANGED_ATTACK_COMPONENT});
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[i];
-        
+void RangedAttackController::tick(Entity* entity, cocos2d::Layer* layer, float delta) {
+    if (EntityManager::entityHasComponent(entity, RANGED_ATTACK_COMPONENT)) {
         RangedAttackComponent* attack = static_cast<RangedAttackComponent* >(EntityManager::getComponentByTypeFromEntity(entity, RANGED_ATTACK_COMPONENT));
         
         if (EntityManager::entityHasComponent(entity, CONTROLS_COMPONENT)) {
@@ -30,6 +27,8 @@ void RangedAttackController::tick(cocos2d::Layer* layer, float delta) {
                     new RenderComponent(layer, IMAGE_STONE, pair<float, float>(7, 7)),
                     new ActiveCollisionComponent("player", {"player", "block"})
                 });
+                
+                cout << EntityManager::entities.size() << endl;
                 
                 attack->cooldownCounter = 0;
             }

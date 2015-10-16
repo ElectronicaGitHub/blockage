@@ -8,10 +8,8 @@
 
 #include "RenderController.h"
 
-void RenderController::tick(float delta) {
-    vector<Entity*> entities = EntityManager::getAllEntitiesByComponentTypes({RENDER_COMPONENT, POSITION_COMPONENT});
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[i];
+void RenderController::tick(Entity* entity, float delta) {
+    if (EntityManager::entityHasComponent(entity, RENDER_COMPONENT)) {
         RenderComponent* render = static_cast<RenderComponent* >(EntityManager::getComponentByTypeFromEntity(entity, RENDER_COMPONENT));
         PositionComponent* position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
         

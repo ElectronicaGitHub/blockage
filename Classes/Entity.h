@@ -37,6 +37,7 @@ public:
     Entity(string _id, vector<MainComponent* > _comp)
         : id(_id)
         , components(_comp)
+        , deleted(false)
         {}
     virtual ~Entity(){
         
@@ -54,6 +55,8 @@ public:
         allComponents.insert( allComponents.end(), static_components.begin(), static_components.end() );
         return allComponents;
     }
+    
+    bool deleted;
     
 protected:
     vector<MainComponent*> components;

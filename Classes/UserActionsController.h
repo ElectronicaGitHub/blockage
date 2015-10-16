@@ -25,7 +25,7 @@ public:
     UserActionsController(EventDispatcher* evd, Layer* _this);
     ~UserActionsController() {};
     
-    void tick(float delta);
+    void tick(Entity* entity, float delta);
 };
 
 #endif /* defined(__cppTests__UserActionsController__) */

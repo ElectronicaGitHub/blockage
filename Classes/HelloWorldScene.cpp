@@ -28,7 +28,7 @@ bool HelloWorld::init() {
     float fullsizeWidth = visibleSize.width;
     float fullsizeHeight = visibleSize.height;
     
-    pair<float, float> tileSize = { round(fullsizeWidth/mapSizeX), round(fullsizeHeight/mapSizeY) };
+    pair<float, float> tileSize = { fullsizeWidth/mapSizeX, fullsizeHeight/mapSizeY };
     
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
@@ -41,7 +41,7 @@ bool HelloWorld::init() {
                 EntityManager::addEntity(ent);
                 EntityManager::addComponentsToEntity(ent, {
                     new RenderComponent(this, IMAGE_WALL, tileSize),
-                    new PositionComponent(tileSize.first * j + tileSize.second/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1)
+                    new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1)
                 });
             
             }
@@ -66,9 +66,18 @@ void HelloWorld::update(float delta) {
     RenderController renderController;
     CollisionController collisionController;
     
-    userActionsController->tick(delta);
-    motionController.tick(delta);
-    rangedAttackController.tick(this, delta);
-    renderController.tick(delta);
-    collisionController.tick();
+    for (int i = 0 ; i != EntityManager::entities.size(); ++i) {
+        Entity* entity = EntityManager::entities[i];
+        
+        userActionsController->tick(entity, delta);
+        motionController.tick(entity, delta);
+        rangedAttackController.tick(entity, this, delta);
+        renderController.tick(entity, delta);
+        collisionController.tick(entity);
+        
+        if (entity->deleted) {
+            EntityManager::removeEntity(entity);
+            i--;
+        }
+    }
 }

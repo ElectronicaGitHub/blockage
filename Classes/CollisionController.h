@@ -23,7 +23,7 @@ public:
     float controlPanelSize = 2;
     CollisionController() {};
     ~CollisionController() {};
-    void tick();
+    void tick(Entity* entity);
 };
 
 #endif /* defined(__cppTests__CollisionController__) */

@@ -26,11 +26,8 @@ UserActionsController::UserActionsController(EventDispatcher* evd, Layer* _this)
     
 };
 
-void UserActionsController::tick(float delta) {
-    vector<Entity*> entities = EntityManager::getAllEntitiesByComponentType(CONTROLS_COMPONENT);
-    
-    for (int i = 0; i < entities.size(); ++i) {
-        Entity* entity = entities[i];
+void UserActionsController::tick(Entity* entity, float delta) {
+    if (EntityManager::entityHasComponent(entity, CONTROLS_COMPONENT)) {
         ControlsComponent* control = static_cast<ControlsComponent* >(EntityManager::getComponentByTypeFromEntity(entity, CONTROLS_COMPONENT));
         ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
         MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));

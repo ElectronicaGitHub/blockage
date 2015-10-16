@@ -15,12 +15,13 @@
 class GravityComponent : public MainComponent
 {
 public:
-    float gravity, friction;
+    float gravity, friction, downfall;
     ComponentType type = GRAVITY_COMPONENT;
-    GravityComponent()
+    GravityComponent(float _downfall)
         : MainComponent(GRAVITY_COMPONENT)
         , gravity(800)
-        , friction(1.4f)
+        , friction(1.2f)
+        , downfall(_downfall)
     {}
     ~GravityComponent() {}
 };

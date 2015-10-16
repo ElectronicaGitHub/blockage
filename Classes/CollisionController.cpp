@@ -8,13 +8,10 @@
 
 #include "CollisionController.h"
 
-void CollisionController::tick() {
-    
-    vector<Entity*> active_entities = EntityManager::getAllEntitiesByComponentType(ACTIVE_COLLISION_COMPONENT);
-    vector<Entity*> passive_entities = EntityManager::getAllEntitiesByComponentType(PASSIVE_COLLISION_COMPONENT);
-    
-    for (int i = 0; i < active_entities.size(); i++) {
-        Entity* entity = active_entities[i];
+void CollisionController::tick(Entity* entity) {
+    if (EntityManager::entityHasComponent(entity, ACTIVE_COLLISION_COMPONENT)) {
+        vector<Entity*> passive_entities = EntityManager::getNearestEntitiesWithComponentType(entity, PASSIVE_COLLISION_COMPONENT);
+        
         ActiveCollisionComponent* comp = static_cast<ActiveCollisionComponent*>(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
         comp->collision[COL_BOTTOM] = false;
         comp->collision[COL_LEFT] = false;

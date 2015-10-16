@@ -27,15 +27,13 @@ Entity* EntityManager::getEntityById(string id) {
 }
 
 MainComponent* EntityManager::getComponentByTypeFromEntity(Entity* entity, ComponentType type) {
-    MainComponent* returning_component;
-    
     for (auto i = 0; i < entity->allComponents().size(); ++i) {
         if (entity->allComponents()[i]->type == type) {
-            returning_component = entity->allComponents()[i];
+            return entity->allComponents()[i];
         }
     }
     
-    return returning_component;
+    return NULL;
 };
 
 vector<Entity *> EntityManager::getAllEntitiesByComponentType(ComponentType type) {
@@ -187,4 +185,42 @@ bool EntityManager::entityHasComponent(Entity* entity, ComponentType type) {
         }
     }
     return false;
+}
+
+vector<Entity*> EntityManager::getNearestEntities(Entity* entity) {
+    vector<Entity *> returning_vector;
+    
+    PositionComponent* position = static_cast<PositionComponent* >(getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
+    PositionComponent* position_i;
+    float x0 = position->x, y0 = position->y, x1, y1;
+    
+    for (int i = 0 ; i != entities.size(); ++i) {
+        position_i = static_cast<PositionComponent* >(getComponentByTypeFromEntity(entities[i], POSITION_COMPONENT));
+        x1 = position_i->x;
+        y1 = position_i->y;
+        if (entity->id != entities[i]->id && (x1-x0)*(x1-x0) + (y1-y0)*(y1-y0) < 400) {
+            returning_vector.push_back(entities[i]);
+        }
+    }
+    
+    return returning_vector;
+}
+
+vector<Entity*> EntityManager::getNearestEntitiesWithComponentType(Entity* entity, ComponentType type) {
+    vector<Entity *> returning_vector;
+    
+    PositionComponent* position = static_cast<PositionComponent* >(getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
+    PositionComponent* position_i;
+    float x0 = position->x, y0 = position->y, x1, y1;
+    
+    for (int i = 0 ; i != entities.size(); ++i) {
+        position_i = static_cast<PositionComponent* >(getComponentByTypeFromEntity(entities[i], POSITION_COMPONENT));
+        x1 = position_i->x;
+        y1 = position_i->y;
+        if ((entity->id != entities[i]->id) && (entityHasComponent(entities[i], type)) && ((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0) < 400)) {
+            returning_vector.push_back(entities[i]);
+        }
+    }
+    
+    return returning_vector;
 }

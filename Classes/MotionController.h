@@ -23,7 +23,7 @@ public:
     MotionController() {};
     ~MotionController() {};
     
-    void tick(float delta);
+    void tick(Entity* entity, float delta);
 };
 
 #endif /* MotionController_hpp */
