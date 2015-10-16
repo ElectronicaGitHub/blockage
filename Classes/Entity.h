@@ -38,7 +38,13 @@ public:
         : id(_id)
         , components(_comp)
         {}
-    virtual ~Entity(){}
+    virtual ~Entity(){
+        
+        for (auto i = 0; i != components.size(); ++i) {
+            delete components[i];
+        }
+        
+    }
     
     vector<MainComponent*> allComponents(void) {
         vector<MainComponent*> static_components, allComponents;

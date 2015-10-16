@@ -17,7 +17,7 @@ using namespace std;
 class StoneEntity : public Entity
 {
 public:
-    StoneEntity() : Entity("stone", {}){}
+    StoneEntity() : Entity("stone" + to_string(rand()), {}){}
     ~StoneEntity(){}
     
 private:

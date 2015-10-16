@@ -20,7 +20,7 @@ using namespace cocos2d;
 
 class CollisionController {
 public:
-    float controlPanelSize = 3;
+    float controlPanelSize = 2;
     CollisionController() {};
     ~CollisionController() {};
     void tick();

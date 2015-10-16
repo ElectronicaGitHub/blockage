@@ -34,12 +34,12 @@ public:
         : type(_type)
         , currentState(state)
         {}
-    ~MainComponent() {};
+    virtual ~MainComponent() {};
     
     State* getCurrentState();
     void switchState(State* state, Entity* entity);
 
-private:    
+protected:
     State* currentState;
 };
 

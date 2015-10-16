@@ -19,9 +19,12 @@ using namespace cocos2d;
 class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
+    cocos2d::Layer* layer;
     
     ComponentType type = RENDER_COMPONENT;
-    RenderComponent(cocos2d::Layer* layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
+    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
+        layer = _layer;
+        
         sprite = Sprite::create(ImageStorage::getImage(image));
         sprite->setAnchorPoint(Vec2(0.5, 0.5));
         
@@ -32,7 +35,9 @@ public:
         
         layer->addChild(sprite);
     };
-    ~RenderComponent() {};
+    ~RenderComponent() {
+        layer->removeChild(sprite);
+    };
 };
 
 #endif /* defined(__cppTests__RenderComponent__) */

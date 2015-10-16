@@ -21,12 +21,18 @@ void MotionController::tick(float delta) {
             // выпилить этот костыль как-нибудь
             ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
             if (collision->collision[COL_BOTTOM]) {
-                motion->dy = 0;
+                if (motion->dy < 0) {
+                    motion->dy = 0;
+                }
+                motion->dx = motion->dx / gravity->friction;
+                
+                if (entity->id.find("stone") != std::string::npos) {
+                    EntityManager::removeEntity(entity);
+                }
             }
             else {
                 motion->dy -= gravity->gravity * delta;
             };
-            motion->dx = motion->dx / gravity->friction;
         }
     
         position->x += motion->dx * delta;

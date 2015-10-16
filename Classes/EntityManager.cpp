@@ -109,6 +109,16 @@ void EntityManager::removeEntityById(string id) {
     }
 }
 
+void EntityManager::removeEntity(Entity* entity) {
+    for (auto i = 0 ; i != entities.size(); ++i) {
+        if (entities[i]->id == entity->id) {
+            delete entities[i];
+            entities.erase(entities.begin() + i);
+            i--;
+        }
+    }
+}
+
 void EntityManager::removeComponentFromEntityById(string id, ComponentType type) {
     Entity* entity = getEntityById(id);
     

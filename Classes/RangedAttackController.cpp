@@ -27,7 +27,8 @@ void RangedAttackController::tick(cocos2d::Layer* layer, float delta) {
                 EntityManager::addComponentsToEntity(stone, {
                     new MotionComponent(250 * position->orientation, 250),
                     new PositionComponent(position->x, position->y, 1),
-                    new RenderComponent(layer, IMAGE_STONE, pair<float, float>(7, 7))
+                    new RenderComponent(layer, IMAGE_STONE, pair<float, float>(7, 7)),
+                    new ActiveCollisionComponent("player", {"player", "block"})
                 });
                 
                 attack->cooldownCounter = 0;

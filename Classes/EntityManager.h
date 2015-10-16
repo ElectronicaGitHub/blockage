@@ -30,6 +30,7 @@ public:
     static vector<MainComponent *> getComponentsByType(ComponentType type);
     static vector<Entity *> getAllEntities();
     static void removeEntityById(string id);
+    static void removeEntity(Entity* entity);
     static void removeComponentFromEntityById(string id, ComponentType type);
     static void removeComponentFromEntity(Entity* entity, ComponentType type);
     static void addComponentToEntityById(string id, MainComponent* component);

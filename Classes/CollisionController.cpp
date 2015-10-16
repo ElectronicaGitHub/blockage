@@ -47,7 +47,6 @@ void CollisionController::tick() {
             
             if (r1bottomLine.intersectsRect(rect2)) {
                 position->y = rect2MaxY + rect1.size.height/2;
-                cout<<"bottom"<<endl;
                 comp->collision[COL_BOTTOM] = true;
                 
                 if (EntityManager::entityHasComponent(entity, JUMPING_COMPONENT)) {
@@ -57,17 +56,14 @@ void CollisionController::tick() {
             }
             if (r1leftLine.intersectsRect(rect2)) {
                 position->x = rect2MaxX + rect1.size.height/2;
-                cout<<"left"<<endl;
                 comp->collision[COL_LEFT] = true;
             }
             if (r1rightLine.intersectsRect(rect2)) {
                 position->x = rect2MinX - rect1.size.height/2;
-                cout<<"right"<<endl;
                 comp->collision[COL_RIGHT] = true;
             }
             if (r1topLine.intersectsRect(rect2)) {
                 position->y = rect2MinY - rect1.size.height/2;
-                cout<<"top"<<endl;
                 comp->collision[COL_TOP] = true;
             }
         }
