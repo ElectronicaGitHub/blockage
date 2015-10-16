@@ -9,6 +9,9 @@
 #include <stdio.h>
 #include "MainComponent.h"
 
+MainComponent::~MainComponent() {
+}
+
 State* MainComponent::getCurrentState() {
     return currentState;
 }

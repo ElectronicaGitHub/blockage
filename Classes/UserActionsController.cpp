@@ -27,7 +27,7 @@ UserActionsController::UserActionsController(EventDispatcher* evd, Layer* _this)
 };
 
 void UserActionsController::tick(float delta) {
-    vector<Entity*> entities = EntityManager::getAllEntitiesByComponentTypes({CONTROLS_COMPONENT});
+    vector<Entity*> entities = EntityManager::getAllEntitiesByComponentType(CONTROLS_COMPONENT);
     
     for (int i = 0; i < entities.size(); ++i) {
         Entity* entity = entities[i];

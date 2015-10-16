@@ -10,7 +10,7 @@
 
 void MotionController::tick(float delta) {
     vector<Entity*> entities = EntityManager::getAllEntitiesByComponentTypes({POSITION_COMPONENT, MOTION_COMPONENT});
-    for (int i = 0; i < entities.size(); ++i) {
+    for(int i = 0; i < entities.size(); ++i) {
         Entity* entity = entities[i];
         PositionComponent* position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
         MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));

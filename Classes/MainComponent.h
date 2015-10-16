@@ -34,7 +34,7 @@ public:
         : type(_type)
         , currentState(state)
         {}
-    virtual ~MainComponent() {};
+    virtual ~MainComponent() = 0;
     
     State* getCurrentState();
     void switchState(State* state, Entity* entity);
