@@ -26,12 +26,10 @@ public:
         layer = _layer;
         
         sprite = Sprite::create(ImageStorage::getImage(image));
-        sprite->setAnchorPoint(Vec2(0.5, 0.5));
         
-        // подстройка под указанный размер
         Size contentSize = sprite->getContentSize();
         sprite->setScaleX(size.first / contentSize.width);
-        sprite->setScaleY(size.second / contentSize.width);
+        sprite->setScaleY(size.second / contentSize.height);
         
         layer->addChild(sprite);
     };

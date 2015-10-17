@@ -1,18 +1,14 @@
-#include "HelloWorldScene.h"
+//
+//  PlayingScene.cpp
+//  cppTests
+//
+//  Created by shum on 17.10.15.
+//
+//
 
-using namespace std;
+#include "PlayingScene.h"
 
-USING_NS_CC;
-
-Scene* HelloWorld::createScene() {
-    auto scene = Scene::createWithPhysics();
-    auto layer = HelloWorld::create();
-    
-    scene->addChild(layer);
-    
-    return scene;
-}
-bool HelloWorld::init() {
+bool PlayingAnimateLayer::init() {
     if ( !Layer::init() ) {
         return false;
     }
@@ -32,7 +28,7 @@ bool HelloWorld::init() {
     
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
-
+    
     for (int i = 0; i < mapStorage.map.size(); i++) {
         for (int j = 0; j < mapStorage.map[i].size(); j++) {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
@@ -43,7 +39,7 @@ bool HelloWorld::init() {
                     new RenderComponent(this, IMAGE_WALL, tileSize),
                     new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1)
                 });
-            
+                
             }
         }
     }
@@ -60,7 +56,7 @@ bool HelloWorld::init() {
     return true;
 }
 
-void HelloWorld::update(float delta) {
+void PlayingAnimateLayer::update(float delta) {
     MotionController motionController;
     RangedAttackController rangedAttackController;
     RenderController renderController;
@@ -81,3 +77,29 @@ void HelloWorld::update(float delta) {
         }
     }
 }
+
+
+
+
+
+bool PlayingBGLayer::init() {
+    if ( !Layer::init() ) {
+        return false;
+    }
+    
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    cocos2d::Sprite* sprite = cocos2d::Sprite::create(ImageStorage::getImage(IMAGE_BACKGROUND));
+    sprite->setPosition(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
+    sprite->setScale(0.5);
+    
+    Size contentSize = sprite->getContentSize();
+    sprite->setScaleX(visibleSize.width / contentSize.width);
+    sprite->setScaleY(visibleSize.height / contentSize.height);
+    
+    this->addChild(sprite);
+    
+    return true;
+}
+

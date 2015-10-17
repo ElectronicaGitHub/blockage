@@ -1,5 +1,13 @@
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+//
+//  PlayingScene.h
+//  cppTests
+//
+//  Created by shum on 17.10.15.
+//
+//
+
+#ifndef __cppTests__PlayingScene__
+#define __cppTests__PlayingScene__
 
 #include "cocos2d.h"
 
@@ -19,18 +27,25 @@
 
 #include "RenderComponent.h"
 
+using namespace std;
 
-class HelloWorld : public cocos2d::Layer {
+class PlayingAnimateLayer : public cocos2d::Layer {
 public:
-    static cocos2d::Scene* createScene();
-
     UserActionsController* userActionsController;
-
+    
     virtual bool init() override;
-
     virtual void update(float delta) override;
-
-    CREATE_FUNC(HelloWorld);
+    
+    CREATE_FUNC(PlayingAnimateLayer);
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+
+class PlayingBGLayer : public cocos2d::Layer {
+public:
+    virtual bool init() override;
+    
+    CREATE_FUNC(PlayingBGLayer);
+};
+
+
+#endif /* defined(__cppTests__PlayingScene__) */

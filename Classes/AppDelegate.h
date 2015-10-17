@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-#include "HelloWorldScene.h"
+#include "GameStateManager.h"
 
 /**
 @brief    The cocos2d Application.
