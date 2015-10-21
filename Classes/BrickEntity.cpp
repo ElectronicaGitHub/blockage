@@ -9,5 +9,4 @@
 #include "BrickEntity.h"
 
 vector<MainComponent*> BrickEntity::static_components = {
-    new PassiveCollisionComponent()
 };

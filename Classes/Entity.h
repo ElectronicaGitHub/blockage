@@ -20,6 +20,7 @@
 #include "ActiveCollisionComponent.h"
 #include "PassiveCollisionComponent.h"
 #include "RangedAttackComponent.h"
+#include "DndComponent.h"
 #include "ImageStorage.h"
 #include "EntityManager.h"
 

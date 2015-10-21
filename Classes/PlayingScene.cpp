@@ -32,13 +32,23 @@ bool PlayingAnimateLayer::init() {
     for (int i = 0; i < mapStorage.map.size(); i++) {
         for (int j = 0; j < mapStorage.map[i].size(); j++) {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
-            if (mapStorage.map[i][j]) {
+            if (mapStorage.map[i][j] != 0) {
                 Entity* ent = new BrickEntity();
                 EntityManager::addEntity(ent);
-                EntityManager::addComponentsToEntity(ent, {
-                    new RenderComponent(this, IMAGE_WALL, tileSize),
-                    new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1)
-                });
+                EntityManager::addComponentToEntity(ent, new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1));
+                
+                if (mapStorage.map[i][j] == 2) {
+                    EntityManager::addComponentsToEntity(ent, {
+                        new DropComponent(),
+                        new RenderComponent(this, IMAGE_WALL_DROP, tileSize),
+                    });
+                }
+                else if (mapStorage.map[i][j] == 1) {
+                    EntityManager::addComponentsToEntity(ent, {
+                        new RenderComponent(this, IMAGE_WALL, tileSize),
+                        new PassiveCollisionComponent()
+                    });
+                }
                 
             }
         }

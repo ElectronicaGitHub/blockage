@@ -20,7 +20,7 @@ public:
     GravityComponent(float _downfall)
         : MainComponent(GRAVITY_COMPONENT)
         , gravity(800)
-        , friction(1.2f)
+        , friction( 1.2f)
         , downfall(_downfall)
     {}
     ~GravityComponent() {}

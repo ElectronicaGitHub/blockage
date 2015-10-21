@@ -15,6 +15,8 @@ using namespace std;
 
 enum ImageName {
     IMAGE_WALL,
+    IMAGE_WALL_DROP,
+    IMAGE_WALL_DRAG,
     IMAGE_DWARF,
     IMAGE_STONE,
     IMAGE_BACKGROUND

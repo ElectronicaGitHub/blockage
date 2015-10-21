@@ -67,6 +67,15 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D43EC5C51BD690380083A084 /* DragComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5C31BD690380083A084 /* DragComponent.cpp */; };
+		D43EC5C61BD690380083A084 /* DragComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5C31BD690380083A084 /* DragComponent.cpp */; };
+		D43EC5C91BD6910F0083A084 /* DropComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5C71BD6910F0083A084 /* DropComponent.cpp */; };
+		D43EC5CA1BD6910F0083A084 /* DropComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5C71BD6910F0083A084 /* DropComponent.cpp */; };
+		D43EC5CD1BD6915E0083A084 /* DndComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */; };
+		D43EC5CE1BD6915E0083A084 /* DndComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */; };
+		D43EC5D11BD691BF0083A084 /* DndController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CF1BD691BF0083A084 /* DndController.cpp */; };
+		D43EC5D21BD691BF0083A084 /* DndController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CF1BD691BF0083A084 /* DndController.cpp */; };
+		D43EC5D31BD70A1C0083A084 /* DropComponent.h in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5C81BD6910F0083A084 /* DropComponent.h */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -200,6 +209,14 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D43EC5C31BD690380083A084 /* DragComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragComponent.cpp; sourceTree = "<group>"; };
+		D43EC5C41BD690380083A084 /* DragComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragComponent.h; sourceTree = "<group>"; };
+		D43EC5C71BD6910F0083A084 /* DropComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DropComponent.cpp; sourceTree = "<group>"; };
+		D43EC5C81BD6910F0083A084 /* DropComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropComponent.h; sourceTree = "<group>"; };
+		D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DndComponent.cpp; sourceTree = "<group>"; };
+		D43EC5CC1BD6915E0083A084 /* DndComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DndComponent.h; sourceTree = "<group>"; };
+		D43EC5CF1BD691BF0083A084 /* DndController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DndController.cpp; sourceTree = "<group>"; };
+		D43EC5D01BD691BF0083A084 /* DndController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DndController.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -474,6 +491,12 @@
 				D47BEB721BC4523B00474F2F /* ActiveCollisionComponent.h */,
 				D47BEB761BC4529B00474F2F /* PassiveCollisionComponent.h */,
 				FD1B176B1BC3D3850015E684 /* PositionComponent.h */,
+				D43EC5C31BD690380083A084 /* DragComponent.cpp */,
+				D43EC5C41BD690380083A084 /* DragComponent.h */,
+				D43EC5C71BD6910F0083A084 /* DropComponent.cpp */,
+				D43EC5C81BD6910F0083A084 /* DropComponent.h */,
+				D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */,
+				D43EC5CC1BD6915E0083A084 /* DndComponent.h */,
 				FD1B176E1BC3D3AA0015E684 /* MotionComponent.h */,
 				FD1B17711BC3D3C70015E684 /* GravityComponent.h */,
 				A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */,
@@ -503,6 +526,8 @@
 				D47BEB7A1BC452C500474F2F /* CollisionController.h */,
 				D45909571BB7817700D43BD5 /* RenderController.cpp */,
 				D45909581BB7817700D43BD5 /* RenderController.h */,
+				D43EC5CF1BD691BF0083A084 /* DndController.cpp */,
+				D43EC5D01BD691BF0083A084 /* DndController.h */,
 				FD1B17731BC3D7910015E684 /* MotionController.cpp */,
 				FD1B17741BC3D7910015E684 /* MotionController.h */,
 				A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */,
@@ -646,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D43EC5D31BD70A1C0083A084 /* DropComponent.h in Sources */,
 				FD1B17761BC3E3930015E684 /* EntityManager.cpp in Sources */,
 				FD1B17771BC3E3930015E684 /* EntityManager.h in Sources */,
 				FD1B177B1BC3E3930015E684 /* RenderComponent.h in Sources */,
@@ -656,6 +682,8 @@
 				FD1B17831BC3E3930015E684 /* PositionComponent.h in Sources */,
 				FD1B17851BC3E3930015E684 /* MotionComponent.h in Sources */,
 				FD1B17871BC3E3930015E684 /* GravityComponent.h in Sources */,
+				D43EC5D11BD691BF0083A084 /* DndController.cpp in Sources */,
+				D43EC5CD1BD6915E0083A084 /* DndComponent.cpp in Sources */,
 				FD1B17881BC3E3930015E684 /* ImageStorage.cpp in Sources */,
 				A40919F31BD1D1CC0009346B /* PlayingScene.cpp in Sources */,
 				FD1B17891BC3E3930015E684 /* ImageStorage.h in Sources */,
@@ -671,10 +699,12 @@
 				A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				FD1B17931BC3E3930015E684 /* MotionController.h in Sources */,
 				FD1B17941BC3E3930015E684 /* AppDelegate.cpp in Sources */,
+				D43EC5C91BD6910F0083A084 /* DropComponent.cpp in Sources */,
 				FD1B17951BC3E3930015E684 /* AppDelegate.h in Sources */,
 				A4EBA6CF1BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */,
 				A4EBA6D21BC8FED9001F8DC8 /* MainComponent.cpp in Sources */,
 				A40919E11BCB34B60009346B /* StoneEntity.cpp in Sources */,
+				D43EC5C51BD690380083A084 /* DragComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,8 +717,10 @@
 				FD1B1C601BC3F6C00015E684 /* UserActionsController.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FD1B1C621BC3F6C70015E684 /* MapStorage.cpp in Sources */,
+				D43EC5C61BD690380083A084 /* DragComponent.cpp in Sources */,
 				A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				D43EC5CA1BD6910F0083A084 /* DropComponent.cpp in Sources */,
 				A40919F41BD1D1CC0009346B /* PlayingScene.cpp in Sources */,
 				A4EBA6D01BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */,
 				A40919E61BCFF3750009346B /* BrickEntity.cpp in Sources */,
@@ -696,8 +728,10 @@
 				FD1B1C6C1BC3F6E20015E684 /* EntityManager.cpp in Sources */,
 				A40919DE1BCB30280009346B /* PlayerEntity.cpp in Sources */,
 				A40919EF1BD1CC7D0009346B /* GameStateManager.cpp in Sources */,
+				D43EC5D21BD691BF0083A084 /* DndController.cpp in Sources */,
 				FD1B1C5F1BC3F6BB0015E684 /* RenderController.cpp in Sources */,
 				FD1B1C5E1BC3F6B70015E684 /* MotionController.cpp in Sources */,
+				D43EC5CE1BD6915E0083A084 /* DndComponent.cpp in Sources */,
 				A4EBA6D31BC8FED9001F8DC8 /* MainComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
