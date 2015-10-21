@@ -16,6 +16,7 @@
 #include "MotionController.h"
 #include "CollisionController.h"
 #include "RangedAttackController.h"
+#include "DndController.h"
 
 #include "EntityManager.h"
 #include "Entity.h"

@@ -15,6 +15,5 @@ vector<MainComponent*> PlayerEntity::static_components = {
     new ControlsComponent(),
     new JumpingComponent(),
     new ActiveCollisionComponent("player", {"player", "block"}),
-    new RangedAttackComponent(30.0f, 10),
-    new DndComponent()
+    new RangedAttackComponent(30.0f, 10)
 };

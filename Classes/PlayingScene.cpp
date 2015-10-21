@@ -8,6 +8,12 @@
 
 #include "PlayingScene.h"
 
+MotionController motionController;
+RangedAttackController rangedAttackController;
+RenderController renderController;
+CollisionController collisionController;
+DndController dndController;
+
 bool PlayingAnimateLayer::init() {
     if ( !Layer::init() ) {
         return false;
@@ -58,19 +64,32 @@ bool PlayingAnimateLayer::init() {
     EntityManager::addEntity(player);
     EntityManager::addComponentsToEntity(player, {
         new RenderComponent(this, IMAGE_DWARF, pair<float, float>(20, 20)),
+        new DndComponent()
     });
+    
+    Entity* drop_block = new BrickEntity();
+    EntityManager::addComponentsToEntity(drop_block, {
+        new DragComponent(),
+        new PassiveCollisionComponent(),
+        new PositionComponent(100, 100, 1),
+        new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
+    });
+    
+    EntityManager::addEntity(drop_block);
     
     userActionsController = new UserActionsController(_eventDispatcher, this);
     
     this->scheduleUpdate();
+    
     return true;
 }
 
 void PlayingAnimateLayer::update(float delta) {
-    MotionController motionController;
-    RangedAttackController rangedAttackController;
-    RenderController renderController;
-    CollisionController collisionController;
+//    MotionController motionController;
+//    RangedAttackController rangedAttackController;
+//    RenderController renderController;
+//    CollisionController collisionController;
+//    DndController dndController;
     
     for (int i = 0 ; i != EntityManager::entities.size(); ++i) {
         Entity* entity = EntityManager::entities[i];
@@ -80,6 +99,7 @@ void PlayingAnimateLayer::update(float delta) {
         rangedAttackController.tick(entity, this, delta);
         renderController.tick(entity, delta);
         collisionController.tick(entity);
+        dndController.tick(entity);
         
         if (entity->deleted) {
             EntityManager::removeEntity(entity);

@@ -130,10 +130,10 @@ void EntityManager::removeComponentFromEntityById(string id, ComponentType type)
 }
 
 void EntityManager::removeComponentFromEntity(Entity* entity, ComponentType type) {
-    for (auto i = 0 ; i != entity->allComponents().size(); ++i) {
-        if (entity->allComponents()[i]->type == type) {
-            delete entity->allComponents()[i];
-            entity->components.erase(entity->allComponents().begin() + i);
+    for (auto i = 0 ; i != entity->components.size(); ++i) {
+        if (entity->components[i]->type == type) {
+            delete entity->components[i];
+            entity->components.erase(entity->components.begin() + i);
             i--;
         }
     }

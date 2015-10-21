@@ -15,7 +15,7 @@ void DndController::tick(Entity* entity) {
         ControlsComponent* player_controls = static_cast<ControlsComponent* >(EntityManager::getComponentByTypeFromEntity(entity, CONTROLS_COMPONENT));
         DndComponent* player_dragger = static_cast<DndComponent* >(EntityManager::getComponentByTypeFromEntity(entity, DND_COMPONENT));
         
-        if (player_dragger->currentState == DRAGGING) {
+        if (player_dragger->currentStateType == DRAGGING_STATE) {
             PositionComponent* draggable_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, POSITION_COMPONENT));
             PositionComponent* player_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
             
@@ -23,23 +23,21 @@ void DndController::tick(Entity* entity) {
             draggable_position->y = player_position->y + 15;
         }
         
-        if (player_controls->keys[EventKeyboard::KeyCode::KEY_Z] && buttonReleased) {
+        if (player_controls->keys[EventKeyboard::KeyCode::KEY_Z] && !buttonPressed) {
             // DRAG
-            if (player_dragger->currentState == EMPTY) {
+            if (player_dragger->currentStateType == EMPTY_STATE) {
                 player_dragger->getCurrentState()->handleEvent(entity, player_dragger, INPUT_Z);
-                cout << "DRAG" << endl;
             }
-            //DROP
-            else if (player_dragger->currentState == DRAGGING) {
+            // DROP
+            else if (player_dragger->currentStateType == DRAGGING_STATE) {
                 player_dragger->getCurrentState()->handleEvent(entity, player_dragger, INPUT_Z);
-                cout << "DROP" << endl;
             }
-            buttonReleased = false;
+            buttonPressed = true;
         }
         
         // BUTTON RELEASED
-        else if (!player_controls->keys[EventKeyboard::KeyCode::KEY_Z] && !buttonReleased) {
-            buttonReleased = true;
+        else if (!player_controls->keys[EventKeyboard::KeyCode::KEY_Z] && buttonPressed) {
+            buttonPressed = false;
         }
     }
 }

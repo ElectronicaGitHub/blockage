@@ -15,7 +15,7 @@
 #include "Entity.h"
 
 enum DndStateType {
-    EMPTY, DRAGGING
+    EMPTY_STATE, DRAGGING_STATE
 };
 
 class EmptyState : public State
@@ -44,13 +44,13 @@ public:
 
 class DndComponent : public MainComponent {
 public:
-    DndStateType currentState = EMPTY;
+    DndStateType currentStateType = EMPTY_STATE;
     bool buttonPressed = false;
     Entity* draggingEntity;
     ComponentType type = DND_COMPONENT;
     static map<DndStateType, State*> states;
     
-    DndComponent() : MainComponent(DND_COMPONENT, states.find(EMPTY)->second) {};
+    DndComponent() : MainComponent(DND_COMPONENT, states.find(EMPTY_STATE)->second) {};
     ~DndComponent() {};
 };
 

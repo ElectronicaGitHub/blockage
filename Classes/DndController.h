@@ -24,7 +24,7 @@
 
 class DndController {
 public:
-    bool buttonReleased = true;
+    bool buttonPressed;
     DndController() {};
     ~DndController() {};
     void tick(Entity* entity);
