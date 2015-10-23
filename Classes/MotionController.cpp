@@ -25,7 +25,7 @@ void MotionController::tick(Entity* entity, float delta) {
                 if (motion->dy < 0) {
                     motion->dy *= -gravity->downfall;
                 }
-                //  motion->dx = motion->dx / gravity->friction;
+                motion->dx = motion->dx / gravity->friction_ground;
             }
             else {
                 if (collision->collision[COL_TOP]) {
@@ -34,8 +34,8 @@ void MotionController::tick(Entity* entity, float delta) {
                     }
                 }
                 motion->dy -= gravity->gravity * delta;
+                motion->dx = motion->dx / gravity->friction_air;
             };
-            motion->dx = motion->dx / gravity->friction;
         }
     
         position->x += motion->dx * delta;

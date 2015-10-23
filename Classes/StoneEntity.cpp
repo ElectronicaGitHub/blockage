@@ -9,5 +9,5 @@
 #include "StoneEntity.h"
 
 vector<MainComponent*> StoneEntity::static_components = {
-    new GravityComponent(-1)
+    new GravityComponent(1.2f, 1, -1)
 };

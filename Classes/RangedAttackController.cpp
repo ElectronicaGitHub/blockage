@@ -15,6 +15,7 @@ void RangedAttackController::tick(Entity* entity, cocos2d::Layer* layer, float d
         if (EntityManager::entityHasComponent(entity, CONTROLS_COMPONENT)) {
             ControlsComponent* control = static_cast<ControlsComponent* >(EntityManager::getComponentByTypeFromEntity(entity, CONTROLS_COMPONENT));
             PositionComponent* position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
+            MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));
             bool fire = control->keys[EventKeyboard::KeyCode::KEY_SPACE];
             
             if (fire && attack->cooldownCounter == attack->cooldown) {
@@ -22,7 +23,7 @@ void RangedAttackController::tick(Entity* entity, cocos2d::Layer* layer, float d
                 EntityManager::addEntity(stone);
                 
                 EntityManager::addComponentsToEntity(stone, {
-                    new MotionComponent(250 * position->orientation, 250),
+                    new MotionComponent(250 * position->orientation + motion->dx, 250),
                     new PositionComponent(position->x, position->y, 1),
                     new RenderComponent(layer, IMAGE_STONE, pair<float, float>(7, 7)),
                     new ActiveCollisionComponent("player", {"player", "block"})

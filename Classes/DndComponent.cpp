@@ -78,7 +78,7 @@ void DraggingState::handleEvent(Entity* entity, MainComponent* component, EventT
             
             if (distanceX <= 20 && distanceY > 20 && !drop_component->filled) {
                 
-                EntityManager::addComponentToEntity(player_dragger->draggingEntity, new GravityComponent(0));
+                EntityManager::addComponentToEntity(player_dragger->draggingEntity, new GravityComponent(1, 1, 0));
                 EntityManager::addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
                 
                 drop_component->fillEmenent = player_dragger->draggingEntity;
