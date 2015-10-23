@@ -45,9 +45,8 @@ public:
 class DndComponent : public MainComponent {
 public:
     DndStateType currentStateType = EMPTY_STATE;
-    bool buttonPressed = false;
+    bool buttonPressed;
     Entity* draggingEntity;
-    ComponentType type = DND_COMPONENT;
     static map<DndStateType, State*> states;
     
     DndComponent() : MainComponent(DND_COMPONENT, states.find(EMPTY_STATE)->second) {};
