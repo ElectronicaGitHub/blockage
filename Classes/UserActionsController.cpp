@@ -9,17 +9,14 @@
 #include "UserActionsController.h"
 
 // разруливает нажатие клавиш и кладет в контролс компонент
-UserActionsController::UserActionsController(EventDispatcher* evd, Layer* _this) {
-    vector<MainComponent*> components = EntityManager::getComponentsByType(CONTROLS_COMPONENT);
-    ControlsComponent* component = (ControlsComponent*)components[0];
-    
+UserActionsController::UserActionsController(EventDispatcher* evd, Layer* _this, ControlsComponent* controls) {    
     auto eventListener = EventListenerKeyboard::create();
     
-    eventListener->onKeyPressed = [component](EventKeyboard::KeyCode keyCode, Event* event){
-        component->keys[keyCode] = true;
+    eventListener->onKeyPressed = [controls](EventKeyboard::KeyCode keyCode, Event* event){
+        controls->keys[keyCode] = true;
     };
-    eventListener->onKeyReleased = [component](EventKeyboard::KeyCode keyCode, Event* event) {
-        component->keys[keyCode] = false;
+    eventListener->onKeyReleased = [controls](EventKeyboard::KeyCode keyCode, Event* event) {
+        controls->keys[keyCode] = false;
     };
     
     evd->addEventListenerWithSceneGraphPriority(eventListener, _this);

@@ -19,16 +19,17 @@ using namespace std;
 class EntityManager
 {
 public:
-    static vector<Entity* > entities;
+    static vector<Entity*> entities;
+    static vector<Entity*> passive_entities;
     
     static void addEntity(Entity* _ent);
+    static void addPassiveEntity(Entity* _ent);
     static Entity* getEntityById(string id);
     static MainComponent* getComponentByTypeFromEntity(Entity* entity, ComponentType type);
     static vector<Entity*> getAllEntitiesByComponentType(ComponentType type);
     static vector<Entity*> getAllEntitiesByComponentTypes(vector<ComponentType> types);
-    static vector<MainComponent*> getComponentsByEntityId(string id);
-    static vector<MainComponent*> getComponentsByType(ComponentType type);
     static vector<Entity*> getAllEntities();
+    static vector<Entity*> getAllPassiveEntities();
     static void removeEntityById(string id);
     static void removeEntity(Entity* entity);
     static void removeComponentFromEntityById(string id, ComponentType type);
@@ -42,6 +43,7 @@ public:
     static bool entityHasComponent(Entity* entity, ComponentType type);
     static vector<Entity*> getNearestEntities(Entity* entity);
     static vector<Entity*> getNearestEntitiesWithComponentType(Entity* entity, ComponentType type);
+    static vector<Entity*> getNearestPassiveEntities(Entity* entity);
 
 };
 

@@ -40,7 +40,7 @@ bool PlayingAnimateLayer::init() {
             string id = "brick" + to_string(i) + "::" + to_string(j) + "";
             if (mapStorage.map[i][j] != 0) {
                 Entity* ent = new BrickEntity();
-                EntityManager::addEntity(ent);
+                EntityManager::addPassiveEntity(ent);
                 EntityManager::addComponentToEntity(ent, new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1));
                 
                 if (mapStorage.map[i][j] == 2) {
@@ -66,6 +66,7 @@ bool PlayingAnimateLayer::init() {
         new RenderComponent(this, IMAGE_DWARF, pair<float, float>(20, 20)),
         new DndComponent()
     });
+    ControlsComponent* player_controls_component = static_cast<ControlsComponent*>(EntityManager::getComponentByTypeFromEntity(player, CONTROLS_COMPONENT));
     
     Entity* drop_block = new BrickEntity();
     EntityManager::addComponentsToEntity(drop_block, {
@@ -77,7 +78,7 @@ bool PlayingAnimateLayer::init() {
     
     EntityManager::addEntity(drop_block);
     
-    userActionsController = new UserActionsController(_eventDispatcher, this);
+    userActionsController = new UserActionsController(_eventDispatcher, this, player_controls_component);
     
     this->scheduleUpdate();
     
@@ -91,6 +92,11 @@ void PlayingAnimateLayer::update(float delta) {
 //    CollisionController collisionController;
 //    DndController dndController;
     
+    
+    for (int i = 0 ; i != EntityManager::passive_entities.size(); ++i) {
+        Entity* entity = EntityManager::passive_entities[i];
+        renderController.tick(entity, delta);
+    }
     for (int i = 0 ; i != EntityManager::entities.size(); ++i) {
         Entity* entity = EntityManager::entities[i];
         

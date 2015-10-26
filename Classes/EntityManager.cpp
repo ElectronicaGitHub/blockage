@@ -10,10 +10,14 @@
 
 using namespace std;
 
-vector<Entity* > EntityManager::entities;
+vector<Entity*> EntityManager::entities;
+vector<Entity*> EntityManager::passive_entities;
 
 void EntityManager::addEntity(Entity* _ent) {
     entities.push_back(_ent);
+}
+void EntityManager::addPassiveEntity(Entity* _ent) {
+    passive_entities.push_back(_ent);
 }
 
 Entity* EntityManager::getEntityById(string id) {
@@ -21,6 +25,12 @@ Entity* EntityManager::getEntityById(string id) {
     for (auto i = 0 ; i != entities.size(); ++i) {
         if (entities[i]->id == id) {
             return entities[i];
+        }
+    }
+    
+    for (auto i = 0 ; i != passive_entities.size(); ++i) {
+        if (passive_entities[i]->id == id) {
+            return passive_entities[i];
         }
     }
     return returning_entity;
@@ -73,28 +83,11 @@ vector<Entity *> EntityManager::getAllEntitiesByComponentTypes(vector<ComponentT
     return returning_vector;
 }
 
-vector<MainComponent *> EntityManager::getComponentsByEntityId(string id) {
-    Entity* entity = getEntityById(id);
-    return entity->allComponents();
-}
-
-vector<MainComponent*> EntityManager::getComponentsByType(ComponentType type) {
-    vector<MainComponent*> returning_vector, components;
-    
-    for (auto entity = entities.begin(); entity != entities.end(); ++entity) {
-        components = (*entity)->allComponents();
-        for (auto component = components.begin(); component != components.end(); ++component) {
-            if ((*component)->type == type) {
-                returning_vector.push_back(*component);
-            }
-        }
-    }
-    
-    return returning_vector;
-}
-
 vector<Entity *> EntityManager::getAllEntities() {
     return entities;
+}
+vector<Entity *> EntityManager::getAllPassiveEntities() {
+    return passive_entities;
 }
 
 void EntityManager::removeEntityById(string id) {
@@ -102,6 +95,14 @@ void EntityManager::removeEntityById(string id) {
         if (entities[i]->id == id) {
             delete entities[i];
             entities.erase(entities.begin() + i);
+            i--;
+        }
+    }
+    
+    for (auto i = 0 ; i != passive_entities.size(); ++i) {
+        if (passive_entities[i]->id == id) {
+            delete passive_entities[i];
+            passive_entities.erase(passive_entities.begin() + i);
             i--;
         }
     }
@@ -219,6 +220,25 @@ vector<Entity*> EntityManager::getNearestEntitiesWithComponentType(Entity* entit
         y1 = position_i->y;
         if ((entity->id != entities[i]->id) && (entityHasComponent(entities[i], type)) && ((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0) < 400)) {
             returning_vector.push_back(entities[i]);
+        }
+    }
+    
+    return returning_vector;
+}
+
+vector<Entity*> EntityManager::getNearestPassiveEntities(Entity* entity) {
+    vector<Entity *> returning_vector;
+    
+    PositionComponent* position = static_cast<PositionComponent* >(getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
+    PositionComponent* position_i;
+    float x0 = position->x, y0 = position->y, x1, y1;
+    
+    for (int i = 0 ; i != passive_entities.size(); ++i) {
+        position_i = static_cast<PositionComponent* >(getComponentByTypeFromEntity(passive_entities[i], POSITION_COMPONENT));
+        x1 = position_i->x;
+        y1 = position_i->y;
+        if ((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0) < 400) {
+            returning_vector.push_back(passive_entities[i]);
         }
     }
     

@@ -22,7 +22,7 @@ using namespace std;
 
 class UserActionsController {
 public:
-    UserActionsController(EventDispatcher* evd, Layer* _this);
+    UserActionsController(EventDispatcher* evd, Layer* _this, ControlsComponent* controls);
     ~UserActionsController() {};
     
     void tick(Entity* entity, float delta);

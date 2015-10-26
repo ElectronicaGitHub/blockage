@@ -10,7 +10,7 @@
 
 void CollisionController::tick(Entity* entity) {
     if (EntityManager::entityHasComponent(entity, ACTIVE_COLLISION_COMPONENT)) {
-        vector<Entity*> passive_entities = EntityManager::getNearestEntitiesWithComponentType(entity, PASSIVE_COLLISION_COMPONENT);
+        vector<Entity*> passive_entities = EntityManager::getNearestPassiveEntities(entity);
         
         ActiveCollisionComponent* comp = static_cast<ActiveCollisionComponent*>(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
         comp->collision[COL_BOTTOM] = false;
