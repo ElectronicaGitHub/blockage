@@ -34,34 +34,36 @@ void CollisionController::tick(Entity* entity) {
         Rect r1rightLine =  Rect(rect1MaxX,                    rect1MinY + controlPanelSize, controlPanelSize, rect1.size.height - 2 * controlPanelSize);
         
         for (int j = 0; j < passive_entities.size(); j++) {
-            RenderComponent* render_comp2 = static_cast<RenderComponent*>(EntityManager::getComponentByTypeFromEntity(passive_entities[j], RENDER_COMPONENT));
-            Rect rect2 = render_comp2->sprite->getBoundingBox();
-            
-            float rect2MinX = rect2.getMinX();
-            float rect2MaxX = rect2.getMaxX();
-            float rect2MinY = rect2.getMinY();
-            float rect2MaxY = rect2.getMaxY();
-            
-            if (r1bottomLine.intersectsRect(rect2)) {
-                position->y = rect2MaxY + rect1.size.height/2;
-                comp->collision[COL_BOTTOM] = true;
+            if (EntityManager::entityHasComponent(passive_entities[j], PASSIVE_COLLISION_COMPONENT)) {
+                RenderComponent* render_comp2 = static_cast<RenderComponent*>(EntityManager::getComponentByTypeFromEntity(passive_entities[j], RENDER_COMPONENT));
+                Rect rect2 = render_comp2->sprite->getBoundingBox();
                 
-                if (EntityManager::entityHasComponent(entity, JUMPING_COMPONENT)) {
-                    JumpingComponent* jumping = static_cast<JumpingComponent* >(EntityManager::getComponentByTypeFromEntity(entity, JUMPING_COMPONENT));
-                    jumping->getCurrentState()->handleEvent(entity, jumping, COLLISION_BOTTOM);
+                float rect2MinX = rect2.getMinX();
+                float rect2MaxX = rect2.getMaxX();
+                float rect2MinY = rect2.getMinY();
+                float rect2MaxY = rect2.getMaxY();
+                
+                if (r1bottomLine.intersectsRect(rect2)) {
+                    position->y = rect2MaxY + rect1.size.height/2;
+                    comp->collision[COL_BOTTOM] = true;
+                    
+                    if (EntityManager::entityHasComponent(entity, JUMPING_COMPONENT)) {
+                        JumpingComponent* jumping = static_cast<JumpingComponent* >(EntityManager::getComponentByTypeFromEntity(entity, JUMPING_COMPONENT));
+                        jumping->getCurrentState()->handleEvent(entity, jumping, COLLISION_BOTTOM);
+                    }
                 }
-            }
-            if (r1leftLine.intersectsRect(rect2)) {
-                position->x = rect2MaxX + rect1.size.height/2;
-                comp->collision[COL_LEFT] = true;
-            }
-            if (r1rightLine.intersectsRect(rect2)) {
-                position->x = rect2MinX - rect1.size.height/2;
-                comp->collision[COL_RIGHT] = true;
-            }
-            if (r1topLine.intersectsRect(rect2)) {
-                position->y = rect2MinY - rect1.size.height/2;
-                comp->collision[COL_TOP] = true;
+                if (r1leftLine.intersectsRect(rect2)) {
+                    position->x = rect2MaxX + rect1.size.height/2;
+                    comp->collision[COL_LEFT] = true;
+                }
+                if (r1rightLine.intersectsRect(rect2)) {
+                    position->x = rect2MinX - rect1.size.height/2;
+                    comp->collision[COL_RIGHT] = true;
+                }
+                if (r1topLine.intersectsRect(rect2)) {
+                    position->y = rect2MinY - rect1.size.height/2;
+                    comp->collision[COL_TOP] = true;
+                }
             }
         }
     }

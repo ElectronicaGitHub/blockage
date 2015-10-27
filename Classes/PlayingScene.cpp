@@ -8,12 +8,6 @@
 
 #include "PlayingScene.h"
 
-MotionController motionController;
-RangedAttackController rangedAttackController;
-RenderController renderController;
-CollisionController collisionController;
-DndController dndController;
-
 bool PlayingAnimateLayer::init() {
     if ( !Layer::init() ) {
         return false;
@@ -79,6 +73,11 @@ bool PlayingAnimateLayer::init() {
     EntityManager::addEntity(drop_block);
     
     userActionsController = new UserActionsController(_eventDispatcher, this, player_controls_component);
+    motionController = new MotionController();
+    rangedAttackController = new RangedAttackController();
+    renderController = new RenderController();
+    collisionController = new CollisionController();
+    dndController = new DndController();
     
     this->scheduleUpdate();
     
@@ -86,26 +85,19 @@ bool PlayingAnimateLayer::init() {
 }
 
 void PlayingAnimateLayer::update(float delta) {
-//    MotionController motionController;
-//    RangedAttackController rangedAttackController;
-//    RenderController renderController;
-//    CollisionController collisionController;
-//    DndController dndController;
-    
-    
     for (int i = 0 ; i != EntityManager::passive_entities.size(); ++i) {
         Entity* entity = EntityManager::passive_entities[i];
-        renderController.tick(entity, delta);
+        renderController->tick(entity, delta);
     }
     for (int i = 0 ; i != EntityManager::entities.size(); ++i) {
         Entity* entity = EntityManager::entities[i];
         
         userActionsController->tick(entity, delta);
-        motionController.tick(entity, delta);
-        rangedAttackController.tick(entity, this, delta);
-        renderController.tick(entity, delta);
-        collisionController.tick(entity);
-        dndController.tick(entity);
+        motionController->tick(entity, delta);
+        rangedAttackController->tick(entity, this, delta);
+        renderController->tick(entity, delta);
+        collisionController->tick(entity);
+        dndController->tick(entity);
         
         if (entity->deleted) {
             EntityManager::removeEntity(entity);

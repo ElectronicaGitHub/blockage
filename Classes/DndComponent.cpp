@@ -62,33 +62,35 @@ void DraggingState::handleEvent(Entity* entity, MainComponent* component, EventT
         
         DndComponent* player_dragger = static_cast<DndComponent* >(EntityManager::getComponentByTypeFromEntity(entity, DND_COMPONENT));
         
-        vector<Entity* > droppables = EntityManager::getAllEntitiesByComponentTypes({DROP_COMPONENT, RENDER_COMPONENT, POSITION_COMPONENT});
+        vector<Entity* > droppables = EntityManager::getNearestPassiveEntities(entity);
         
         for (auto i = 0 ; i < droppables.size(); ++i) {
-            Entity* droppable = droppables[i];
-            
-            PositionComponent* drag_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, POSITION_COMPONENT));
-            DragComponent* drag_component = static_cast<DragComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, DRAG_COMPONENT));
-            
-            PositionComponent* drop_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(droppable, POSITION_COMPONENT));
-            DropComponent* drop_component = static_cast<DropComponent* >(EntityManager::getComponentByTypeFromEntity(droppable, DROP_COMPONENT));
-            
-            float distanceX = abs(drag_position->x - drop_position->x);
-            float distanceY = drag_position->y - drop_position->y;
-            
-            if (distanceX <= 20 && distanceY > 20 && !drop_component->filled) {
+            if (EntityManager::entityHasComponent(droppables[i], DROP_COMPONENT)) {
+                Entity* droppable = droppables[i];
                 
-                EntityManager::addComponentToEntity(player_dragger->draggingEntity, new GravityComponent(1, 1, 0));
-                EntityManager::addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
+                PositionComponent* drag_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, POSITION_COMPONENT));
+                DragComponent* drag_component = static_cast<DragComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, DRAG_COMPONENT));
                 
-                drop_component->fillEmenent = player_dragger->draggingEntity;
+                PositionComponent* drop_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(droppable, POSITION_COMPONENT));
+                DropComponent* drop_component = static_cast<DropComponent* >(EntityManager::getComponentByTypeFromEntity(droppable, DROP_COMPONENT));
                 
-                drag_component->droppedTo = droppable;
-                drag_component->droppedToComponent = drop_component;
+                float distanceX = abs(drag_position->x - drop_position->x);
+                float distanceY = drag_position->y - drop_position->y;
                 
-                player_dragger->switchState(player_dragger->states[EMPTY_STATE], entity);
-                
-                break;
+                if (distanceX <= 20 && distanceY > 20 && !drop_component->filled) {
+                    
+                    EntityManager::addComponentToEntity(player_dragger->draggingEntity, new GravityComponent(1, 1, 0));
+                    EntityManager::addComponentToEntity(player_dragger->draggingEntity, new PassiveCollisionComponent());
+                    
+                    drop_component->fillEmenent = player_dragger->draggingEntity;
+                    
+                    drag_component->droppedTo = droppable;
+                    drag_component->droppedToComponent = drop_component;
+                    
+                    player_dragger->switchState(player_dragger->states[EMPTY_STATE], entity);
+                    
+                    break;
+                }
             }
         }
     }

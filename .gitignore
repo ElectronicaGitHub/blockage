@@ -2,3 +2,4 @@ cocos2d/
 /bin/*
 .DS_Store
 proj.ios_mac/build/*
+proj.ios_mac/cppTests.xcodeproj/project.xcworkspace/xcuserdata/shum.xcuserdatad/UserInterfaceState.xcuserstate

@@ -33,6 +33,11 @@ using namespace std;
 class PlayingAnimateLayer : public cocos2d::Layer {
 public:
     UserActionsController* userActionsController;
+    MotionController* motionController;
+    RangedAttackController* rangedAttackController;
+    RenderController* renderController;
+    CollisionController* collisionController;
+    DndController* dndController;
     
     virtual bool init() override;
     virtual void update(float delta) override;
