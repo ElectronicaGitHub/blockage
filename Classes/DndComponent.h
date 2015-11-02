@@ -14,10 +14,6 @@
 #include "DragComponent.h"
 #include "Entity.h"
 
-enum DndStateType {
-    EMPTY_STATE, DRAGGING_STATE
-};
-
 class EmptyState : public State
 {
 public:
@@ -44,12 +40,12 @@ public:
 
 class DndComponent : public MainComponent {
 public:
-    DndStateType currentStateType = EMPTY_STATE;
+    StateType currentStateType = DND_EMPTY_STATE;
     bool buttonPressed;
     Entity* draggingEntity;
-    static map<DndStateType, State*> states;
+    static map<StateType, State*> states;
     
-    DndComponent() : MainComponent(DND_COMPONENT, states.find(EMPTY_STATE)->second) {};
+    DndComponent() : MainComponent(DND_COMPONENT, states.find(DND_EMPTY_STATE)->second) {};
     ~DndComponent() {};
 };
 

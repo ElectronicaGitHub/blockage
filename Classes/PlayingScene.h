@@ -9,6 +9,7 @@
 #ifndef __cppTests__PlayingScene__
 #define __cppTests__PlayingScene__
 
+#include <array>
 #include "cocos2d.h"
 
 #include "RenderController.h"

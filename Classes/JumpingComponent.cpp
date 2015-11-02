@@ -9,18 +9,18 @@
 #include <stdio.h>
 #include "JumpingComponent.h"
 
-map<JumpingStateType, State*> JumpingComponent::states = {
-    {AIR_STATE, new JumpingAirState() },
-    {GROUND_STATE, new JumpingGroundState() }
+map<StateType, State*> JumpingComponent::states = {
+    {JUMPING_AIR_STATE, new JumpingAirState() },
+    {JUMPING_GROUND_STATE, new JumpingGroundState() }
 };
 
-float JumpingComponent::velocity = 250;
+float JumpingComponent::velocity = 240;
 
 
 void JumpingAirState::handleEvent(Entity* entity, MainComponent* component, EventType event) {
     if (event == COLLISION_BOTTOM) {
         JumpingComponent* jumping = static_cast<JumpingComponent*>(component);
-        jumping->switchState(jumping->states[GROUND_STATE], entity);
+        jumping->switchState(jumping->states[JUMPING_GROUND_STATE], entity);
     }
 }
 
@@ -42,7 +42,7 @@ void JumpingAirState::onExit(Entity* entity, MainComponent* component) {}
 void JumpingGroundState::handleEvent(Entity* entity, MainComponent* component, EventType event) {
     if (event == INPUT_UP) {
         JumpingComponent* jumping = static_cast<JumpingComponent*>(component);
-        component->switchState(jumping->states[AIR_STATE], entity);
+        component->switchState(jumping->states[JUMPING_AIR_STATE], entity);
     }
 }
 

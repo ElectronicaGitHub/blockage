@@ -19,7 +19,10 @@ enum ImageName {
     IMAGE_WALL_DRAG,
     IMAGE_DWARF,
     IMAGE_STONE,
-    IMAGE_BACKGROUND
+    IMAGE_BACKGROUND,
+    
+    ANIMATION_DWARF_MOTION,
+    ANIMATION_WARRIOR_REST
 };
 
 class ImageStorage {

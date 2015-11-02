@@ -18,10 +18,6 @@
 
 using namespace std;
 
-enum JumpingStateType {
-    AIR_STATE, GROUND_STATE
-};
-
 class JumpingAirState : public State
 {
 public:
@@ -54,9 +50,9 @@ public:
     ComponentType type = JUMPING_COMPONENT;
     
     static float velocity;
-    static map<JumpingStateType, State*> states;
+    static map<StateType, State*> states;
     
-    JumpingComponent() : MainComponent(JUMPING_COMPONENT, states.find(AIR_STATE)->second) {}
+    JumpingComponent() : MainComponent(JUMPING_COMPONENT, states.find(JUMPING_AIR_STATE)->second) {}
     ~JumpingComponent(){}
 };
 

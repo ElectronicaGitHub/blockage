@@ -10,7 +10,8 @@
 
 void CollisionController::tick(Entity* entity) {
     if (EntityManager::entityHasComponent(entity, ACTIVE_COLLISION_COMPONENT)) {
-        vector<Entity*> passive_entities = EntityManager::getNearestPassiveEntities(entity);
+//        vector<Entity*> passive_entities = EntityManager::getNearestPassiveEntities(entity);
+        vector<Entity*> passive_entities = EntityManager::getAllPassiveEntities();
         
         ActiveCollisionComponent* comp = static_cast<ActiveCollisionComponent*>(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
         comp->collision[COL_BOTTOM] = false;
@@ -53,15 +54,17 @@ void CollisionController::tick(Entity* entity) {
                     }
                 }
                 if (r1leftLine.intersectsRect(rect2)) {
-                    position->x = rect2MaxX + rect1.size.height/2;
+                    
+//                    position->x = rect2MaxX + rect1.size.height/2;
                     comp->collision[COL_LEFT] = true;
                 }
                 if (r1rightLine.intersectsRect(rect2)) {
-                    position->x = rect2MinX - rect1.size.height/2;
+                    
+//                    position->x = rect2MinX - rect1.size.height/2;
                     comp->collision[COL_RIGHT] = true;
                 }
                 if (r1topLine.intersectsRect(rect2)) {
-                    position->y = rect2MinY - rect1.size.height/2;
+//                    position->y = rect2MinY - rect1.size.height/2;
                     comp->collision[COL_TOP] = true;
                 }
             }

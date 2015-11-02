@@ -16,10 +16,8 @@ bool PlayingAnimateLayer::init() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    MapStorage mapStorage;
-    
-    int mapSizeX = mapStorage.map[0].size();
-    int mapSizeY = mapStorage.map.size();
+    int mapSizeX = MapStorage::mapSizeX;
+    int mapSizeY = MapStorage::mapSizeY;
     
     float fullsizeWidth = visibleSize.width;
     float fullsizeHeight = visibleSize.height;
@@ -29,35 +27,54 @@ bool PlayingAnimateLayer::init() {
     cout << "fullsizeWidth: " << fullsizeWidth << " and fullsizeHeight: " << fullsizeHeight << endl;
     cout << "mapSizeX: " << mapSizeX << " and mapSizeY: " << mapSizeY << endl;
     
-    for (int i = 0; i < mapStorage.map.size(); i++) {
-        for (int j = 0; j < mapStorage.map[i].size(); j++) {
-            string id = "brick" + to_string(i) + "::" + to_string(j) + "";
-            if (mapStorage.map[i][j] != 0) {
-                Entity* ent = new BrickEntity();
-                EntityManager::addPassiveEntity(ent);
-                EntityManager::addComponentToEntity(ent, new PositionComponent(tileSize.first * j + tileSize.first/2 + origin.x, tileSize.second * i + tileSize.second/2 + origin.y, 1));
-                
-                if (mapStorage.map[i][j] == 2) {
-                    EntityManager::addComponentsToEntity(ent, {
-                        new DropComponent(),
-                        new RenderComponent(this, IMAGE_WALL_DROP, tileSize),
-                    });
-                }
-                else if (mapStorage.map[i][j] == 1) {
-                    EntityManager::addComponentsToEntity(ent, {
-                        new RenderComponent(this, IMAGE_WALL, tileSize),
-                        new PassiveCollisionComponent()
-                    });
-                }
-                
-            }
-        }
+    vector<array<int, 4>> brick_vector = MapStorage::map.find(BRICK_ENTITY)->second;
+    float x,y,w,h;
+    for (int i = 0; i < brick_vector.size(); i++) {
+        string id = "brick" + to_string(i) + "";
+        Entity* entity = new BrickEntity();
+        EntityManager::addPassiveEntity(entity);
+        
+        x = tileSize.first * brick_vector[i][0] + origin.x;
+        y = tileSize.second * brick_vector[i][1] + origin.y;
+        w = tileSize.first * brick_vector[i][2];
+        h = tileSize.second * brick_vector[i][3];
+        
+        RenderComponent* render = new RenderComponent(this, IMAGE_WALL, {w, h}, tileSize);
+        PositionComponent* position = new PositionComponent(x, y, 1);
+        render->sprite->setPosition(position->x, position->y);
+        
+        EntityManager::addComponentsToEntity(entity, {
+            render, position,
+            new PassiveCollisionComponent
+        });
+    }
+    
+    brick_vector = MapStorage::map.find(DROP_BRICK_ENTITY)->second;
+    for (int i = 0; i < brick_vector.size(); i++) {
+        string id = "drop_brick" + to_string(i) + "";
+        Entity* entity = new BrickEntity();
+        EntityManager::addPassiveEntity(entity);
+        
+        x = tileSize.first * brick_vector[i][0] + origin.x;
+        y = tileSize.second * brick_vector[i][1] + origin.y;
+        w = tileSize.first * brick_vector[i][2];
+        h = tileSize.second * brick_vector[i][3];
+        
+        RenderComponent* render = new RenderComponent(this, IMAGE_WALL_DROP, {w, h}, tileSize);
+        PositionComponent* position = new PositionComponent(x, y, 1);
+        render->sprite->setPosition(position->x, position->y);
+        
+        EntityManager::addComponentsToEntity(entity, {
+            render, position,
+            new DropComponent
+        });
+        
     }
     
     Entity* player = new PlayerEntity();
     EntityManager::addEntity(player);
     EntityManager::addComponentsToEntity(player, {
-        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(20, 20)),
+        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(15, 15)),
         new DndComponent()
     });
     ControlsComponent* player_controls_component = static_cast<ControlsComponent*>(EntityManager::getComponentByTypeFromEntity(player, CONTROLS_COMPONENT));
@@ -66,11 +83,11 @@ bool PlayingAnimateLayer::init() {
     EntityManager::addComponentsToEntity(drop_block, {
         new DragComponent(),
         new PassiveCollisionComponent(),
-        new PositionComponent(100, 100, 1),
+        new PositionComponent(100, 120, 1),
         new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
     });
     
-    EntityManager::addEntity(drop_block);
+//    EntityManager::addEntity(drop_block);
     
     userActionsController = new UserActionsController(_eventDispatcher, this, player_controls_component);
     motionController = new MotionController();
@@ -85,10 +102,6 @@ bool PlayingAnimateLayer::init() {
 }
 
 void PlayingAnimateLayer::update(float delta) {
-    for (int i = 0 ; i != EntityManager::passive_entities.size(); ++i) {
-        Entity* entity = EntityManager::passive_entities[i];
-        renderController->tick(entity, delta);
-    }
     for (int i = 0 ; i != EntityManager::entities.size(); ++i) {
         Entity* entity = EntityManager::entities[i];
         
@@ -105,7 +118,6 @@ void PlayingAnimateLayer::update(float delta) {
         }
     }
 }
-
 
 
 

@@ -22,6 +22,13 @@ enum EventType {
     INPUT_SPACE
 };
 
+enum StateType {
+    MOTION_STATE,
+    JUMPING_AIR_STATE, JUMPING_GROUND_STATE,
+    DND_EMPTY_STATE, DND_DRAGGING_STATE
+    
+};
+
 class State
 {
 public:

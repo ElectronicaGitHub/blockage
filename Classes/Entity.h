@@ -15,6 +15,7 @@
 #include "MotionComponent.h"
 #include "JumpingComponent.h"
 #include "RenderComponent.h"
+#include "AnimationComponent.h"
 #include "ControlsComponent.h"
 #include "GravityComponent.h"
 #include "ActiveCollisionComponent.h"
@@ -28,7 +29,8 @@ using namespace std;
 
 enum EntityType {
     PLAYER_ENTITY,
-    BRICK_ENTITY, STONE_ENTITY
+    BRICK_ENTITY, DROP_BRICK_ENTITY,
+    STONE_ENTITY
 };
 
 class Entity

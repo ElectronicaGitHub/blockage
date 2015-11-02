@@ -179,6 +179,7 @@ bool EntityManager::entityByIdHasComponent(string id, ComponentType type) {
 }
 
 bool EntityManager::entityHasComponent(Entity* entity, ComponentType type) {
+    
     vector<MainComponent*> components = entity->allComponents();
     for (auto it = components.begin(); it != components.end(); ++it) {
         if ((*it)->type == type) {

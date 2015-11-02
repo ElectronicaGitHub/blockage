@@ -21,7 +21,7 @@ public:
     bool dragged = false;
     Entity* draggedBy;
     Entity* droppedTo;
-    DropComponent* droppedToComponent;
+    DropComponent* droppedToComponent = NULL;
     
     DragComponent()
     : MainComponent(DRAG_COMPONENT)

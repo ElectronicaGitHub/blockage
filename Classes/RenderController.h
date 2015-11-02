@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "EntityManager.h"
 #include "RenderComponent.h"
+#include "AnimationComponent.h"
 #include "PositionComponent.h"
 
 class RenderController {

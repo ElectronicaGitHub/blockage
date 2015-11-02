@@ -15,5 +15,18 @@ void RenderController::tick(Entity* entity, float delta) {
         
         render->sprite->setPosition(position->x, position->y);
         render->sprite->setScaleX(abs(render->sprite->getScaleX()) * position->orientation);
+        
+        
+        AnimationComponent* animation = static_cast<AnimationComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ANIMATION_COMPONENT));
+        if (animation) {
+            vector<StateType> animation_key = {};
+            
+            MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));
+            if (abs(motion->dx) > 5) {
+                animation_key.push_back(MOTION_STATE);
+            }
+            
+            render->animate(animation->getAnimation(animation_key), delta);
+        }
     }
 }

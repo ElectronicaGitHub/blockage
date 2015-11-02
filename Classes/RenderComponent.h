@@ -10,9 +10,12 @@
 #define __cppTests__RenderComponent__
 
 #include <stdio.h>
+#include <sstream>
+#include <iomanip>
 #include "cocos2d.h"
 #include "MainComponent.h"
 #include "ImageStorage.h"
+#include "AnimationContainer.h"
 
 using namespace cocos2d;
 
@@ -22,20 +25,13 @@ public:
     cocos2d::Layer* layer;
     
     ComponentType type = RENDER_COMPONENT;
-    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
-        layer = _layer;
-        
-        sprite = Sprite::create(ImageStorage::getImage(image));
-        
-        Size contentSize = sprite->getContentSize();
-        sprite->setScaleX(size.first / contentSize.width);
-        sprite->setScaleY(size.second / contentSize.height);
-        
-        layer->addChild(sprite);
-    };
+    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size);
+    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, pair<float,float>texture_size);
     ~RenderComponent() {
         layer->removeChild(sprite);
     };
+    
+    void animate(AnimationContainer* animation, float delta);
 };
 
 #endif /* defined(__cppTests__RenderComponent__) */

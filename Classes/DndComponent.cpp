@@ -8,9 +8,9 @@
 
 #include "DndComponent.h"
 
-map<DndStateType, State*> DndComponent::states = {
-    { EMPTY_STATE, new EmptyState() },
-    { DRAGGING_STATE, new DraggingState() }
+map<StateType, State*> DndComponent::states = {
+    { DND_EMPTY_STATE, new EmptyState() },
+    { DND_DRAGGING_STATE, new DraggingState() }
 };
 
 void EmptyState::handleEvent(Entity* entity, MainComponent* component, EventType event) {
@@ -33,7 +33,7 @@ void EmptyState::handleEvent(Entity* entity, MainComponent* component, EventType
                 player_dragger->draggingEntity = draggable;
                 
                 DndComponent* dnd = static_cast<DndComponent*>(component);
-                dnd->switchState(dnd->states[DRAGGING_STATE], entity);
+                dnd->switchState(dnd->states[DND_DRAGGING_STATE], entity);
             }
         }
     }
@@ -48,7 +48,7 @@ void EmptyState::onExit(Entity* entity, MainComponent* component) {
     if (draggable_component->droppedToComponent && draggable_component->droppedToComponent->filled) {
         draggable_component->droppedToComponent->filled = false;
     }
-    player_dragger->currentStateType = DRAGGING_STATE;
+    player_dragger->currentStateType = DND_DRAGGING_STATE;
     
     EntityManager::removeComponentFromEntity(player_dragger->draggingEntity, PASSIVE_COLLISION_COMPONENT);
     EntityManager::removeComponentFromEntity(player_dragger->draggingEntity, MOTION_COMPONENT);
@@ -87,7 +87,7 @@ void DraggingState::handleEvent(Entity* entity, MainComponent* component, EventT
                     drag_component->droppedTo = droppable;
                     drag_component->droppedToComponent = drop_component;
                     
-                    player_dragger->switchState(player_dragger->states[EMPTY_STATE], entity);
+                    player_dragger->switchState(player_dragger->states[DND_EMPTY_STATE], entity);
                     
                     break;
                 }
@@ -117,7 +117,7 @@ void DraggingState::onExit(Entity* entity, MainComponent* component) {
     drag_component->droppedToComponent->filled = true;
     
     player_dragger->draggingEntity = NULL;
-    player_dragger->currentStateType = EMPTY_STATE;
+    player_dragger->currentStateType = DND_EMPTY_STATE;
     
     drag_position->x = drop_position->x;
     drag_position->y = drop_position->y;

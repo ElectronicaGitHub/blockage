@@ -58,6 +58,10 @@
 		A40919EF1BD1CC7D0009346B /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919EC1BD1CC7D0009346B /* GameStateManager.cpp */; };
 		A40919F31BD1D1CC0009346B /* PlayingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F11BD1D1CC0009346B /* PlayingScene.cpp */; };
 		A40919F41BD1D1CC0009346B /* PlayingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F11BD1D1CC0009346B /* PlayingScene.cpp */; };
+		A40919F71BE2D4550009346B /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F61BE2D4550009346B /* RenderComponent.cpp */; };
+		A40919F81BE2D4550009346B /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F61BE2D4550009346B /* RenderComponent.cpp */; };
+		A4640B3B1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */; };
+		A4640B3C1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */; };
 		A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
 		A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
 		A4EBA6CF1BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */; };
@@ -196,6 +200,10 @@
 		A40919ED1BD1CC7D0009346B /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateManager.h; sourceTree = "<group>"; };
 		A40919F11BD1D1CC0009346B /* PlayingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingScene.cpp; sourceTree = "<group>"; };
 		A40919F21BD1D1CC0009346B /* PlayingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingScene.h; sourceTree = "<group>"; };
+		A40919F61BE2D4550009346B /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
+		A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationComponent.cpp; sourceTree = "<group>"; };
+		A4640B3A1BE655AC00C235F7 /* AnimationComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationComponent.h; sourceTree = "<group>"; };
+		A4640B3E1BE6720500C235F7 /* AnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContainer.h; sourceTree = "<group>"; };
 		A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackComponent.h; sourceTree = "<group>"; };
 		A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackController.cpp; sourceTree = "<group>"; };
 		A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackController.h; sourceTree = "<group>"; };
@@ -447,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				A4EBA6CB1BC709B8001F8DC8 /* State.h */,
+				A4640B3E1BE6720500C235F7 /* AnimationContainer.h */,
 			);
 			name = concerns;
 			sourceTree = "<group>";
@@ -478,6 +487,9 @@
 			isa = PBXGroup;
 			children = (
 				A4EBA6C91BC70978001F8DC8 /* concerns */,
+				A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */,
+				A4640B3A1BE655AC00C235F7 /* AnimationComponent.h */,
+				A40919F61BE2D4550009346B /* RenderComponent.cpp */,
 				D45909551BB77A3C00D43BD5 /* RenderComponent.h */,
 				D45909641BB864A500D43BD5 /* ControlsComponent.h */,
 				A4EBA6D11BC8FED9001F8DC8 /* MainComponent.cpp */,
@@ -664,10 +676,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D43EC5D31BD70A1C0083A084 /* DropComponent.h in Sources */,
+				A40919F71BE2D4550009346B /* RenderComponent.cpp in Sources */,
 				FD1B17761BC3E3930015E684 /* EntityManager.cpp in Sources */,
 				FD1B17771BC3E3930015E684 /* EntityManager.h in Sources */,
 				FD1B177B1BC3E3930015E684 /* RenderComponent.h in Sources */,
 				FD1B177F1BC3E3930015E684 /* ControlsComponent.h in Sources */,
+				A4640B3B1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */,
 				A40919DD1BCB30280009346B /* PlayerEntity.cpp in Sources */,
 				A40919EE1BD1CC7D0009346B /* GameStateManager.cpp in Sources */,
 				FD1B17811BC3E3930015E684 /* MainComponent.h in Sources */,
@@ -708,6 +722,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				FD1B1C621BC3F6C70015E684 /* MapStorage.cpp in Sources */,
 				A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
+				A4640B3C1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				A40919F41BD1D1CC0009346B /* PlayingScene.cpp in Sources */,
 				A4EBA6D01BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */,
@@ -721,6 +736,7 @@
 				FD1B1C5E1BC3F6B70015E684 /* MotionController.cpp in Sources */,
 				D43EC5CE1BD6915E0083A084 /* DndComponent.cpp in Sources */,
 				A4EBA6D31BC8FED9001F8DC8 /* MainComponent.cpp in Sources */,
+				A40919F81BE2D4550009346B /* RenderComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
