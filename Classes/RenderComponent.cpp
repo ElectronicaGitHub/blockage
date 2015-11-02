@@ -11,6 +11,7 @@
 
 RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
     layer = _layer;
+    tile_size = size;
     
     sprite = Sprite::create(ImageStorage::getImage(image));
     
@@ -47,6 +48,8 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
 };
 
 void RenderComponent::animate(AnimationContainer* animation, float delta) {
+    switchCurrentAnimation(animation);
+    
     stringstream ss;
     ss << setw(2) << setfill('0') << animation->currentFrame;
     
@@ -54,8 +57,26 @@ void RenderComponent::animate(AnimationContainer* animation, float delta) {
     if (animation->frameSwitcher > animation->frameTime) {
         SpriteFrameCache* cache = SpriteFrameCache::getInstance();
         SpriteFrame* frame = cache->getSpriteFrameByName(animation->frameName + "_" + ss.str() + ".png");
+       
+        if (animation->currentFrame == 1) {
+            Size contentSize = frame->getOriginalSize();
+            sprite->setScaleX(tile_size.first / contentSize.width);
+            sprite->setScaleY(tile_size.second / contentSize.height);
+        }
+
         sprite->setSpriteFrame(frame);
+        
         animation->currentFrame = (animation->currentFrame == animation->framesNumber) ? 1 : animation->currentFrame + 1;
         animation->frameSwitcher = 0;
     }
 };
+
+void RenderComponent::switchCurrentAnimation(AnimationContainer* animation) {
+    if (animation != currentAnimation) {
+        if (currentAnimation) {
+            currentAnimation->currentFrame = 1;
+            currentAnimation->frameSwitcher = 0;
+        }
+        currentAnimation = animation;
+    }
+}

@@ -22,7 +22,7 @@ void RenderController::tick(Entity* entity, float delta) {
             vector<StateType> animation_key = {};
             
             MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));
-            if (abs(motion->dx) > 5) {
+            if (abs(motion->dx) > 10) {
                 animation_key.push_back(MOTION_STATE);
             }
             

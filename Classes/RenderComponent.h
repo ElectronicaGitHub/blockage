@@ -23,6 +23,9 @@ class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
     cocos2d::Layer* layer;
+    pair<float, float> tile_size;
+    
+    AnimationContainer* currentAnimation = NULL;
     
     ComponentType type = RENDER_COMPONENT;
     RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size);
@@ -32,6 +35,7 @@ public:
     };
     
     void animate(AnimationContainer* animation, float delta);
+    void switchCurrentAnimation(AnimationContainer* animation);
 };
 
 #endif /* defined(__cppTests__RenderComponent__) */
