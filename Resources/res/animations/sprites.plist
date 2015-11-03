@@ -1,103 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+<dict>
+	<key>frames</key>
 	<dict>
-		<key>frames</key>
+		<key>slice_01.png</key>
 		<dict>
-			<key>slice01_01.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{284,0},{91,128}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{91,128}}</string>
-				<key>sourceSize</key>
-				<string>{91,128}</string>
-			</dict>
-
-			<key>slice02_02.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{376,0},{89,129}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{89,129}}</string>
-				<key>sourceSize</key>
-				<string>{89,129}</string>
-			</dict>
-
-			<key>slice03_03.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{190,0},{93,129}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{93,129}}</string>
-				<key>sourceSize</key>
-				<string>{93,129}</string>
-			</dict>
-
-			<key>slice04_04.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{0,0},{95,129}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{95,129}}</string>
-				<key>sourceSize</key>
-				<string>{95,129}</string>
-			</dict>
-
-			<key>slice05_05.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{96,0},{93,129}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{93,129}}</string>
-				<key>sourceSize</key>
-				<string>{93,129}</string>
-			</dict>
-
-			<key>slice06_06.png</key>
-			<dict>
-				<key>frame</key>
-				<string>{{376,0},{89,129}}</string>
-				<key>offset</key>
-				<string>{0,0}</string>
-				<key>rotated</key>
-				<false/>
-				<key>sourceColorRect</key>
-				<string>{{0,0},{89,129}}</string>
-				<key>sourceSize</key>
-				<string>{89,129}</string>
-			</dict>
-
+			<key>frame</key>
+			<string>{{284,0},{91,128}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{91,128}}</string>
+			<key>sourceSize</key>
+			<string>{91,128}</string>
 		</dict>
-
-		<key>metadata</key>
+		<key>slice_02.png</key>
 		<dict>
-			<key>format</key>
-			<integer>2</integer>
-			<key>size</key>
-			<string>{512,256}</string>
-			<key>textureFileName</key>
-			<string>sprites.png</string>
-			</dict>
+			<key>frame</key>
+			<string>{{376,0},{89,129}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{89,129}}</string>
+			<key>sourceSize</key>
+			<string>{89,129}</string>
 		</dict>
+		<key>slice_03.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{190,0},{93,129}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{93,129}}</string>
+			<key>sourceSize</key>
+			<string>{93,129}</string>
+		</dict>
+		<key>slice_04.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{0,0},{95,129}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{95,129}}</string>
+			<key>sourceSize</key>
+			<string>{95,129}</string>
+		</dict>
+		<key>slice_05.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{96,0},{93,129}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{93,129}}</string>
+			<key>sourceSize</key>
+			<string>{93,129}</string>
+		</dict>
+		<key>slice_06.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{376,0},{89,129}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{89,129}}</string>
+			<key>sourceSize</key>
+			<string>{89,129}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{512,256}</string>
+		<key>textureFileName</key>
+		<string>sprites.png</string>
+	</dict>
+</dict>
 </plist>
