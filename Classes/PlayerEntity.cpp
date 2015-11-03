@@ -17,7 +17,7 @@ vector<MainComponent*> PlayerEntity::static_components = {
     new ActiveCollisionComponent("player", {"player", "block"}),
     new RangedAttackComponent(30.0f, 10),
     new AnimationComponent({
-        { {},               new AnimationContainer(ANIMATION_WARRIOR_REST, 4, 0.3, "warrior_rest") },
+        { {},               new AnimationContainer(ANIMATION_WARRIOR_REST, 6, 0.3, "sprite") },
         { { MOTION_STATE }, new AnimationContainer(ANIMATION_DWARF_MOTION, 8, 0.1, "dwarf_motion") }
     })
 };
