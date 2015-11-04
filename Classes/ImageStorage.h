@@ -21,8 +21,8 @@ enum ImageName {
     IMAGE_STONE,
     IMAGE_BACKGROUND,
     
-    ANIMATION_DWARF_MOTION,
-    ANIMATION_WARRIOR_REST
+    WARRIOR_RUN,
+    WARRIOR_STAY
 };
 
 class ImageStorage {

@@ -23,8 +23,8 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
     
     // Вот это здесь ЯХ быть не должно, но когда это пишешь в конструкторе контейнера анимации, вместо картинки черный квадрат. ХЗ че за хрень, надо разобраться
     SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-    cache->addSpriteFramesWithFile(ImageStorage::getImage(ANIMATION_DWARF_MOTION));
-    cache->addSpriteFramesWithFile(ImageStorage::getImage(ANIMATION_WARRIOR_REST));
+    cache->addSpriteFramesWithFile(ImageStorage::getImage(WARRIOR_STAY));
+    cache->addSpriteFramesWithFile(ImageStorage::getImage(WARRIOR_RUN));
 };
 
 RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, pair<float,float>texture_size) : MainComponent(RENDER_COMPONENT) {
