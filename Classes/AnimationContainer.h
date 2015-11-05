@@ -26,7 +26,7 @@ public:
         frameTime = _frameTime;
         frameName = _frameName;
         currentFrame = 1;
-        frameSwitcher = 0;
+        frameSwitcher = 100;
         
 //        SpriteFrameCache* cache = SpriteFrameCache::getInstance();
 //        cache->addSpriteFramesWithFile(ImageStorage::getImage(ANIMATION_DWARF_MOTION));

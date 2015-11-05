@@ -10,6 +10,7 @@
 #define __cppTests__RenderComponent__
 
 #include <stdio.h>
+#include <iostream>
 #include <sstream>
 #include <iomanip>
 #include "cocos2d.h"
@@ -35,6 +36,8 @@ public:
     };
     
     void animate(AnimationContainer* animation, float delta);
+    
+private:
     void switchCurrentAnimation(AnimationContainer* animation);
 };
 

@@ -74,7 +74,7 @@ bool PlayingAnimateLayer::init() {
     Entity* player = new PlayerEntity();
     EntityManager::addEntity(player);
     EntityManager::addComponentsToEntity(player, {
-        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(11, 15)),
+        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(11, 16)),
         new DndComponent()
     });
     ControlsComponent* player_controls_component = static_cast<ControlsComponent*>(EntityManager::getComponentByTypeFromEntity(player, CONTROLS_COMPONENT));
