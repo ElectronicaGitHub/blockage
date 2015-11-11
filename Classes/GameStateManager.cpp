@@ -16,9 +16,11 @@ void GameStateManager::runGame() {
     
     cocos2d::Layer* bg_layer = PlayingBGLayer::create();
     cocos2d::Layer* animate_layer = PlayingAnimateLayer::create();
+    cocos2d::Layer* info_layer = PlayingInfoLayer::create();
     
     currentScene->addChild(bg_layer);
     currentScene->addChild(animate_layer);
+    currentScene->addChild(info_layer);
     
     director->runWithScene(currentScene);
 }

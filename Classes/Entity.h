@@ -18,6 +18,7 @@
 #include "AnimationComponent.h"
 #include "ControlsComponent.h"
 #include "GravityComponent.h"
+#include "HPComponent.h"
 #include "ActiveCollisionComponent.h"
 #include "PassiveCollisionComponent.h"
 #include "RangedAttackComponent.h"

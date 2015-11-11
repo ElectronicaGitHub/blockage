@@ -1,12 +1,12 @@
 //
-//  PlayingScene.cpp
+//  PlayingAnimateLayer.cpp
 //  cppTests
 //
-//  Created by shum on 17.10.15.
+//  Created by shum on 12.11.15.
 //
 //
 
-#include "PlayingScene.h"
+#include "PlayingAnimateLayer.h"
 
 bool PlayingAnimateLayer::init() {
     if ( !Layer::init() ) {
@@ -87,7 +87,7 @@ bool PlayingAnimateLayer::init() {
         new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
     });
     
-//    EntityManager::addEntity(drop_block);
+    //    EntityManager::addEntity(drop_block);
     
     userActionsController = new UserActionsController(_eventDispatcher, this, player_controls_component);
     motionController = new MotionController();
@@ -118,28 +118,3 @@ void PlayingAnimateLayer::update(float delta) {
         }
     }
 }
-
-
-
-
-bool PlayingBGLayer::init() {
-    if ( !Layer::init() ) {
-        return false;
-    }
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
-    cocos2d::Sprite* sprite = cocos2d::Sprite::create(ImageStorage::getImage(IMAGE_BACKGROUND));
-    sprite->setPosition(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
-    sprite->setScale(0.5);
-    
-    Size contentSize = sprite->getContentSize();
-    sprite->setScaleX(visibleSize.width / contentSize.width);
-    sprite->setScaleY(visibleSize.height / contentSize.height);
-    
-    this->addChild(sprite);
-    
-    return true;
-}
-

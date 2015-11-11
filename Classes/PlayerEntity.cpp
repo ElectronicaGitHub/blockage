@@ -12,6 +12,7 @@ vector<MainComponent*> PlayerEntity::static_components = {
     new MotionComponent(0, 0, 170),
     new PositionComponent(200, 300, 1),
     new GravityComponent(1.4f, 1.1f, 0),
+    new HPComponent(100),
     new ControlsComponent(),
     new JumpingComponent(),
     new ActiveCollisionComponent("player", {"player", "block"}),
