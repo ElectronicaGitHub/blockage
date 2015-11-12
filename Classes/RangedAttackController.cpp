@@ -22,12 +22,12 @@ void RangedAttackController::tick(Entity* entity, cocos2d::Layer* layer, float d
                 Entity* stone = new StoneEntity();
                 EntityManager::addEntity(stone);
                 
-                EntityManager::addComponentsToEntity(stone, {
-                    new MotionComponent(250 * position->orientation + motion->dx, 250),
-                    new PositionComponent(position->x, position->y, 1),
-                    new RenderComponent(layer, IMAGE_STONE, {7, 7}),
-                    new ActiveCollisionComponent("player", {"player", "block"})
-                });
+//                EntityManager::addComponentsToEntity(stone, {
+//                    new MotionComponent(250 * position->orientation + motion->dx, 250),
+//                    new PositionComponent(position->x, position->y, 1),
+//                    new RenderComponent(layer, IMAGE_STONE, {7, 7}),
+//                    new ActiveCollisionComponent("player", {"player", "block"})
+//                });
                 
                 cout << EntityManager::entities.size() << endl;
                 

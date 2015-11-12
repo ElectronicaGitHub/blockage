@@ -71,6 +71,7 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D43B387A1BF28F0F002B2C52 /* spine in Resources */ = {isa = PBXBuildFile; fileRef = D43B38791BF28F0F002B2C52 /* spine */; };
 		D43EC5CD1BD6915E0083A084 /* DndComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */; };
 		D43EC5CE1BD6915E0083A084 /* DndComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */; };
 		D43EC5D11BD691BF0083A084 /* DndController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43EC5CF1BD691BF0083A084 /* DndController.cpp */; };
@@ -203,7 +204,6 @@
 		A40919F61BE2D4550009346B /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
 		A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationComponent.cpp; sourceTree = "<group>"; };
 		A4640B3A1BE655AC00C235F7 /* AnimationComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationComponent.h; sourceTree = "<group>"; };
-		A4640B3E1BE6720500C235F7 /* AnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContainer.h; sourceTree = "<group>"; };
 		A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackComponent.h; sourceTree = "<group>"; };
 		A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackController.cpp; sourceTree = "<group>"; };
 		A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackController.h; sourceTree = "<group>"; };
@@ -213,6 +213,7 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D43B38791BF28F0F002B2C52 /* spine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = spine; path = ../Classes/spine; sourceTree = "<group>"; };
 		D43EC5C41BD690380083A084 /* DragComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragComponent.h; sourceTree = "<group>"; };
 		D43EC5C81BD6910F0083A084 /* DropComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropComponent.h; sourceTree = "<group>"; };
 		D43EC5CB1BD6915E0083A084 /* DndComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DndComponent.cpp; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D43B38791BF28F0F002B2C52 /* spine */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -455,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				A4EBA6CB1BC709B8001F8DC8 /* State.h */,
-				A4640B3E1BE6720500C235F7 /* AnimationContainer.h */,
 			);
 			name = concerns;
 			sourceTree = "<group>";
@@ -653,6 +654,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				D43B387A1BF28F0F002B2C52 /* spine in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);

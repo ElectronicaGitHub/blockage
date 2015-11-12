@@ -15,27 +15,27 @@ void MotionController::tick(Entity* entity, float delta) {
         
         if (EntityManager::entityHasComponent(entity, GRAVITY_COMPONENT)) {
             GravityComponent* gravity = static_cast<GravityComponent* >(EntityManager::getComponentByTypeFromEntity(entity, GRAVITY_COMPONENT));
-            
-            ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
-            if (collision->collision[COL_BOTTOM]) {
-                if (gravity->downfall < 0) {
-                    entity->deleted = true;
-                }
-                
-                if (motion->dy < 0) {
-                    motion->dy *= -gravity->downfall;
-                }
+
+//            ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
+//            if (collision->collision[COL_BOTTOM]) {
+//                if (gravity->downfall < 0) {
+//                    entity->deleted = true;
+//                }
+//                
+//                if (motion->dy < 0) {
+//                    motion->dy *= -gravity->downfall;
+//                }
                 motion->dx = motion->dx / gravity->friction_ground;
-            }
-            else {
-                if (collision->collision[COL_TOP]) {
-                    if (motion->dy > 0) {
-                        motion->dy = 0;
-                    }
-                }
-                motion->dy -= gravity->gravity * delta;
-                motion->dx = motion->dx / gravity->friction_air;
-            };
+//            }
+//            else {
+//                if (collision->collision[COL_TOP]) {
+//                    if (motion->dy > 0) {
+//                        motion->dy = 0;
+//                    }
+//                }
+//                motion->dy -= gravity->gravity * delta;
+//                motion->dx = motion->dx / gravity->friction_air;
+//            };
         }
     
         position->x += motion->dx * delta;

@@ -9,22 +9,31 @@
 #include <stdio.h>
 #include "RenderComponent.h"
 
-RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size) : MainComponent(RENDER_COMPONENT) {
+RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, string startAnimation) : MainComponent(RENDER_COMPONENT) {
     layer = _layer;
     tile_size = size;
+    currentAnimation = startAnimation;
     
-    sprite = Sprite::create(ImageStorage::getImage(image));
+//    Size contentSize = sprite->getContentSize();
     
-    Size contentSize = sprite->getContentSize();
-    sprite->setScaleX(size.first / contentSize.width);
-    sprite->setScaleY(size.second / contentSize.height);
+    animatedSprite = SkeletonAnimation::createWithFile("res/animations/warrior/skeleton.json", "res/animations/warrior/skeleton.atlas", 1);
+    animatedSprite->setAnimation(0, currentAnimation, true);
+    animatedSprite->setSkin("default");
+//    animatedSprite->setDebugBonesEnabled(true);
+//    animatedSprite->setDebugSlotsEnabled(true);
+//    animatedSprite->setScale(0.2, 0.2);
+//    animatedSprite->setContentSize({20, 20});
     
-    layer->addChild(sprite);
+    spAttachment* a = animatedSprite->getAttachment("boundingbox", "global");
+    spSlot* sl = animatedSprite->findSlot("global");
     
-    // Вот это здесь ЯХ быть не должно, но когда это пишешь в конструкторе контейнера анимации, вместо картинки черный квадрат. ХЗ че за хрень, надо разобраться
-    SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-    cache->addSpriteFramesWithFile(ImageStorage::getImage(WARRIOR_STAY));
-    cache->addSpriteFramesWithFile(ImageStorage::getImage(WARRIOR_RUN));
+//    cout << sl->bone->skeleton->data->width << " :: " << sl->bone->skeleton->data->height << endl;
+    
+    
+    animatedSprite->setScaleX(size.first / sl->bone->skeleton->data->width);
+    animatedSprite->setScaleY(size.second / sl->bone->skeleton->data->height);
+    
+    layer->addChild(animatedSprite);
 };
 
 RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, pair<float,float>texture_size) : MainComponent(RENDER_COMPONENT) {
@@ -35,9 +44,9 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
     
     Size contentSize = sprite->getContentSize();
     
-    sprite->getTexture()->setTexParameters({GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
+//    sprite->getTexture()->setTexParameters({GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
     
-    sprite->setTextureRect(cocos2d::Rect(0, 0, contentSize.width * (size.first / texture_size.first), contentSize.height * (size.second / texture_size.second)));
+//    sprite->setTextureRect(cocos2d::Rect(0, 0, contentSize.width * (size.first / texture_size.first), contentSize.height * (size.second / texture_size.second)));
     
     contentSize = sprite->getContentSize();
     float scaleX = size.first / contentSize.width, scaleY = size.second / contentSize.height;
@@ -47,37 +56,13 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
     layer->addChild(sprite);
 };
 
-void RenderComponent::animate(AnimationContainer* animation, float delta) {
-    switchCurrentAnimation(animation);
+void RenderComponent::animate(string animation) {
     
-    stringstream ss;
-    ss << setw(2) << setfill('0') << animation->currentFrame;
-    
-    animation->frameSwitcher += delta;
-    if (animation->frameSwitcher > animation->frameTime) {
-        SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-        SpriteFrame* frame = cache->getSpriteFrameByName(animation->frameName + "_" + ss.str() + ".png");
-        
-        sprite->setSpriteFrame(frame);
-        
-        animation->currentFrame = (animation->currentFrame == animation->framesNumber) ? 1 : animation->currentFrame + 1;
-        animation->frameSwitcher = 0;
-    }
-};
-
-void RenderComponent::switchCurrentAnimation(AnimationContainer* animation) {
     if (animation != currentAnimation) {
-        if (currentAnimation) {
-            currentAnimation->currentFrame = 1;
-            currentAnimation->frameSwitcher = 100;
-        }
+        
+        animatedSprite->setAnimation(0, animation, true);
+        
         currentAnimation = animation;
-        
-        SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-        SpriteFrame* frame = cache->getSpriteFrameByName(animation->frameName + "_01.png");
-        
-        Size contentSize = frame->getOriginalSize();
-        sprite->setScaleX(tile_size.first / contentSize.width);
-        sprite->setScaleY(tile_size.second / contentSize.height);
     }
-}
+
+};

@@ -17,7 +17,7 @@ map<ImageName, string> ImageStorage::imageResources = {
     {IMAGE_BACKGROUND, "res/background.png"},
     
     {WARRIOR_RUN, "res/animations/warrior_run.plist"},
-    {WARRIOR_STAY, "res/animations/sprites.plist"}
+    {WARRIOR_STAY, "res/animations/warrior_stay.plist"}
 };
 
 string ImageStorage::getImage(ImageName key) {

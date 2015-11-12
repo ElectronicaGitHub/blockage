@@ -13,9 +13,14 @@ void RenderController::tick(Entity* entity, float delta) {
         RenderComponent* render = static_cast<RenderComponent* >(EntityManager::getComponentByTypeFromEntity(entity, RENDER_COMPONENT));
         PositionComponent* position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, POSITION_COMPONENT));
         
-        render->sprite->setPosition(position->x, position->y);
-        render->sprite->setScaleX(abs(render->sprite->getScaleX()) * position->orientation);
-        
+        if (render->sprite != NULL) {
+            render->sprite->setPosition(position->x, position->y);
+            render->sprite->setScaleX(abs(render->sprite->getScaleX()) * position->orientation);
+        }
+        if (render->animatedSprite != NULL) {
+            render->animatedSprite->setPosition(position->x, position->y);
+            render->animatedSprite->setScaleX(abs(render->animatedSprite->getScaleX()) * position->orientation);
+        }
         
         AnimationComponent* animation = static_cast<AnimationComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ANIMATION_COMPONENT));
         if (animation) {
@@ -26,7 +31,7 @@ void RenderController::tick(Entity* entity, float delta) {
                 animation_key.push_back(MOTION_STATE);
             }
             
-            render->animate(animation->getAnimation(animation_key), delta);
+            render->animate(animation->getAnimation(animation_key));
         }
     }
 }

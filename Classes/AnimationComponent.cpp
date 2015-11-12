@@ -8,6 +8,6 @@
 
 #include "AnimationComponent.h"
 
-AnimationContainer* AnimationComponent::getAnimation(vector<StateType> states) {
+string AnimationComponent::getAnimation(vector<StateType> states) {
     return animationMap.find(states)->second;
 };

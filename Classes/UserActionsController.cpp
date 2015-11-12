@@ -36,11 +36,13 @@ void UserActionsController::tick(Entity* entity, float delta) {
         bool isInputUp = control->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_W];
         bool isInputZ = control->keys[EventKeyboard::KeyCode::KEY_Z];
         
-        if (isInputLeft && !collision->collision[COL_LEFT]) {
+        if (isInputLeft) {
+//        if (isInputLeft && !collision->collision[COL_LEFT]) {
             motion->dx = -motion->controlVelosity;
         }
         
-        if (isInputRight && !collision->collision[COL_RIGHT]) {
+        if (isInputRight) {
+//        if (isInputRight && !collision->collision[COL_RIGHT]) {
             motion->dx = motion->controlVelosity;
         }
         

@@ -16,29 +16,29 @@
 #include "cocos2d.h"
 #include "MainComponent.h"
 #include "ImageStorage.h"
-#include "AnimationContainer.h"
+
+#include "spine/spine-cocos2dx.h"
 
 using namespace cocos2d;
+using namespace spine;
 
 class RenderComponent : public MainComponent {
 public:
     cocos2d::Sprite* sprite;
+    spine::SkeletonAnimation* animatedSprite;
     cocos2d::Layer* layer;
     pair<float, float> tile_size;
     
-    AnimationContainer* currentAnimation = NULL;
+    string currentAnimation;
     
     ComponentType type = RENDER_COMPONENT;
-    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size);
+    RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, string startAnimation);
     RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<float, float> size, pair<float,float>texture_size);
     ~RenderComponent() {
         layer->removeChild(sprite);
     };
     
-    void animate(AnimationContainer* animation, float delta);
-    
-private:
-    void switchCurrentAnimation(AnimationContainer* animation);
+    void animate(string animation);
 };
 
 #endif /* defined(__cppTests__RenderComponent__) */

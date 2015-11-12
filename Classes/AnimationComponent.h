@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "cocos2d.h"
 #include "MainComponent.h"
-#include "AnimationContainer.h"
 #include "ImageStorage.h"
 #include "State.h"
 
@@ -22,15 +21,15 @@ using namespace std;
 class AnimationComponent : public MainComponent {
 public:
     ComponentType type = ANIMATION_COMPONENT;
-    AnimationComponent(map<vector<StateType>, AnimationContainer*> _animationMap)
+    AnimationComponent(map<vector<StateType>, string> _animationMap)
     : MainComponent(ANIMATION_COMPONENT)
     , animationMap( _animationMap)
     {}
     ~AnimationComponent(){}
     
-    AnimationContainer* getAnimation(vector<StateType> states);
+    string getAnimation(vector<StateType> states);
 private:
-    map<vector<StateType>, AnimationContainer*> animationMap;
+    map<vector<StateType>, string> animationMap;
 };
 
 #endif /* defined(__cppTests__AnimationComponent__) */

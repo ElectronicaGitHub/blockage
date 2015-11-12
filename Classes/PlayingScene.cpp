@@ -44,8 +44,8 @@ bool PlayingAnimateLayer::init() {
         render->sprite->setPosition(position->x, position->y);
         
         EntityManager::addComponentsToEntity(entity, {
-            render, position,
-            new PassiveCollisionComponent
+            render, position
+//            new PassiveCollisionComponent
         });
     }
     
@@ -74,18 +74,18 @@ bool PlayingAnimateLayer::init() {
     Entity* player = new PlayerEntity();
     EntityManager::addEntity(player);
     EntityManager::addComponentsToEntity(player, {
-        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(11, 16)),
+        new RenderComponent(this, IMAGE_DWARF, pair<float, float>(14, 18), "stay"),
         new DndComponent()
     });
     ControlsComponent* player_controls_component = static_cast<ControlsComponent*>(EntityManager::getComponentByTypeFromEntity(player, CONTROLS_COMPONENT));
     
-    Entity* drop_block = new BrickEntity();
-    EntityManager::addComponentsToEntity(drop_block, {
-        new DragComponent(),
-        new PassiveCollisionComponent(),
-        new PositionComponent(100, 120, 1),
-        new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
-    });
+//    Entity* drop_block = new BrickEntity();
+//    EntityManager::addComponentsToEntity(drop_block, {
+//        new DragComponent(),
+//        new PassiveCollisionComponent(),
+//        new PositionComponent(100, 120, 1),
+//        new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
+//    });
     
 //    EntityManager::addEntity(drop_block);
     
@@ -97,7 +97,7 @@ bool PlayingAnimateLayer::init() {
     dndController = new DndController();
     
     this->scheduleUpdate();
-    
+
     return true;
 }
 
