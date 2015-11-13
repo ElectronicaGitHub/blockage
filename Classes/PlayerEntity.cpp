@@ -14,10 +14,12 @@ vector<MainComponent*> PlayerEntity::static_components = {
     new GravityComponent(1.4f, 1.1f, 0),
     new ControlsComponent(),
     new JumpingComponent(),
-//    new ActiveCollisionComponent("player", {"player", "block"}),
+    new ActiveCollisionComponent("player", {"player", "block"}),
     new RangedAttackComponent(30.0f, 10),
     new AnimationComponent({
-        { {},               "stay" },
-        { { MOTION_STATE }, "walk" }
+//        { {},               "stay" },
+        { { JUMPING_AIR_STATE }, "jump"},
+        { { MOTION_STATE, JUMPING_GROUND_STATE }, "walk" }
+        
     })
 };

@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "vEv5l3TQhgND9khwnTQkzhBasGY", "spine": "2.1.27", "width": 244.19, "height": 359.98, "images": "./../../Export/" },
+"skeleton": { "hash": "M7g9k1lfKlA9Xc2ssw0JdRKh4So", "spine": "2.1.27", "width": 244.19, "height": 359.98, "images": "./../../Export/" },
 "bones": [
 	{ "name": "root", "scaleX": 0.6, "scaleY": 0.625 },
 	{ "name": "bone", "parent": "root", "length": 263, "x": -0.5, "y": -4, "scaleY": 1.042, "rotation": 90 },
@@ -28,7 +28,7 @@
 		"global": {
 			"global": {
 				"type": "boundingbox",
-				"vertices": [ -144.58095, -198.6089, 171.88551, -198.60893, 171.88583, 384.20984, -144.58089, 384.20984 ]
+				"vertices": [ -144.58095, -188.09418, 171.88556, -189.5963, 171.88583, 384.20984, -144.58089, 384.20984 ]
 			}
 		},
 		"hand_f@High2": {
@@ -73,11 +73,10 @@
 			},
 			"bone3": {
 				"rotate": [
-					{ "time": 0, "angle": -47.67 },
-					{ "time": 0.1333, "angle": -42.9 },
-					{ "time": 0.3, "angle": -52.04 },
-					{ "time": 0.4666, "angle": -46.27 },
-					{ "time": 0.6666, "angle": -47.67 }
+					{ "time": 0, "angle": -279.06 },
+					{ "time": 0.2333, "angle": -287.9 },
+					{ "time": 0.4333, "angle": -292.31 },
+					{ "time": 0.6666, "angle": -279.06 }
 				]
 			},
 			"bone4": {
@@ -237,16 +236,20 @@
 			},
 			"bone6": {
 				"rotate": [
-					{ "time": 0, "angle": -41.87 },
-					{ "time": 0.3333, "angle": 24.38 },
-					{ "time": 0.6666, "angle": -41.87 }
+					{ "time": 0, "angle": -26.4 },
+					{ "time": 0.1666, "angle": 24.38 },
+					{ "time": 0.3333, "angle": -26.4 },
+					{ "time": 0.5, "angle": 24.38 },
+					{ "time": 0.6666, "angle": -26.4 }
 				]
 			},
 			"bone5": {
 				"rotate": [
-					{ "time": 0, "angle": 47.09 },
-					{ "time": 0.3333, "angle": -36.65 },
-					{ "time": 0.6666, "angle": 47.09 }
+					{ "time": 0, "angle": 28.81 },
+					{ "time": 0.1666, "angle": -36.65 },
+					{ "time": 0.3333, "angle": 28.81 },
+					{ "time": 0.5, "angle": -36.65 },
+					{ "time": 0.6666, "angle": 28.81 }
 				]
 			}
 		}

@@ -20,7 +20,7 @@ float JumpingComponent::velocity = 240;
 void JumpingAirState::handleEvent(Entity* entity, MainComponent* component, EventType event) {
     if (event == COLLISION_BOTTOM) {
         JumpingComponent* jumping = static_cast<JumpingComponent*>(component);
-        jumping->switchState(jumping->states[JUMPING_GROUND_STATE], entity);
+        jumping->switchState(JUMPING_GROUND_STATE, jumping->states[JUMPING_GROUND_STATE], entity);
     }
 }
 
@@ -42,7 +42,7 @@ void JumpingAirState::onExit(Entity* entity, MainComponent* component) {}
 void JumpingGroundState::handleEvent(Entity* entity, MainComponent* component, EventType event) {
     if (event == INPUT_UP) {
         JumpingComponent* jumping = static_cast<JumpingComponent*>(component);
-        component->switchState(jumping->states[JUMPING_AIR_STATE], entity);
+        component->switchState(JUMPING_AIR_STATE, jumping->states[JUMPING_AIR_STATE], entity);
     }
 }
 

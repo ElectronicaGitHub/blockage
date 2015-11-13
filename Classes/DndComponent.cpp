@@ -33,7 +33,7 @@ void EmptyState::handleEvent(Entity* entity, MainComponent* component, EventType
                 player_dragger->draggingEntity = draggable;
                 
                 DndComponent* dnd = static_cast<DndComponent*>(component);
-                dnd->switchState(dnd->states[DND_DRAGGING_STATE], entity);
+                dnd->switchState(DND_DRAGGING_STATE, dnd->states[DND_DRAGGING_STATE], entity);
             }
         }
     }
@@ -87,7 +87,7 @@ void DraggingState::handleEvent(Entity* entity, MainComponent* component, EventT
                     drag_component->droppedTo = droppable;
                     drag_component->droppedToComponent = drop_component;
                     
-                    player_dragger->switchState(player_dragger->states[DND_EMPTY_STATE], entity);
+                    player_dragger->switchState(DND_EMPTY_STATE, player_dragger->states[DND_EMPTY_STATE], entity);
                     
                     break;
                 }

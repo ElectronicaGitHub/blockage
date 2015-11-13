@@ -44,8 +44,8 @@ bool PlayingAnimateLayer::init() {
         render->sprite->setPosition(position->x, position->y);
         
         EntityManager::addComponentsToEntity(entity, {
-            render, position
-//            new PassiveCollisionComponent
+            render, position,
+            new PassiveCollisionComponent
         });
     }
     

@@ -14,24 +14,19 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
     tile_size = size;
     currentAnimation = startAnimation;
     
-//    Size contentSize = sprite->getContentSize();
-    
     animatedSprite = SkeletonAnimation::createWithFile("res/animations/warrior/skeleton.json", "res/animations/warrior/skeleton.atlas", 1);
     animatedSprite->setAnimation(0, currentAnimation, true);
     animatedSprite->setSkin("default");
-//    animatedSprite->setDebugBonesEnabled(true);
 //    animatedSprite->setDebugSlotsEnabled(true);
-//    animatedSprite->setScale(0.2, 0.2);
-//    animatedSprite->setContentSize({20, 20});
     
-    spAttachment* a = animatedSprite->getAttachment("boundingbox", "global");
     spSlot* sl = animatedSprite->findSlot("global");
-    
-//    cout << sl->bone->skeleton->data->width << " :: " << sl->bone->skeleton->data->height << endl;
-    
     
     animatedSprite->setScaleX(size.first / sl->bone->skeleton->data->width);
     animatedSprite->setScaleY(size.second / sl->bone->skeleton->data->height);
+    
+//    animatedSprite->setBlendFunc(BlendFunc::ADDITIVE);
+    
+    animatedSprite->setContentSize({size.first, size.second});
     
     layer->addChild(animatedSprite);
 };
@@ -44,9 +39,8 @@ RenderComponent::RenderComponent(cocos2d::Layer* _layer, ImageName image, pair<f
     
     Size contentSize = sprite->getContentSize();
     
-//    sprite->getTexture()->setTexParameters({GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
-    
-//    sprite->setTextureRect(cocos2d::Rect(0, 0, contentSize.width * (size.first / texture_size.first), contentSize.height * (size.second / texture_size.second)));
+    sprite->getTexture()->setTexParameters({GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
+    sprite->setTextureRect(cocos2d::Rect(0, 0, contentSize.width * (size.first / texture_size.first), contentSize.height * (size.second / texture_size.second)));
     
     contentSize = sprite->getContentSize();
     float scaleX = size.first / contentSize.width, scaleY = size.second / contentSize.height;

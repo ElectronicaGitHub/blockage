@@ -45,7 +45,7 @@ public:
     Entity* draggingEntity;
     static map<StateType, State*> states;
     
-    DndComponent() : MainComponent(DND_COMPONENT, states.find(DND_EMPTY_STATE)->second) {};
+    DndComponent() : MainComponent(DND_COMPONENT, states.find(DND_EMPTY_STATE)->first, states.find(DND_EMPTY_STATE)->second) {};
     ~DndComponent() {};
 };
 

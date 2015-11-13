@@ -245,3 +245,17 @@ vector<Entity*> EntityManager::getNearestPassiveEntities(Entity* entity) {
     
     return returning_vector;
 }
+
+vector<StateType> EntityManager::getStateTypesFromEntity(Entity* entity) {
+    vector <StateType> returning_vector;
+    
+    for (int i = 0; i < entity->allComponents().size(); ++i) {
+        MainComponent* comp = entity->allComponents()[i];
+        
+        if (comp->currentStateType) {
+            returning_vector.push_back(comp->currentStateType);
+        }
+    }
+    
+    return returning_vector;
+}

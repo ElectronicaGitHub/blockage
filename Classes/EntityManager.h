@@ -44,6 +44,7 @@ public:
     static vector<Entity*> getNearestEntities(Entity* entity);
     static vector<Entity*> getNearestEntitiesWithComponentType(Entity* entity, ComponentType type);
     static vector<Entity*> getNearestPassiveEntities(Entity* entity);
+    static vector<StateType> getStateTypesFromEntity(Entity* entity);
 
 };
 

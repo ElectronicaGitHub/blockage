@@ -52,7 +52,9 @@ public:
     static float velocity;
     static map<StateType, State*> states;
     
-    JumpingComponent() : MainComponent(JUMPING_COMPONENT, states.find(JUMPING_AIR_STATE)->second) {}
+    StateType currentState;
+    
+    JumpingComponent() : MainComponent(JUMPING_COMPONENT, states.find(JUMPING_GROUND_STATE)->first, states.find(JUMPING_GROUND_STATE)->second) {}
     ~JumpingComponent(){}
 };
 

@@ -33,14 +33,17 @@ public:
     MainComponent(ComponentType _type)
         : type(_type)
         {}
-    MainComponent(ComponentType _type, State* state)
+    MainComponent(ComponentType _type, StateType _state_type, State* _state)
         : type(_type)
-        , currentState(state)
+        , currentState(_state)
+        , currentStateType(_state_type)
         {}
     virtual ~MainComponent() = 0;
     
     State* getCurrentState();
-    void switchState(State* state, Entity* entity);
+    void switchState(StateType state_type, State* state, Entity* entity);
+    
+    StateType currentStateType;
 
 protected:
     State* currentState;
