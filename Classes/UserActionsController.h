@@ -14,7 +14,7 @@
 #include "ControlsComponent.h"
 #include "MotionComponent.h"
 #include "JumpingComponent.h"
-#include "ActiveCollisionComponent.h"
+#include "SkillReleaseComponent.h"
 #include "EntityManager.h"
 
 using namespace cocos2d;

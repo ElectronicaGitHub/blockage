@@ -29,12 +29,15 @@ void UserActionsController::tick(Entity* entity, float delta) {
         ActiveCollisionComponent* collision = static_cast<ActiveCollisionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, ACTIVE_COLLISION_COMPONENT));
         MotionComponent* motion = static_cast<MotionComponent* >(EntityManager::getComponentByTypeFromEntity(entity, MOTION_COMPONENT));
         JumpingComponent* jumping = static_cast<JumpingComponent* >(EntityManager::getComponentByTypeFromEntity(entity, JUMPING_COMPONENT));
-        DndComponent* dnd = static_cast<DndComponent* >(EntityManager::getComponentByTypeFromEntity(entity, DND_COMPONENT));
+        SkillReleaseComponent* skill_release = static_cast<SkillReleaseComponent* >(EntityManager::getComponentByTypeFromEntity(entity, SKILL_RELEASE_COMPONENT));
         
         bool isInputLeft = control->keys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_A];
         bool isInputRight = control->keys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_D];
         bool isInputUp = control->keys[EventKeyboard::KeyCode::KEY_UP_ARROW] || control->keys[EventKeyboard::KeyCode::KEY_W];
         bool isInputZ = control->keys[EventKeyboard::KeyCode::KEY_Z];
+        bool isInputX = control->keys[EventKeyboard::KeyCode::KEY_X];
+        bool isInputC = control->keys[EventKeyboard::KeyCode::KEY_C];
+        bool isInputV = control->keys[EventKeyboard::KeyCode::KEY_V];
         
         if (isInputLeft && !collision->collision[COL_LEFT]) {
             motion->dx = -motion->controlVelosity;
@@ -48,12 +51,25 @@ void UserActionsController::tick(Entity* entity, float delta) {
             jumping->getCurrentState()->handleEvent(entity, jumping, INPUT_UP);
         }
         
-        if (isInputZ && !dnd->buttonPressed) {
-            dnd->getCurrentState()->handleEvent(entity, dnd, INPUT_Z);
-            dnd->buttonPressed = true;
+        if (isInputZ) {
+            skill_release->release(entity, INPUT_Z);
         }
-        if (!isInputZ && dnd->buttonPressed) {
-            dnd->buttonPressed = false;
+        if (isInputX) {
+            skill_release->release(entity, INPUT_X);
         }
+        if (isInputC) {
+            skill_release->release(entity, INPUT_C);
+        }
+        if (isInputV) {
+            skill_release->release(entity, INPUT_V);
+        }
+        
+//        if (isInputZ && !dnd->buttonPressed) {
+//            dnd->getCurrentState()->handleEvent(entity, dnd, INPUT_Z);
+//            dnd->buttonPressed = true;
+//        }
+//        if (!isInputZ && dnd->buttonPressed) {
+//            dnd->buttonPressed = false;
+//        }
     }
 }

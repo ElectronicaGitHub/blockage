@@ -18,10 +18,10 @@ public:
     float dx, dy, density, controlVelosity;
     
     ComponentType type = MOTION_COMPONENT;
-    MotionComponent(float _dx, float _dy, float _controlVelosity)
+    MotionComponent(float _controlVelosity)
         : MainComponent(MOTION_COMPONENT)
-        , dx(_dx)
-        , dy(_dy)
+        , dx(0)
+        , dy(0)
         , controlVelosity(_controlVelosity)
         {}
     MotionComponent(float _dx, float _dy)

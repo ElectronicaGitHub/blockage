@@ -25,7 +25,7 @@ public:
     ~JumpingAirState(){}
     
     void handleEvent(Entity* entity, MainComponent* component, EventType event) override;
-    void update(Entity* entity, MainComponent* component) override;
+    void update(Entity* entity, MainComponent* component, float delta) override;
     void onEnter(Entity* entity, MainComponent* component) override;
     void onExit(Entity* entity, MainComponent* component) override;
 };
@@ -38,7 +38,7 @@ public:
     ~JumpingGroundState(){}
     
     void handleEvent(Entity* entity, MainComponent* component, EventType event) override;
-    void update(Entity* entity, MainComponent* component) override;
+    void update(Entity* entity, MainComponent* component, float delta) override;
     void onEnter(Entity* entity, MainComponent* component) override;
     void onExit(Entity* entity, MainComponent* component) override;
 };

@@ -58,6 +58,8 @@
 		A40919EF1BD1CC7D0009346B /* GameStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919EC1BD1CC7D0009346B /* GameStateManager.cpp */; };
 		A40919F71BE2D4550009346B /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F61BE2D4550009346B /* RenderComponent.cpp */; };
 		A40919F81BE2D4550009346B /* RenderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A40919F61BE2D4550009346B /* RenderComponent.cpp */; };
+		A4326BF81C14C13D00145E0F /* LifecycleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4326BF61C14C13D00145E0F /* LifecycleController.cpp */; };
+		A4326BF91C14C13D00145E0F /* LifecycleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4326BF61C14C13D00145E0F /* LifecycleController.cpp */; };
 		A4640B3B1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */; };
 		A4640B3C1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */; };
 		A4640B4C1BF3E49200C235F7 /* PlayingAnimateLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B4A1BF3E49200C235F7 /* PlayingAnimateLayer.cpp */; };
@@ -66,8 +68,16 @@
 		A4640B511BF3E4A300C235F7 /* PlayingBGLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B4E1BF3E4A300C235F7 /* PlayingBGLayer.cpp */; };
 		A4640B541BF3E4B200C235F7 /* PlayingInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B521BF3E4B200C235F7 /* PlayingInfoLayer.cpp */; };
 		A4640B551BF3E4B200C235F7 /* PlayingInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B521BF3E4B200C235F7 /* PlayingInfoLayer.cpp */; };
-		A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
-		A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */; };
+		A4640B5C1BF8939A00C235F7 /* SkillReleaseComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B5A1BF8939A00C235F7 /* SkillReleaseComponent.cpp */; };
+		A4640B5D1BF8939A00C235F7 /* SkillReleaseComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B5A1BF8939A00C235F7 /* SkillReleaseComponent.cpp */; };
+		A4640B611BF8C7B800C235F7 /* CharClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B5F1BF8C7B800C235F7 /* CharClass.cpp */; };
+		A4640B621BF8C7B800C235F7 /* CharClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B5F1BF8C7B800C235F7 /* CharClass.cpp */; };
+		A4640B671BF8DFD500C235F7 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = A4640B661BF8DFD400C235F7 /* config.json */; };
+		A4640B681BF8DFD500C235F7 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = A4640B661BF8DFD400C235F7 /* config.json */; };
+		A4640B781BFD30B800C235F7 /* RangedAttackLv1Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B761BFD30B800C235F7 /* RangedAttackLv1Skill.cpp */; };
+		A4640B791BFD30B800C235F7 /* RangedAttackLv1Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B761BFD30B800C235F7 /* RangedAttackLv1Skill.cpp */; };
+		A4640B7B1BFD35E000C235F7 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B7A1BFD35E000C235F7 /* Skill.cpp */; };
+		A4640B7C1BFD35E000C235F7 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4640B7A1BFD35E000C235F7 /* Skill.cpp */; };
 		A4EBA6CF1BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */; };
 		A4EBA6D01BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */; };
 		A4EBA6D21BC8FED9001F8DC8 /* MainComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A4EBA6D11BC8FED9001F8DC8 /* MainComponent.cpp */; };
@@ -203,10 +213,12 @@
 		A40919EC1BD1CC7D0009346B /* GameStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameStateManager.cpp; sourceTree = "<group>"; };
 		A40919ED1BD1CC7D0009346B /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStateManager.h; sourceTree = "<group>"; };
 		A40919F61BE2D4550009346B /* RenderComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderComponent.cpp; sourceTree = "<group>"; };
+		A4326BF61C14C13D00145E0F /* LifecycleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LifecycleController.cpp; sourceTree = "<group>"; };
+		A4326BF71C14C13D00145E0F /* LifecycleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifecycleController.h; sourceTree = "<group>"; };
 		A4640B391BE655AC00C235F7 /* AnimationComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationComponent.cpp; sourceTree = "<group>"; };
 		A4640B3A1BE655AC00C235F7 /* AnimationComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationComponent.h; sourceTree = "<group>"; };
 		A4640B3E1BE6720500C235F7 /* AnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContainer.h; sourceTree = "<group>"; };
-		A4640B461BF3DEE300C235F7 /* HPComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPComponent.h; sourceTree = "<group>"; };
+		A4640B461BF3DEE300C235F7 /* LifecycleComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifecycleComponent.h; sourceTree = "<group>"; };
 		A4640B4A1BF3E49200C235F7 /* PlayingAnimateLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingAnimateLayer.cpp; sourceTree = "<group>"; };
 		A4640B4B1BF3E49200C235F7 /* PlayingAnimateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingAnimateLayer.h; sourceTree = "<group>"; };
 		A4640B4E1BF3E4A300C235F7 /* PlayingBGLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingBGLayer.cpp; sourceTree = "<group>"; };
@@ -214,9 +226,15 @@
 		A4640B521BF3E4B200C235F7 /* PlayingInfoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayingInfoLayer.cpp; sourceTree = "<group>"; };
 		A4640B531BF3E4B200C235F7 /* PlayingInfoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingInfoLayer.h; sourceTree = "<group>"; };
 		A4640B571BF3E68800C235F7 /* PlayingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingScene.h; sourceTree = "<group>"; };
-		A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackComponent.h; sourceTree = "<group>"; };
-		A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackController.cpp; sourceTree = "<group>"; };
-		A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackController.h; sourceTree = "<group>"; };
+		A4640B5A1BF8939A00C235F7 /* SkillReleaseComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillReleaseComponent.cpp; sourceTree = "<group>"; };
+		A4640B5B1BF8939A00C235F7 /* SkillReleaseComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillReleaseComponent.h; sourceTree = "<group>"; };
+		A4640B5F1BF8C7B800C235F7 /* CharClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharClass.cpp; sourceTree = "<group>"; };
+		A4640B601BF8C7B800C235F7 /* CharClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharClass.h; sourceTree = "<group>"; };
+		A4640B661BF8DFD400C235F7 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
+		A4640B6A1BFD1D9600C235F7 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		A4640B761BFD30B800C235F7 /* RangedAttackLv1Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RangedAttackLv1Skill.cpp; sourceTree = "<group>"; };
+		A4640B771BFD30B800C235F7 /* RangedAttackLv1Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangedAttackLv1Skill.h; sourceTree = "<group>"; };
+		A4640B7A1BFD35E000C235F7 /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skill.cpp; sourceTree = "<group>"; };
 		A4EBA6CB1BC709B8001F8DC8 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpingComponent.cpp; sourceTree = "<group>"; };
 		A4EBA6D11BC8FED9001F8DC8 /* MainComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainComponent.cpp; sourceTree = "<group>"; };
@@ -400,6 +418,7 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				A40919EC1BD1CC7D0009346B /* GameStateManager.cpp */,
 				A40919ED1BD1CC7D0009346B /* GameStateManager.h */,
+				A4640B661BF8DFD400C235F7 /* config.json */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -474,11 +493,89 @@
 			name = PlayingScene;
 			sourceTree = "<group>";
 		};
+		A4640B6D1BFD2E7600C235F7 /* skills */ = {
+			isa = PBXGroup;
+			children = (
+				A4640B6E1BFD2EAA00C235F7 /* melee_apprentice */,
+				A4640B711BFD2F4400C235F7 /* rogue */,
+				A4640B731BFD2F6200C235F7 /* shadow */,
+				A4640B741BFD2F6E00C235F7 /* dark_seer */,
+				A4640B751BFD2F7900C235F7 /* ninja */,
+				A4640B721BFD2F5000C235F7 /* warrior */,
+				A4640B6F1BFD2EC700C235F7 /* range_apprentice */,
+				A4640B701BFD2ED300C235F7 /* worker */,
+			);
+			name = skills;
+			sourceTree = "<group>";
+		};
+		A4640B6E1BFD2EAA00C235F7 /* melee_apprentice */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = melee_apprentice;
+			sourceTree = "<group>";
+		};
+		A4640B6F1BFD2EC700C235F7 /* range_apprentice */ = {
+			isa = PBXGroup;
+			children = (
+				A4640B761BFD30B800C235F7 /* RangedAttackLv1Skill.cpp */,
+				A4640B771BFD30B800C235F7 /* RangedAttackLv1Skill.h */,
+			);
+			name = range_apprentice;
+			sourceTree = "<group>";
+		};
+		A4640B701BFD2ED300C235F7 /* worker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = worker;
+			sourceTree = "<group>";
+		};
+		A4640B711BFD2F4400C235F7 /* rogue */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = rogue;
+			sourceTree = "<group>";
+		};
+		A4640B721BFD2F5000C235F7 /* warrior */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = warrior;
+			sourceTree = "<group>";
+		};
+		A4640B731BFD2F6200C235F7 /* shadow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = shadow;
+			sourceTree = "<group>";
+		};
+		A4640B741BFD2F6E00C235F7 /* dark_seer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = dark_seer;
+			sourceTree = "<group>";
+		};
+		A4640B751BFD2F7900C235F7 /* ninja */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ninja;
+			sourceTree = "<group>";
+		};
 		A4EBA6C91BC70978001F8DC8 /* concerns */ = {
 			isa = PBXGroup;
 			children = (
+				A4640B6D1BFD2E7600C235F7 /* skills */,
 				A4EBA6CB1BC709B8001F8DC8 /* State.h */,
 				A4640B3E1BE6720500C235F7 /* AnimationContainer.h */,
+				A4640B5F1BF8C7B800C235F7 /* CharClass.cpp */,
+				A4640B601BF8C7B800C235F7 /* CharClass.h */,
+				A4640B6A1BFD1D9600C235F7 /* Skill.h */,
+				A4640B7A1BFD35E000C235F7 /* Skill.cpp */,
 			);
 			name = concerns;
 			sourceTree = "<group>";
@@ -528,8 +625,9 @@
 				FD1B17711BC3D3C70015E684 /* GravityComponent.h */,
 				A4EBA6CE1BC8F76C001F8DC8 /* JumpingComponent.cpp */,
 				FD1B1C6E1BC40AEB0015E684 /* JumpingComponent.h */,
-				A4EBA6B51BC44F34001F8DC8 /* RangedAttackComponent.h */,
-				A4640B461BF3DEE300C235F7 /* HPComponent.h */,
+				A4640B461BF3DEE300C235F7 /* LifecycleComponent.h */,
+				A4640B5A1BF8939A00C235F7 /* SkillReleaseComponent.cpp */,
+				A4640B5B1BF8939A00C235F7 /* SkillReleaseComponent.h */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -558,8 +656,8 @@
 				D43EC5D01BD691BF0083A084 /* DndController.h */,
 				FD1B17731BC3D7910015E684 /* MotionController.cpp */,
 				FD1B17741BC3D7910015E684 /* MotionController.h */,
-				A4EBA6B81BC45EC1001F8DC8 /* RangedAttackController.cpp */,
-				A4EBA6B91BC45EC1001F8DC8 /* RangedAttackController.h */,
+				A4326BF61C14C13D00145E0F /* LifecycleController.cpp */,
+				A4326BF71C14C13D00145E0F /* LifecycleController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -673,6 +771,7 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				A4640B671BF8DFD500C235F7 /* config.json in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
@@ -687,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				A4640B681BF8DFD500C235F7 /* config.json in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
 				521A8EAA19F11F5000D177D7 /* fonts in Resources */,
 			);
@@ -713,10 +813,13 @@
 				FD1B17811BC3E3930015E684 /* MainComponent.h in Sources */,
 				FD1B17831BC3E3930015E684 /* PositionComponent.h in Sources */,
 				FD1B17851BC3E3930015E684 /* MotionComponent.h in Sources */,
+				A4640B5C1BF8939A00C235F7 /* SkillReleaseComponent.cpp in Sources */,
 				FD1B17871BC3E3930015E684 /* GravityComponent.h in Sources */,
+				A4640B611BF8C7B800C235F7 /* CharClass.cpp in Sources */,
 				D43EC5D11BD691BF0083A084 /* DndController.cpp in Sources */,
 				D43EC5CD1BD6915E0083A084 /* DndComponent.cpp in Sources */,
 				FD1B17881BC3E3930015E684 /* ImageStorage.cpp in Sources */,
+				A4326BF81C14C13D00145E0F /* LifecycleController.cpp in Sources */,
 				FD1B17891BC3E3930015E684 /* ImageStorage.h in Sources */,
 				FD1B178A1BC3E3930015E684 /* MapStorage.cpp in Sources */,
 				A40919E51BCFF3750009346B /* BrickEntity.cpp in Sources */,
@@ -728,10 +831,11 @@
 				A4640B4C1BF3E49200C235F7 /* PlayingAnimateLayer.cpp in Sources */,
 				FD1B17911BC3E3930015E684 /* RenderController.h in Sources */,
 				FD1B17921BC3E3930015E684 /* MotionController.cpp in Sources */,
-				A4EBA6BA1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
 				FD1B17931BC3E3930015E684 /* MotionController.h in Sources */,
+				A4640B7B1BFD35E000C235F7 /* Skill.cpp in Sources */,
 				FD1B17941BC3E3930015E684 /* AppDelegate.cpp in Sources */,
 				FD1B17951BC3E3930015E684 /* AppDelegate.h in Sources */,
+				A4640B781BFD30B800C235F7 /* RangedAttackLv1Skill.cpp in Sources */,
 				A4EBA6CF1BC8F76C001F8DC8 /* JumpingComponent.cpp in Sources */,
 				A4EBA6D21BC8FED9001F8DC8 /* MainComponent.cpp in Sources */,
 				A40919E11BCB34B60009346B /* StoneEntity.cpp in Sources */,
@@ -742,13 +846,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4326BF91C14C13D00145E0F /* LifecycleController.cpp in Sources */,
 				D47BEB7C1BC452C500474F2F /* CollisionController.cpp in Sources */,
 				FD1B1C631BC3F6CA0015E684 /* ImageStorage.cpp in Sources */,
 				FD1B1C601BC3F6C00015E684 /* UserActionsController.cpp in Sources */,
 				A4640B511BF3E4A300C235F7 /* PlayingBGLayer.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				A4640B5D1BF8939A00C235F7 /* SkillReleaseComponent.cpp in Sources */,
+				A4640B791BFD30B800C235F7 /* RangedAttackLv1Skill.cpp in Sources */,
 				FD1B1C621BC3F6C70015E684 /* MapStorage.cpp in Sources */,
-				A4EBA6BB1BC45EC1001F8DC8 /* RangedAttackController.cpp in Sources */,
+				A4640B7C1BFD35E000C235F7 /* Skill.cpp in Sources */,
 				A4640B3C1BE655AC00C235F7 /* AnimationComponent.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				A4640B551BF3E4B200C235F7 /* PlayingInfoLayer.cpp in Sources */,
@@ -762,6 +869,7 @@
 				A4640B4D1BF3E49200C235F7 /* PlayingAnimateLayer.cpp in Sources */,
 				FD1B1C5F1BC3F6BB0015E684 /* RenderController.cpp in Sources */,
 				FD1B1C5E1BC3F6B70015E684 /* MotionController.cpp in Sources */,
+				A4640B621BF8C7B800C235F7 /* CharClass.cpp in Sources */,
 				D43EC5CE1BD6915E0083A084 /* DndComponent.cpp in Sources */,
 				A4EBA6D31BC8FED9001F8DC8 /* MainComponent.cpp in Sources */,
 				A40919F81BE2D4550009346B /* RenderComponent.cpp in Sources */,

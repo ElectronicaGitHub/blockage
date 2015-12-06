@@ -22,4 +22,11 @@ void MainComponent::switchState(State* state, Entity* entity) {
     currentState->onEnter(entity, this);
 }
 
+void MainComponent::updateState(Entity* entity) {
+    currentState->update(entity, this);
+}
+void MainComponent::updateState(Entity* entity, float delta) {
+    currentState->update(entity, this, delta);
+}
+
 

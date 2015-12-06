@@ -39,7 +39,7 @@ void EmptyState::handleEvent(Entity* entity, MainComponent* component, EventType
     }
 };
 void EmptyState::onEnter(Entity* entity, MainComponent* component) {};
-void EmptyState::update(Entity* entity, MainComponent* component) {};
+void EmptyState::update(Entity* entity, MainComponent* component, float delta) {};
 void EmptyState::onExit(Entity* entity, MainComponent* component) {
     
     DndComponent* player_dragger = static_cast<DndComponent* >(EntityManager::getComponentByTypeFromEntity(entity, DND_COMPONENT));
@@ -96,7 +96,7 @@ void DraggingState::handleEvent(Entity* entity, MainComponent* component, EventT
     }
 };
 void DraggingState::onEnter(Entity* entity, MainComponent* component) {};
-void DraggingState::update(Entity* entity, MainComponent* component) {
+void DraggingState::update(Entity* entity, MainComponent* component, float delta) {
     
     DndComponent* player_dragger = static_cast<DndComponent* >(EntityManager::getComponentByTypeFromEntity(entity, DND_COMPONENT));
     PositionComponent* draggable_position = static_cast<PositionComponent* >(EntityManager::getComponentByTypeFromEntity(player_dragger->draggingEntity, POSITION_COMPONENT));

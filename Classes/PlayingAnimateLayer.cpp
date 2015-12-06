@@ -75,9 +75,13 @@ bool PlayingAnimateLayer::init() {
     EntityManager::addEntity(player);
     EntityManager::addComponentsToEntity(player, {
         new RenderComponent(this, IMAGE_DWARF, pair<float, float>(11, 16)),
-        new DndComponent()
+        new DndComponent(),
+        new LifecycleComponent(RANGE_APPRENTICE),
     });
     ControlsComponent* player_controls_component = static_cast<ControlsComponent*>(EntityManager::getComponentByTypeFromEntity(player, CONTROLS_COMPONENT));
+    SkillReleaseComponent* skill_release = static_cast<SkillReleaseComponent*>(EntityManager::getComponentByTypeFromEntity(player, SKILL_RELEASE_COMPONENT));
+    skill_release->setSkill(INPUT_Z, new RangedAttackLv1Skill());
+    
     
     Entity* drop_block = new BrickEntity();
     EntityManager::addComponentsToEntity(drop_block, {
@@ -87,14 +91,14 @@ bool PlayingAnimateLayer::init() {
         new RenderComponent(this, IMAGE_WALL_DRAG, tileSize)
     });
     
-    //    EntityManager::addEntity(drop_block);
+//        EntityManager::addEntity(drop_block);
     
     userActionsController = new UserActionsController(_eventDispatcher, this, player_controls_component);
     motionController = new MotionController();
-    rangedAttackController = new RangedAttackController();
     renderController = new RenderController();
     collisionController = new CollisionController();
     dndController = new DndController();
+    lifecycleController = new LifecycleController();
     
     this->scheduleUpdate();
     
@@ -107,10 +111,10 @@ void PlayingAnimateLayer::update(float delta) {
         
         userActionsController->tick(entity, delta);
         motionController->tick(entity, delta);
-        rangedAttackController->tick(entity, this, delta);
         renderController->tick(entity, delta);
         collisionController->tick(entity);
         dndController->tick(entity);
+        lifecycleController->tick(entity, delta);
         
         if (entity->deleted) {
             EntityManager::removeEntity(entity);

@@ -17,8 +17,8 @@
 #include "UserActionsController.h"
 #include "MotionController.h"
 #include "CollisionController.h"
-#include "RangedAttackController.h"
 #include "DndController.h"
+#include "LifecycleController.h"
 
 #include "EntityManager.h"
 #include "Entity.h"
@@ -29,6 +29,10 @@
 #include "ImageStorage.h"
 
 #include "RenderComponent.h"
+#include "LifecycleComponent.h"
+
+#include "CharClass.h"
+#include "RangedAttackLv1Skill.h"
 
 using namespace std;
 
@@ -36,10 +40,10 @@ class PlayingAnimateLayer : public cocos2d::Layer {
 public:
     UserActionsController* userActionsController;
     MotionController* motionController;
-    RangedAttackController* rangedAttackController;
     RenderController* renderController;
     CollisionController* collisionController;
     DndController* dndController;
+    LifecycleController* lifecycleController;
     
     virtual bool init() override;
     virtual void update(float delta) override;

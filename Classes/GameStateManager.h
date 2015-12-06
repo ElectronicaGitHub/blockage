@@ -15,10 +15,16 @@
 class GameStateManager
 {
 public:
-    static cocos2d::Scene* currentScene;
-    static cocos2d::Director* director;
-    
     static void runGame(void);
+    static cocos2d::Layer* getAnimateLayer(void);
+    
+private:
+    static cocos2d::Scene* currentScene;
+    static cocos2d::Layer* bg_layer;
+    static cocos2d::Layer* animate_layer;
+    static cocos2d::Layer* info_layer;
+    
+    static cocos2d::Director* director;
 };
 
 #endif /* defined(__cppTests__GameStateManager__) */

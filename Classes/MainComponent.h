@@ -21,9 +21,11 @@ enum ComponentType {
     RENDER_COMPONENT, ANIMATION_COMPONENT,
     CONTROLS_COMPONENT, ACTIVE_COLLISION_COMPONENT, PASSIVE_COLLISION_COMPONENT,
     POSITION_COMPONENT, MOTION_COMPONENT, GRAVITY_COMPONENT, JUMPING_COMPONENT,
-    RANGED_ATTACK_COMPONENT,
     DRAG_COMPONENT, DROP_COMPONENT, DND_COMPONENT,
-    HP_COMPONENT
+    LIFECYCLE_COMPONENT,
+    SKILL_RELEASE_COMPONENT,
+    
+    SKILL
 };
 
 class MainComponent
@@ -42,6 +44,8 @@ public:
     
     State* getCurrentState();
     void switchState(State* state, Entity* entity);
+    void updateState(Entity* entity);
+    void updateState(Entity* entity, float delta);
 
 protected:
     State* currentState;

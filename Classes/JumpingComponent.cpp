@@ -33,7 +33,7 @@ void JumpingAirState::onEnter(Entity* entity, MainComponent* component) {
     }
 }
 
-void JumpingAirState::update(Entity* entity, MainComponent* component) {}
+void JumpingAirState::update(Entity* entity, MainComponent* component, float delta) {}
 void JumpingAirState::onExit(Entity* entity, MainComponent* component) {}
 
 
@@ -51,6 +51,6 @@ void JumpingGroundState::onEnter(Entity* entity, MainComponent* component) {
     motion->dy = 0;
 }
 
-void JumpingGroundState::update(Entity* entity, MainComponent* component) {}
+void JumpingGroundState::update(Entity* entity, MainComponent* component, float delta) {}
 void JumpingGroundState::onExit(Entity* entity, MainComponent* component) {}
 
